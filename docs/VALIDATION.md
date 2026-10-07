@@ -1,23 +1,21 @@
-# Validation evidence and what it does not establish
+# Validation scope
 
-## Engineering
+## Current release: 0.2.0
 
-The regression suite exercises contract completeness; missing and contradictory fields; evidence references; output-format and physical-size checks; unsafe paths, symlinks and active SVGs; score bounds; weighted and per-dimension floors; unknown gates; stale contract/source/evidence/output hashes; creator-versus-independent review; preserved response records; and clean, idempotent, non-destructive installation.
+The visual calibration set is the complete, previously approved twenty-reference gallery: twenty-nine actual published image assets, with full/selected/context figures and source attribution. No self-generated image is included as a visual reference or teaching standard. The old generated demonstrations were removed from the current tree; immutable 0.1.0 history is not the current calibration standard.
 
-Synthetic reviews in tests are explicitly fixtures. Their scores do not represent a reader study or a figure-quality result. Repository CI runs the same no-network standard-library checks on Python 3.9 and 3.12.
+The original six anchors—AlphaFold, CellRank, GraphCast, DreamFusion, AlphaDev and Aardvark—appear first. A canonical registry and file hashes prevent missing images, unapproved substitution, and silent changes to the curated selection. Static HTML contains actual image elements for every reference, so images do not depend on JavaScript or third-party hotlink availability.
 
-## Analytical examples
+## What the tests check
 
-The projection source checks feasibility, preserved tangent, idempotence and nearest-point inequalities against a fixed comparison grid. The lag source checks the closed-form solution against the differential equation and verifies two equal slow readouts with opposite derivatives. These are exact toy checks, not novel research.
+Contract completeness, evidence and source integrity, output constraints, stale review detection, safe paths and SVGs, non-destructive installation, canonical reference membership, twenty references/twenty-nine image files, no generated-reference folder, two actually observed reference records, registered image paths/hashes, concrete composition/encoding/style observations, and final output-to-reference comparison fields.
 
-Creator visual inspection of the first renders found an annotation crossing the projection's dashed vector, a lag-state label touching its trajectory, and inadequate separation between a tick and axis title. Those first drafts are retained under each example's `history/`. The source was revised and previews re-rendered. This shows an actual inspect–repair loop, not just a passing schema.
+Review records remain agent/human attestations. A JSON field cannot prove actual image inspection, scientific validity or visual quality. Independent reviewers are still needed for independent acceptance. Synthetic unit-test fixtures are not calibration images and are not empirical quality evidence.
 
-Calibration inspection also revealed that Quartz/PDFKit had dropped portions of transparent Gaussian splats in an earlier PDF crop. Rendering the same page with MuPDF restored the complete primitives. The public asset registry records the corrected image hash, source, crop and renderer. No scientific content was redrawn.
+## Browser validation
 
-## Review status
+The reader is checked on desktop and mobile for all twenty primary figures, every full/focused/context asset, search, mechanism filters, the native-size viewer, Escape/scroll restoration, no missing image responses and no document overflow. The local reader is checked with public-network requests blocked; the deployed page and image bytes are verified after publication.
 
-Example review files, where present, are **creator self-reviews**, not independent validation. The contracts document the worked constructions, and the response fields are retrospective self-assessment rather than timed or blind comprehension tests. `--require-independent` must therefore withhold independent acceptance. Do not use these examples as evidence that a generic agent has achieved the calibration quality bar.
+## What has not been established
 
-## Not established
-
-Cross-agent pass rates, inter-rater reliability, superiority to SciencePlots or an unassisted capable agent, measured time/token savings, generalization to held-out scientific projects, and universal publication-quality output have not been established. The protocol in `benchmarks/PROTOCOL.md` defines how to measure those outcomes without replacing science with schema success.
+There is no cross-agent efficacy study, independently measured reference-quality pass rate, generalization result or proven time/token saving. Rubric thresholds are demanding design policy. The diagnostic task packets and matched evaluation protocol remain available under benchmarks/PROTOCOL.md; passing tooling tests is not evidence that every agent will produce exceptional figures.

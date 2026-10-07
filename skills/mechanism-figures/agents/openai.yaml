@@ -1,6 +1,6 @@
 interface:
   display_name: "MechanismFigures"
   short_description: "Build scientific figures that make mechanisms visible"
-  default_prompt: "Use $mechanism-figures to turn this scientific mechanism and evidence into an inspected, reproducible figure. Follow the contract, visual calibration, and quality gate."
+  default_prompt: "Use $mechanism-figures. First inspect at least two actual images from the approved published gallery; record their composition, encoding, visual style and project-specific transfer. Build and critique the new figure against those same references. Never substitute self-generated calibration examples."
 policy:
   allow_implicit_invocation: true

@@ -1,87 +1,64 @@
 #!/usr/bin/env python3
-"""Build the public calibration reader and concise case pages from one registry."""
+"""Build the complete approved real-image gallery and concise agent case files."""
 from __future__ import annotations
 import html
 import json
 from pathlib import Path
 import shutil
 
-ROOT = Path(__file__).resolve().parents[1]
-SKILL = ROOT / 'skills/mechanism-figures'
-E = html.escape
+ROOT=Path(__file__).resolve().parents[1]
+SKILL=ROOT/'skills/mechanism-figures'
+E=html.escape
 
 
 def case_text(r):
-    t = r['transfer']
-    lines = ['# ' + r['label'] + ': ' + t['move'], '',
-             '{} · {} {} · {}'.format(r['authors'], r['venue'], r['year'], r['figure']),
-             '', '[Publication](' + r['source'] + ') · [Original asset](' + r['imageSource'] + ')', '',
-             '**Use when:** ' + t['when'], '', '## Look in this order', '']
-    lines += [str(i + 1) + '. ' + s for i, s in enumerate(t['trace'])]
-    lines += ['', '## Mechanism → construction → immediate insight', '',
-              '**Mechanism:** ' + r['mechanism'], '', '**Construction:** ' + r['construction'], '',
-              '**The eye sees:** ' + r['eye'], '', '**Why not an ordinary plot:** ' + r['stronger'], '',
-              '## Recreate the explanatory operation', '', '**Replace the objects:** ' + t['map'], '',
-              '**Preserve:** ' + t['keep'], '']
-    lines += [str(i + 1) + '. ' + s for i, s in enumerate(t['build'])]
-    lines += ['', '**Acceptance test:** ' + t['check'], '', '**Do not copy literally:** ' + t['avoid'], '',
-              '**Transfer example (proposal, not a finding):** ' + t['example'], '',
-              '**Scientific boundary:** ' + r['limit'], '', '## Actual images and rights', '']
-    if r['assets']:
-        for a in r['assets']:
-            lines.append('- [' + a['kind'] + ' figure](../../' + a['path'] + ') — ' + a['treatment'])
-    else:
-        lines.append('Source-link-only: open the original figure above. No image is bundled, and no generated substitute is used. A text description does not count as image inspection.')
-    rights = r['rights']
-    lines += ['', 'Status: ' + rights['status'] + '. ' + rights['note'], '',
-              'License: ' + (rights.get('license') or 'not verified for redistribution') +
-              '. [Permission basis](' + rights['basis_url'] + ').', '', r['commentary_origin'], '']
-    return '\n'.join(lines)
+    t,s=r['transfer'],r['visual_style']
+    lines=['# '+r['label']+' — '+t['move'],'',r['authors']+' · '+r['venue']+' '+str(r['year'])+' · '+r['display_figure'],'','[Publication]('+r['source']+') · [Original image source]('+r['imageSource']+')','','## Inspect the actual images before designing','']
+    for a in r['assets']:
+        lines.append('- ['+a['kind']+' figure](../../'+a['path']+') — SHA-256 `'+a['sha256']+'`. '+a['treatment'])
+    lines+=['','Reading a caption or this guide is not image inspection. Open at least two approved reference images at readable size and record their hashes.','','**Use when:** '+t['when'],'','## See the mechanism','']
+    lines += [str(i+1)+'. '+x for i,x in enumerate(t['trace'])]
+    for name,key in [('Mechanism','mechanism'),('Visual construction','construction'),('What the eye understands','eye'),('Why an ordinary plot is weaker','stronger')]:
+        lines+=['','**'+name+':** '+r[key]]
+    lines+=['','## Learn this visual style, then adapt it','','**Observe:** '+s['observed'],'','**Apply:** '+s['apply'],'','Record `composition_observation`, `encoding_observation`, `style_observation`, and `planned_application` for this image. Specify visible layout, persistent geometry, selective emphasis, annotation placement, color roles and whitespace—not just “clean” or “beautiful”.','','## Transfer into the project','','**Replace the objects:** '+t['map'],'','**Keep the relationship:** '+t['keep'],'']
+    lines += [str(i+1)+'. '+x for i,x in enumerate(t['build'])]
+    lines+=['','**Acceptance test:** '+t['check'],'','**Do not copy literally:** '+t['avoid'],'','**Scientific boundary:** '+r['limit'],'','## Attribution and rights','',r['commentary_origin'],'','Original authors/publishers retain image rights. The repository MIT license covers code/commentary, not the figures. '+r['rights']['note']]
+    if r['rights'].get('license_url'):lines+=['','['+r['rights']['license']+']('+r['rights']['license_url']+')']
+    return '\n'.join(lines).rstrip()+'\n'
 
 
 def build():
-    data = json.loads((SKILL / 'assets/calibration.json').read_text())
-    refs = data['references']
-    index = ['# Calibration routes', '', 'Load two case files, not the full gallery. Visually inspect the actual figures.', '',
-             '`python scripts/mf.py references --group structure`', '',
-             '| ID | Operation to borrow | Group | Offline figure |', '|---|---|---|---|']
-    third = ['# Third-party figure credits and permissions', '',
-             'Original code and editorial commentary are MIT licensed. **These figures are not MIT licensed.** Their authors retain ownership; inclusion implies no endorsement. We preserve the authors, source, license link, and all crop/rasterization notes. Article/manuscript license terms and figure-specific exceptions must be reviewed for new uses.', '',
-             'This is the rights-aware public edition of the 20-reference calibration set. References without verified general redistribution permission retain their complete construction guides and original-source links, but their image bytes are not included. No generated stand-ins or broken image hotlinks are used.', '',
-             'License checks recorded on 2026-10-07. Attribution and license evidence are also machine-readable in `assets/calibration.json` within the installed skill.', '']
-    articles = []
-    groups = sorted({r['transfer']['group'] for r in refs})
-    for r in refs:
-        (SKILL / 'references/cases' / (r['id'] + '.md')).write_text(case_text(r))
-        index.append('| [' + r['id'] + '](cases/' + r['id'] + '.md) | ' + r['transfer']['move'] + ' | ' + r['transfer']['group'] + ' | ' + ('yes' if r['assets'] else 'source link') + ' |')
-        rights, t = r['rights'], r['transfer']
-        third += ['## ' + r['label'], '', r['authors'] + '. *' + r['paper'] + '*. ' + r['venue'] + ' (' + str(r['year']) + '), ' + r['figure'] + '.', '',
-                  '[Publication](' + r['source'] + ') · [License evidence](' + rights['basis_url'] + ')', '',
-                  '**' + rights['status'] + '** — ' + rights['note'], '']
-        if rights.get('license_url'): third += ['[' + rights['license'] + '](' + rights['license_url'] + ')', '']
-        for a in r['assets']:
-            third += ['- `' + a['path'] + '` — ' + a['treatment'] + ' SHA-256: `' + a['sha256'] + '`.']
-        third += ['']
-        focused = [a for a in r['assets'] if a['kind'] == 'focused']
-        if focused:
-            media = '<div class="images">' + ''.join('<a href="' + E(a['path'].replace('assets/', '', 1)) + '" target="_blank"><img loading="lazy" src="' + E(a['path'].replace('assets/', '', 1)) + '" alt="' + E(r['label'] + ' — ' + r['figure'] + '. ' + r['look']) + '"></a>' for a in focused) + '</div>'
-        else:
-            media = '<div class="source-only"><strong>Inspect the published original.</strong><p>The construction guide is included; redistribution permission for this image has not been verified for this package.</p><a href="' + E(r['imageSource']) + '" target="_blank" rel="noopener noreferrer">Open actual figure / paper ↗</a></div>'
-        row = '<div class="chain">' + ''.join('<div><h4>' + a + '</h4><p>' + E(b) + '</p></div>' for a, b in [('Mechanism', r['mechanism']), ('Visual construction', r['construction']), ('The eye understands', r['eye']), ('Why not a conventional plot?', r['stronger'])]) + '</div>'
-        full_links = ''.join('<a href="' + E(a['path'].replace('assets/', '', 1)) + '" target="_blank">' + E(a['kind'] + ' image') + ' ↗</a> ' for a in r['assets'])
-        article = '<article id="' + r['id'] + '" data-group="' + t['group'] + '"><div class="meta">' + E(r['venue'] + ' · ' + str(r['year']) + ' · ' + r['figure']) + '</div><h2>' + E(t['move']) + '</h2><p class="when"><b>' + E(r['label']) + '.</b> ' + E(t['when']) + '</p>' + media + '<div class="look"><b>Look here</b><ol>' + ''.join('<li>' + E(s) + '</li>' for s in t['trace']) + '</ol></div>' + row + '<details><summary>Recreate this in your project</summary><p><b>Replace the objects.</b> ' + E(t['map']) + '</p><p><b>Keep the relation.</b> ' + E(t['keep']) + '</p><ol>' + ''.join('<li>' + E(s) + '</li>' for s in t['build']) + '</ol><p><b>Acceptance test.</b> ' + E(t['check']) + '</p><p><b>Do not copy literally.</b> ' + E(t['avoid']) + '</p></details><p class="boundary"><b>Scientific boundary.</b> ' + E(r['limit']) + '</p><footer><p><a href="' + E(r['source']) + '" target="_blank" rel="noopener noreferrer">' + E(r['paper']) + ' ↗</a><br>' + E(r['authors']) + '. ' + E(rights['license'] or 'Image redistribution not verified') + '.</p>' + full_links + '<details><summary>Image treatment and permission</summary><p>' + E(rights['note']) + '</p><p>' + ' '.join(E(a['treatment']) for a in r['assets']) + '</p><a href="' + E(rights['basis_url']) + '">Permission basis ↗</a>' + (' · <a href="' + E(rights['license_url']) + '">License ↗</a>' if rights['license_url'] else '') + '</details></footer></article>'
-        articles.append(article)
-    (SKILL / 'references/calibration-index.md').write_text('\n'.join(index) + '\n')
-    third_text = '\n'.join(third).rstrip() + '\n'
-    (ROOT / 'THIRD_PARTY.md').write_text(third_text)
-    (SKILL / 'THIRD_PARTY.md').write_text(third_text)
-    shutil.copyfile(ROOT / 'LICENSE', SKILL / 'LICENSE')
-    css = '''*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f6f7f3;color:#253029;font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}main{max-width:1160px;margin:auto;padding:40px 30px 70px}h1,h2{font-family:Georgia,serif;font-weight:400;letter-spacing:-.025em}h1{font-size:54px;line-height:1.05;max-width:800px;margin:20px 0}header p{max-width:850px}a{color:#305b43;text-underline-offset:4px}.muted,.meta,footer{color:#657164;font-size:12px}.meta{text-transform:uppercase;letter-spacing:.1em}nav{display:flex;gap:10px;flex-wrap:wrap;margin:25px 0}button,input{font:inherit}button{border:1px solid #bdc9ba;padding:8px 12px;background:white;border-radius:3px;color:inherit;cursor:pointer}button[aria-pressed=true]{background:#305b43;color:white}input{width:100%;padding:12px;border:1px solid #bdc9ba;margin-bottom:18px}article{border-top:1px solid #d6ded2;padding:34px 0;margin-bottom:20px}h2{font-size:32px;margin:8px 0}h4{font-size:12px;margin:0 0 8px}.when{font-size:14px}.images{display:flex;align-items:center;justify-content:center;gap:15px;background:white;padding:22px;border:1px solid #e0e5dc}.images a{min-width:0;max-width:100%}.images img{max-width:100%;max-height:570px;object-fit:contain;display:block}.source-only{padding:25px;border-left:3px solid #9bab90;background:#edf1e8;font-size:14px}.source-only p{max-width:700px}.look{display:grid;grid-template-columns:100px 1fr;gap:14px;margin:22px 0;font-size:14px}.look ol{margin:0;padding-left:19px}.chain{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}.chain p{font-size:14px;margin-top:0}details{padding:14px 0;font-size:14px}summary{cursor:pointer;font-weight:600}details p{max-width:950px}.boundary{font-size:12px;padding:13px 16px;background:#edf1e8}footer a{margin-right:13px}footer details{font-size:12px}[hidden]{display:none!important}.notice{font-size:13px;border-left:2px solid #9bab90;padding-left:15px}button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #678ab1;outline-offset:3px}@media(max-width:750px){main{padding:22px 17px}h1{font-size:39px}h2{font-size:27px}.chain{grid-template-columns:1fr 1fr;gap:18px}.images{padding:10px}.look{display:block}.look>b{display:block;margin-bottom:8px}nav{gap:6px}button{font-size:12px}.images img{max-height:480px}}@media print{nav,input,.source-only{display:none}article{break-inside:avoid}.images img{max-height:350px}details{display:block}.chain{grid-template-columns:repeat(4,1fr)}}'''
-    filters = '<button type="button" data-filter="all" aria-pressed="true">All 20</button>' + ''.join('<button type="button" data-filter="' + g + '" aria-pressed="false">' + g.capitalize() + '</button>' for g in groups)
-    script = '''let group='all';const q=document.getElementById('search');function update(){let n=0;for(const a of document.querySelectorAll('article')){a.hidden=!((group==='all'||a.dataset.group===group)&&a.textContent.toLowerCase().includes(q.value.toLowerCase()));if(!a.hidden)n++;}document.getElementById('count').textContent=n+' of 20 references';}document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{group=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(t=>t.setAttribute('aria-pressed',String(t===b)));update();}));q.addEventListener('input',update);'''
-    html_text = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MechanismFigures — visual calibration</title><style>' + css + '</style></head><body><main><header><div class="meta">MechanismFigures / calibration reader</div><h1>See the operation.<br>Borrow the construction.</h1><p>Twenty real published references. Start with the relationship your figure must reveal, not the research field or palette. Inspect two examples, then adapt their explanatory operations to your own evidence.</p><p class="notice">Public edition: ' + str(sum(bool(r['assets']) for r in refs)) + ' references have verified, bundled image assets; the others link to their actual originals. No generated substitutes, hotlink dependencies, analytics, or external scripts. Keep this HTML beside its calibration image folder, or use the downloadable skill package.</p><a href="../SKILL.md">Skill workflow</a> · <a href="../references/critique.md">Quality rubric</a><nav aria-label="Mechanism families">' + filters + '</nav><input id="search" aria-label="Search constructions" placeholder="Search: support, feedback, invariant, lineage…"><p class="muted" id="count" role="status">20 of 20 references</p></header>' + ''.join(articles) + '<p class="muted">Original figures remain the work of their authors. Editorial interpretation is by MechanismFigures, not an author endorsement. See THIRD_PARTY.md for sources, licenses and figure treatment.</p></main><script>' + script + '</script></body></html>'
-    (SKILL / 'assets/gallery.html').write_text(html_text)
-    print(json.dumps({'references': len(refs), 'bundled_references': sum(bool(r['assets']) for r in refs), 'image_assets': sum(len(r['assets']) for r in refs), 'gallery': 'skills/mechanism-figures/assets/gallery.html'}))
+    data=json.loads((SKILL/'assets/calibration.json').read_text())
+    canon=json.loads((SKILL/'assets/approved-canon.json').read_text())
+    refs=data['references']
+    if [r['id'] for r in refs]!=canon['approved_ids']:raise ValueError('Approved reference selection/order changed')
+    if any(not r['assets'] or not r['display_assets'] for r in refs):raise ValueError('All approved references must contain real visible images')
+    index=['# Approved published-figure calibration','','All 20 references have actual images included. No self-generated examples set the standard.','','**Every figure task:** inspect at least two real reference images, record their image hashes and specific composition/encoding/style observations, and compare the rendered result against them before passing review.','','| Reference | Explanatory construction | Group |','|---|---|---|']
+    credits=['# Published reference figures: attribution and rights','','This is the previously approved twenty-reference gallery, restored in full. All scientific reference images are published figures or identified panels, not generated replacements. The six original anchors are AlphaFold, CellRank, GraphCast, DreamFusion, AlphaDev and Aardvark.','','The MIT license applies to original code and editorial commentary only. **Published figures are third-party material and are not relicensed under MIT.** They are included with source-specific critical discussion. Inclusion here does not grant general image-reuse or further republication rights. Verified licenses, unverified reuse terms, original sources and modifications remain explicit for each item. Do not infer permission from a public URL, from inclusion, or from the code license.','','`bundled` identifies previously verified CC BY assets; `reference-excerpt` identifies approved figures included for critical reference study without claiming a general image license. The distinction is about recorded rights, not whether an image is displayed.','','Further users are responsible for checking the applicable source-specific permissions and image credit exceptions for their intended use. Original authors do not endorse this skill.','']
+    groups={'structure':'Geometry & structure','transformation':'Transformations','dynamics':'Dynamics','evidence':'Evidence & history','invariance':'Identity & invariance','contrast':'Counterfactuals & repair'}
+    cards=[]
+    for n,r in enumerate(refs,1):
+        t,s=r['transfer'],r['visual_style']
+        (SKILL/'references/cases'/(r['id']+'.md')).write_text(case_text(r))
+        index.append('| ['+r['label']+'](cases/'+r['id']+'.md) | '+t['move']+' | '+groups[t['group']]+' |')
+        assets={a['path']:a for a in r['assets']}
+        focus=[assets[p] for p in r['display_assets']]
+        media='<div class="image-stage'+(' paired' if len(focus)>1 else '')+'">'+''.join('<button type="button" class="image-button" data-open="'+r['id']+'" aria-label="Inspect '+E(r['label'])+' at full size"><img src="'+E(a['path'].replace('assets/','',1))+'" alt="'+E(r['label']+' — '+r['display_figure']+'. '+r['look'])+'" loading="'+('eager' if n==1 else 'lazy')+'" decoding="async"></button>' for a in focus)+'</div>'
+        chain='<div class="chain">'+''.join('<div><h3>'+name+'</h3><p>'+E(r[key])+'</p></div>' for name,key in [('Mechanism','mechanism'),('Visual construction','construction'),('The eye understands','eye'),('Why this is stronger','stronger')])+'</div>'
+        choices=''.join('<button type="button" class="asset-link" data-open="'+r['id']+'" data-asset="'+E(a['path'])+'">'+E(('Related published figure' if a['kind']=='related' else a['kind'].capitalize()+' figure'))+' ↗</button>' for a in r['assets'])
+        credits+=['## '+r['label'],'',r['authors']+'. *'+r['paper']+'*. '+r['venue']+' ('+str(r['year'])+'), '+r['display_figure']+'.','','[Publication]('+r['source']+') · [Original figure source]('+r['imageSource']+') · [Recorded permission basis]('+r['rights']['basis_url']+')','','**'+r['rights']['status']+'** — '+r['rights']['note'],'']
+        if r['rights'].get('license_url'):credits+=['['+r['rights']['license']+']('+r['rights']['license_url']+')','']
+        for a in r['assets']:credits+=['- `'+a['path']+'` — '+a['treatment']+' SHA-256: `'+a['sha256']+'`.']
+        credits+=['']
+        cards.append('<article id="'+r['id']+'" data-group="'+t['group']+'"><header class="ref-head"><div><p class="meta">'+str(n).zfill(2)+' · '+E(r['venue'])+' · '+str(r['year'])+'</p><h2>'+E(r['label'])+'</h2><p class="fig-name">'+E(r['display_figure'])+' · '+E(t['move'])+'</p></div><button type="button" class="quiet" data-open="'+r['id']+'">Inspect full-size figure ↗</button></header>'+media+'<div class="reading"><b>Look here</b><ol>'+''.join('<li>'+E(x)+'</li>' for x in t['trace'])+'</ol></div>'+chain+'<div class="style-lesson"><h3>What the agent must learn from this style</h3><p>'+E(s['observed'])+'</p><p><strong>In your project:</strong> '+E(s['apply'])+'</p></div><details class="recipe"><summary>Apply this construction in another scientific project</summary><p><strong>Map the objects.</strong> '+E(t['map'])+'</p><p><strong>Keep the relationship.</strong> '+E(t['keep'])+'</p><ol>'+''.join('<li>'+E(x)+'</li>' for x in t['build'])+'</ol><p><strong>Acceptance test.</strong> '+E(t['check'])+'</p><p><strong>Do not copy literally.</strong> '+E(t['avoid'])+'</p></details><p class="boundary"><strong>Scientific boundary.</strong> '+E(r['limit'])+'</p><footer><p>'+E(r['authors'])+' · <a href="'+E(r['source'])+'" target="_blank" rel="noopener noreferrer">'+E(r['paper'])+' ↗</a></p><div class="source-links">'+choices+'<a href="'+E(r['imageSource'])+'" target="_blank" rel="noopener noreferrer">Original source ↗</a><a href="../references/cases/'+r['id']+'.md">Agent reading ↗</a></div><details class="credits"><summary>Attribution, figure treatment and rights</summary><p>'+E(r['rights']['note'])+'</p><p>'+E(' '.join(a['treatment'] for a in r['assets']))+'</p><a href="'+E(r['rights']['basis_url'])+'" target="_blank" rel="noopener noreferrer">Source terms ↗</a>'+(' · <a href="'+E(r['rights']['license_url'])+'">'+E(r['rights']['license'])+'</a>' if r['rights'].get('license_url') else '')+'</details></footer></article>')
+    (SKILL/'references/calibration-index.md').write_text('\n'.join(index)+'\n')
+    third='\n'.join(credits).rstrip()+'\n'
+    (ROOT/'THIRD_PARTY.md').write_text(third);(SKILL/'THIRD_PARTY.md').write_text(third)
+    shutil.copyfile(ROOT/'LICENSE',SKILL/'LICENSE')
+    filters='<button type="button" data-filter="all" aria-pressed="true">All 20</button>'+''.join('<button type="button" data-filter="'+k+'" aria-pressed="false">'+v+'</button>' for k,v in groups.items())
+    content='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><meta name="description" content="The complete approved gallery: twenty real published mechanism-revealing figures, with visual readings and mandatory agent style calibration."><title>MechanismFigures — approved published reference gallery</title><style>'+(ROOT/'tools/gallery.css').read_text()+'</style></head><body><a class="skip" href="#gallery">Skip to reference figures</a><main><header class="intro"><p class="meta">MechanismFigures · approved reference canon</p><h1>Learn from the real figures.</h1><p class="lead">The full gallery we approved: <strong>20 published references, 29 original figure assets.</strong> No self-generated substitutes. See the mechanism, study the composition, and adapt the visual construction to your own science.</p><div class="top-links"><a href="../SKILL.md">Skill workflow</a><a href="../references/style-calibration.md">Required visual calibration</a><a href="https://github.com/KumarNavish/MechanismFigures/releases/latest">Installable skill</a></div></header><section class="filter-bar" aria-label="Find a reference"><nav aria-label="Mechanism families">'+filters+'</nav><div class="search-row"><label for="search">Find a reference or visual operation</label><input id="search" type="search" placeholder="e.g. GraphCast, feedback, correspondence…"><span id="count" role="status">20 of 20 references</span></div></section><section id="gallery">'+''.join(cards)+'</section><p id="empty" hidden>No matches. Try a scientific object, reference title or visual operation.</p><section class="agent-rule"><h2>Every agent starts here.</h2><p>Before drawing, open at least two of these actual images. Record what you see in their composition, geometry, annotation, color roles and whitespace. Map those choices onto your project. Before finishing, compare the rendered result back against the same references—not against a self-generated example or a generic diagram template.</p><p><a href="../references/style-calibration.md">Read the operational calibration protocol ↗</a></p></section><footer class="page-footer"><p>Actual published figures and identified panels only. Editorial readings explain what to see and how to transfer it; they are not an endorsement by the original authors. Figures retain their author/publisher rights and are not covered by the repository’s MIT license. <a href="../THIRD_PARTY.md">Full attribution and permissions record</a>.</p><p>MechanismFigures 0.2.0 · Approved canon restored in full.</p></footer></main><dialog id="viewer" aria-labelledby="viewer-title"><div class="viewer-bar"><strong id="viewer-title"></strong><button type="button" id="fit" aria-pressed="false">Native size</button><button type="button" id="close">Close ×</button></div><div id="viewer-choices"></div><div id="viewer-images"></div><p id="viewer-credit"></p></dialog><script id="calibration-data" type="application/json">'+json.dumps({'version':'0.2.0','references':refs},ensure_ascii=False).replace('<','\\u003c')+'</script><script>'+(ROOT/'tools/gallery.js').read_text()+'</script></body></html>'
+    (SKILL/'assets/gallery.html').write_text(content)
+    print(json.dumps({'references':len(refs),'images':sum(len(r['assets']) for r in refs),'displayed_image_panels':sum(len(r['display_assets']) for r in refs),'primary_six':[r['id'] for r in refs[:6]],'generated_reference_images':0,'gallery_bytes':len(content.encode())}))
 
 
-if __name__ == '__main__': build()
+if __name__=='__main__':build()

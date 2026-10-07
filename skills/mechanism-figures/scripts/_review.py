@@ -87,6 +87,8 @@ def evaluate_review(contract_path: Path, review: Dict[str, Any]) -> Dict[str, An
         if not isinstance(item, dict): errors.append('Invalid reference comparison'); continue
         rid = item.get('id')
         require(isinstance(rid, str) and rid in planned and text(item.get('observation')), 'Reference comparison must identify a planned reference and visible relationship')
+        for key in ['composition_match', 'encoding_match', 'style_match', 'remaining_gap']:
+            require(text(item.get(key)), 'Output must be compared with the actual reference: ' + key)
         if isinstance(rid, str): compared.add(rid)
     require(len(compared) >= 2, 'Compare the result to two selected reference constructions')
     if mode == 'independent':

@@ -1,6 +1,0 @@
-{
-  "status": "needs_revision",
-  "review_type": "creator visual inspection, not a blind test",
-  "observation": "Projection normal-component label crosses the dashed input vector; lag A label crosses its trajectory and the x-axis title is too close to the tick label.",
-  "sha256": "e3bce88fde0be68dd77c957c9918e3b101366906ec863d124ca8ae8f3e784728"
-}

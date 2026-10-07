@@ -31,7 +31,7 @@ An ordinary plot is not forbidden by its type. A phase portrait can be exactly r
 
 For each write four compact fields in `design.candidates`: **construction**, **visible_gain**, **distortion_risk**, **evidence_needed**. They must differ in representation, not just palette or arrangement. A candidate must preserve all claim-critical relations. Choose lexicographically: fidelity first, then exposed mechanism, then decoding burden, then implementation cost. Do not pick a beautiful but unsupported representation.
 
-Visually inspect two related references and one source of likely confusion. Use `python scripts/mf.py references --group dynamics` to locate cases, then `python scripts/mf.py reference cellrank` to retrieve just that case and its image paths. Only `image_observed` records based on actual image inspection count toward calibration. For source-link-only references, open the original; when access fails, choose a bundled reference teaching the closest operation and explicitly record the coverage gap.
+Visually inspect two related references and one source of likely confusion. Use `python scripts/mf.py references --group dynamics` to locate cases, then `python scripts/mf.py reference cellrank` to retrieve just that case and its image paths. Both chosen references must be actual approved images, opened at readable size, with their registered file paths and hashes recorded. All twenty references now include image files. Use the reference-specific visual-style observations in each case; no self-generated or text-only replacement is acceptable.
 
 ## Test before polish
 

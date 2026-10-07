@@ -2,7 +2,7 @@
 
 ## Status
 
-**No cross-agent outcome study has been run for v0.1.0.** The shipped unit tests test engineering behavior, and the analytical examples exercise a local workflow. Neither establishes that this skill reliably outperforms a capable agent or reaches publication-defining quality across domains. The rubric thresholds are design policy pending empirical calibration.
+**No cross-agent outcome study has been run for v0.2.0.** The shipped unit tests test engineering behavior, and the complete approved gallery supplies visual calibration. Neither establishes that this skill reliably outperforms a capable agent or reaches publication-defining quality across domains. The rubric thresholds are design policy pending empirical calibration.
 
 ## Primary outcome
 

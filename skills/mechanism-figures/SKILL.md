@@ -5,14 +5,14 @@ license: MIT; third-party calibration images retain their stated licenses in THI
 compatibility: Requires an agent able to inspect images and edit files. Optional deterministic helpers use Python 3.9+ standard library. No model service, GPU, network, or plotting dependency is required by the skill itself.
 metadata:
   author: Navish Kumar
-  version: "0.1.0"
+  version: "0.2.0"
 ---
 
 # MechanismFigures
 
-**Make one scientific relationship visible, then test whether the picture tells the truth.**
+**Learn from the approved real published figures. Make the mechanism visible at that standard, then test whether the picture tells the truth.**
 
-This is a reasoning-and-review workflow, not a plot theme. An agent supplies scientific judgment and implementation. The scripts never generate research claims, call a model, or certify aesthetic quality.
+The [approved gallery](assets/gallery.html) is the visual calibration authority: all 20 published references and 29 actual figure assets are included. Never replace them with self-generated examples or generic diagrams. This is a reasoning-and-review workflow, not a plot theme. An agent supplies scientific judgment and implementation. The scripts never generate research claims, call a model, or certify aesthetic quality.
 
 ## Enter with four inputs
 
@@ -20,7 +20,7 @@ Read the supplied **project context**, **result/mechanism**, **data/evidence**, 
 
 Initialize one isolated figure folder with `python scripts/mf.py init /path/to/figure-work`. Paths below are relative to this installed skill; invoke scripts using their resolved absolute path when working elsewhere. The generated `figure.json` is the persistent contract. Fill it from the four inputs; do not ask the user to fill all its fields.
 
-Read [references/choose.md](references/choose.md) and [references/critique.md](references/critique.md). Load [references/fidelity.md](references/fidelity.md) when evidence, causation, geometry, or uncertainty needs clarification; load [references/construct.md](references/construct.md) before implementation. Select **two** relevant cases through [references/calibration-index.md](references/calibration-index.md). Do not load the entire atlas into context.
+Before drawing anything, read [references/style-calibration.md](references/style-calibration.md), open at least **two actual approved reference images**, and record their composition, encoding, visual style and planned application. Read [references/choose.md](references/choose.md) and [references/critique.md](references/critique.md). Load [references/fidelity.md](references/fidelity.md) when evidence, causation, geometry, or uncertainty needs clarification; load [references/construct.md](references/construct.md) before implementation. Select **two** relevant cases through [references/calibration-index.md](references/calibration-index.md). Do not load the entire atlas into context.
 
 ## The execution loop
 
@@ -29,7 +29,7 @@ Read [references/choose.md](references/choose.md) and [references/critique.md](r
 | 1. Understand | Fill `inputs` and `analysis` in `figure.json`: state variables, units, update/relationship, assumptions, claim boundary, comparator, falsifier. | The proposed relationship has support, or is explicitly a hypothesis/schematic. |
 | 2. Isolate | Write one sentence: **“The reader should see that ___ because ___.”** State one predicted change under one intervention. | It names a relationship, not a topic, score, or list of modules. |
 | 3. Choose | Propose two genuinely different constructions. Record gain, distortion, and required evidence for each; choose by fidelity first. | The selected construction exposes something a scalar plot or box inventory would hide. |
-| 4. Calibrate | Visually inspect two published figures. Record the asset seen, the decisive relation, and what must not be transferred. | At least one inspected image is locally available or successfully opened. A description is not visual inspection. |
+| 4. Calibrate | Visually inspect at least two approved published figures; record image paths/hashes and concrete composition, encoding, annotation/style, and project-transfer observations. | Both actual images have been viewed. Text descriptions, invented images, or a self-generated example cannot substitute. |
 | 5. Map | Fill an encoding table: scientific entity/quantity → visible object/channel → units/status → evidence IDs. Plan a captionless prediction probe. | Every meaningful position, width, arrow, join, and transformation has an explicit meaning. |
 | 6. Compose | Draw a rough, unstyled construction using the actual relationship and smallest sufficient worked instance. | The mechanism survives without decoration. The same entities and controls stay traceable. |
 | 7. Implement | Produce editable vector, actual-size preview, caption, source, and reproducible inputs. Use existing project tooling. | The source regenerates the outputs; no synthetic illustration is mislabeled as an experimental result. |
@@ -54,7 +54,7 @@ Read [references/choose.md](references/choose.md) and [references/critique.md](r
 
 Use `python scripts/mf.py preflight /path/to/figure-work/figure.json` for deterministic file/SVG checks. Then `python scripts/mf.py review-init /path/to/figure-work/figure.json --out /path/to/figure-work/review-r1.json` binds a blank review to current artifacts. **It does not score them.** Inspect the files and complete the review. Run `python scripts/mf.py gate /path/to/figure-work/figure.json /path/to/figure-work/review-r1.json`.
 
-Test the captionless image against the frozen question and intervention prediction. Record actual reader responses; a creator's imagined response is a **self-review**, never a timed user test. Inspect at output dimensions, grayscale, and enlargement. Compare the mechanism region to calibration images at matched readable scale, not whole-page thumbnails.
+Test the captionless image against the frozen question and intervention prediction. Record actual reader responses; a creator's imagined response is a **self-review**, never a timed user test. Inspect at output dimensions, grayscale, and enlargement. Compare the mechanism region to the same actual calibration images at matched readable scale, not whole-page thumbnails. Record `composition_match`, `encoding_match`, `style_match`, and `remaining_gap` for each reference. A generic box diagram or decorated plot does not pass merely because its files are valid.
 
 The rubric's thresholds are a demanding policy, not empirically validated probabilities of publication success. A gate may report `self_review_pass`; it may report `independent_review_pass` only with an additional, named independent review of the same hashes using `--require-independent`. Neither authenticates a reviewer's honesty or guarantees universal quality.
 

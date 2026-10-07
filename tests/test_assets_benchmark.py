@@ -9,8 +9,6 @@ from _contract import ValidationError, preflight, validate_contract, snapshot
 
 spec=importlib.util.spec_from_file_location('benchmark_report',ROOT/'tools/benchmark_report.py')
 reporter=importlib.util.module_from_spec(spec);spec.loader.exec_module(reporter)
-spec2=importlib.util.spec_from_file_location('analytical_examples',ROOT/'examples/render_examples.py')
-examples=importlib.util.module_from_spec(spec2);spec2.loader.exec_module(examples)
 
 
 class AssetTests(unittest.TestCase):
@@ -35,7 +33,6 @@ class AssetTests(unittest.TestCase):
     def test_reference_url_cannot_be_arbitrary(self):
         c=valid_contract();c['design']['reference_readings'][0]['asset_seen']='https://example.org/unrelated.png';self.assertTrue(validate_contract(c))
     def test_snapshot_binds_rubric(self):self.assertIn('rubric_sha256',snapshot(self.path))
-    def test_analytical_examples_satisfy_equations(self):self.assertTrue(all(examples.check_math().values()))
 
 
 class BenchmarkTests(unittest.TestCase):

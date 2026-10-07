@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "approved-published-canon-v1",
+  "core_ids": [
+    "alphafold",
+    "cellrank",
+    "graphcast",
+    "dreamfusion",
+    "alphadev",
+    "aardvark"
+  ],
+  "approved_ids": [
+    "alphafold",
+    "cellrank",
+    "graphcast",
+    "dreamfusion",
+    "alphadev",
+    "aardvark",
+    "mipnerf",
+    "grokking",
+    "gaussian",
+    "scvelo",
+    "dna",
+    "nerf",
+    "congealing",
+    "mega",
+    "flow",
+    "torus",
+    "fip",
+    "gnn",
+    "kirigami",
+    "topomap"
+  ],
+  "reference_count": 20,
+  "image_count": 29,
+  "provenance": "User-approved six-reference HTML merged with the already-approved twenty-reference grand gallery. This release restores those images, not a new reference selection.",
+  "no_generated_calibration": true
+}

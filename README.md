@@ -1,13 +1,17 @@
 # MechanismFigures
 
-**An installable agent skill for figures that reveal how a scientific system works.**
+**An installable agent skill grounded in the complete, approved gallery of real published scientific figures.**
+
+**[Open the approved reference gallery](https://kumarnavish.github.io/MechanismFigures/skills/mechanism-figures/assets/gallery.html?v=0.2.0)** · **[Required style-calibration protocol](skills/mechanism-figures/references/style-calibration.md)**
+
+The calibration standard is the published work we approved—not self-generated examples. All **20 references and 29 actual figure assets** are included. The gallery begins with AlphaFold, CellRank, GraphCast, DreamFusion, AlphaDev, and Aardvark, then the fourteen other approved references.
 
 SciencePlots supplies plotting styles. MechanismFigures supplies a mechanism-to-figure reasoning workflow: isolate the relationship, choose a faithful visual construction, implement it, inspect it, and revise against an evidence-linked quality gate. It is not a Matplotlib style sheet, autonomous model, or promise of automatic publication-quality results.
 
 ## Install
 
 ```bash
-git clone https://github.com/KumarNavish/MechanismFigures.git
+git clone --branch v0.2.0 https://github.com/KumarNavish/MechanismFigures.git
 python3 MechanismFigures/tools/install.py
 ```
 
@@ -74,23 +78,23 @@ Add a second review file and `--require-independent` for the stronger recorded-r
 
 ## Real visual calibration, with explicit rights
 
-All **20 published reference guides** retain the mechanism, a three-step reading path, a project-specific mapping, a three-step construction recipe, a falsifiable acceptance test, and what not to copy. The public edition bundles **12 actual images from seven references** with verified CC BY 4.0 reuse permission. Other entries link to their originals rather than silently relicensing their image bytes.
+All **20 published references display their actual images**; **29 figure assets** include the approved full figures and focused/context panels. Each guide retains the mechanism, a three-step reading path, specific composition and visual-style observations, a project mapping, construction steps, an acceptance test, and what not to copy. No text-only replacement cards and no self-generated calibration images.
+
+Published figures retain their original author/publisher rights; their inclusion in this critical visual study does not grant blanket reuse permission. The repository MIT license covers original code and commentary, **not** third-party images. Verified licenses and unverified broader reuse terms are recorded separately instead of being silently changed.
 
 Open [`assets/gallery.html`](skills/mechanism-figures/assets/gallery.html) locally alongside its image folder, or open the gallery from the release ZIP. It has search, mechanism-family filters, focused/full-image links and per-source credits. No remote image hotlinks or generated substitutes. **[Third-party credits and license audit](THIRD_PARTY.md)**.
 
-## Worked analytical examples
+## Required before every figure
 
-These are original toy constructions, **not reproduced research findings or independent quality-benchmark outcomes**. Both retain source, exact data, SVG/PNG, caption, contract, first-draft artifacts and observed repairs.
+1. **Open two actual approved reference images**, at readable size, before drawing. Record their canonical file paths and SHA-256 hashes.
+2. **Observe composition, encoding and visual style.** Describe real panel geometry, persistent objects, selective emphasis, annotation placement, color roles and whitespace; state how each will transfer to this project.
+3. **Compare the rendered result against those same images.** Record composition, encoding and style matches plus the strongest remaining gap. A generic diagram or a self-generated reference cannot satisfy this step.
 
-[Projection: remove only the forbidden component](examples/generated/projection/figure.svg)
+The validator rejects a single observed image, missing/wrong image hashes, unregistered reference images, missing visual observations and missing output-to-reference style comparisons. These checks make the learning step auditable; they do not prove an agent looked or automate aesthetic judgment.
 
-![Analytical projection demonstration](examples/generated/projection/figure.png)
+The first six visual anchors come from the approved high-resolution reference HTML. The other fourteen are the already-approved grand gallery. `assets/approved-canon.json` locks that selection, order and image count. New reference images require explicit approval.
 
-[Coupled lag: equal readout, different futures](examples/generated/lag/figure.svg)
-
-![Analytical lag demonstration](examples/generated/lag/figure.png)
-
-Generate SVGs and data with `python3 examples/render_examples.py`. PNG previews use an existing renderer; `tools/render_svg.mjs` is an optional Node 22+ helper for an already installed Chrome/Chromium. It downloads no browser. Rendering tools are not dependencies of the installed skill's reasoning and quality-checking helpers.
+Self-generated teaching figures have been removed from the current repository and public-facing documentation. Previous version history remains unchanged, but it is not the visual standard for this skill.
 
 ## Validation and limits
 
@@ -100,14 +104,13 @@ python3 tools/check_repo.py
 python3 tools/build_gallery.py
 ```
 
-Engineering regression tests, installation checks and analytical examples are shipped. **No cross-agent efficacy study has been run.** The eight public diagnostic tasks and matched independent-review protocol measure pass rate, false mechanistic claims, variance and full costs; they are not a held-out test set. See [validation evidence](docs/VALIDATION.md) and [benchmark protocol](benchmarks/PROTOCOL.md). The score thresholds are demanding design policy, not empirically calibrated guarantees.
+Engineering regression tests, installation checks and the real-image calibration set are shipped. **No cross-agent efficacy study has been run.** The eight public diagnostic tasks and matched independent-review protocol measure pass rate, false mechanistic claims, variance and full costs; they are not a held-out test set. See [validation evidence](docs/VALIDATION.md) and [benchmark protocol](benchmarks/PROTOCOL.md). The score thresholds are demanding design policy, not empirically calibrated guarantees.
 
 ## Repository map
 
 - `skills/mechanism-figures/`: the complete, portable installed skill.
 - `tools/`: installation, packaging, generation, deterministic checks and descriptive benchmark reporting.
 - `tests/`: adversarial tooling regressions; synthetic review fixtures are never empirical evidence.
-- `examples/`: exact analytical constructions and an inspected repair history.
 - `benchmarks/`: frozen diagnostic packets and a fair evaluation protocol.
 
 Original code and editorial material: MIT. Third-party images retain their individual licenses and attribution. No source author endorses this skill. See [contribution rules](CONTRIBUTING.md).

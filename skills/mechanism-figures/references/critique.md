@@ -33,7 +33,7 @@ Each is pass/fail/unknown plus evidence and a pointer to an inspected file. Unkn
 
 **2. Adversarial science.** Try to falsify the visual implication. Follow an arrow backwards. Check a boundary case, equal input with different support, an unmatched loading condition, or a projection artifact. Compare against raw evidence and stated equations. Ask whether an informed reader could infer a stronger claim than supported.
 
-**3. Reference calibration.** Inspect two actual reference images at comparable readable scale. For each, name a specific operation ours matches, improves, or fails to match. Do not compare domain complexity or treat a large journal label as a score. At least one reference must be visually observed, with a saved path/URL and an explicit reading; two are the normal target.
+**3. Reference calibration.** Inspect two actual reference images at comparable readable scale. For each, name a specific operation ours matches, improves, or fails to match. Do not compare domain complexity or treat a large journal label as a score. Both selected references must be visually observed with their registered paths/hashes and explicit readings. Record composition_match, encoding_match, style_match and remaining_gap for each. A self-generated example cannot serve as a calibration reference.
 
 **4. Production inspection.** View at physical output size, grayscale, and enlargement. Inspect labels, leader crossings, clipping, aspect ratio, layout correspondence and source/preview agreement. Verify the requested export formats. Captionless intuition and production polish cannot substitute for scientific checks.
 

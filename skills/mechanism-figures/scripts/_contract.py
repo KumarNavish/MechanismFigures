@@ -197,7 +197,7 @@ def validate_contract(contract: Dict[str, Any], stage: str = 'plan') -> List[str
     for item in readings:
         if not isinstance(item, dict):
             errors.append('reference_readings: expected objects'); continue
-        _strings(item, ['id', 'insight', 'do_not_copy'], 'reference_reading', errors)
+        _strings(item, ['id', 'insight', 'do_not_copy', 'composition_observation', 'encoding_observation', 'style_observation', 'planned_application'], 'reference_reading', errors)
         rid = item.get('id')
         if not isinstance(rid, str) or rid not in registry:
             errors.append('reference_reading.id: unknown calibration reference')
@@ -213,18 +213,22 @@ def validate_contract(contract: Dict[str, Any], stage: str = 'plan') -> List[str
                 errors.append('Visually inspected reference requires asset_seen path or URL')
             elif isinstance(rid, str) and rid in registry:
                 ref = registry[rid]
-                if observed.startswith('https://'):
-                    if observed not in {ref['source'], ref['imageSource'], ref['rights']['basis_url']}:
-                        errors.append('Observed URL is not a registered source for ' + rid)
-                elif observed not in {a['path'] for a in ref['assets']}:
-                    errors.append('Observed local image is not registered to ' + rid)
+                registered = {a['path']: a for a in ref['assets']}
+                if observed not in registered:
+                    errors.append('Reference inspection must name an actual installed approved image: ' + rid)
                 else:
-                    try: local_file(SKILL, observed)
+                    selected_asset = registered[observed]
+                    if item.get('asset_sha256') != selected_asset['sha256']:
+                        errors.append('Reference image hash missing or does not match approved asset: ' + rid)
+                    try:
+                        actual_asset = local_file(SKILL, observed)
+                        if digest(actual_asset) != selected_asset['sha256']:
+                            errors.append('Approved calibration image bytes were modified: ' + rid)
                     except ValidationError as exc: errors.append(str(exc))
-        elif not text(item.get('access_note')):
-            errors.append('Unobserved reference requires an explicit access limitation')
-    if visually_seen < 1:
-        errors.append('No actual calibration image inspection is recorded; descriptions are insufficient')
+        else:
+            errors.append('Every selected reference must be visually inspected; no text-only substitute')
+    if visually_seen < 2:
+        errors.append('At least two actual approved reference images must be inspected before drawing')
     path = _list(design, 'reading_path', 'design', errors, 3)
     if len(path) != 3 or any(not text(s) for s in path):
         errors.append('design.reading_path requires exactly three concrete eye actions')
@@ -366,4 +370,5 @@ def snapshot(path: Path) -> Dict[str, Any]:
     path = Path(path).resolve()
     contract = load_json(path)
     return {'contract_sha256': digest(path), 'rubric_sha256': digest(SKILL / 'assets/rubric.json'),
+            'calibration_sha256': digest(SKILL / 'assets/calibration.json'),
             'artifacts': {name: digest(local_file(path.parent, name)) for name in sorted(artifact_names(contract))}}
