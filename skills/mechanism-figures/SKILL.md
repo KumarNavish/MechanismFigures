@@ -5,7 +5,7 @@ license: MIT; third-party calibration images retain their stated licenses in THI
 compatibility: Requires an agent able to inspect images and edit files. Optional deterministic helpers use Python 3.9+ standard library. No model service, GPU, network, or plotting dependency is required by the skill itself.
 metadata:
   author: Navish Kumar
-  version: "0.2.0"
+  version: "0.3.0"
 ---
 
 # MechanismFigures
@@ -13,6 +13,8 @@ metadata:
 **Learn from the approved real published figures. Make the mechanism visible at that standard, then test whether the picture tells the truth.**
 
 The [approved gallery](assets/gallery.html) is the visual calibration authority: all 20 published references and 29 actual figure assets are included. Never replace them with self-generated examples or generic diagrams. This is a reasoning-and-review workflow, not a plot theme. An agent supplies scientific judgment and implementation. The scripts never generate research claims, call a model, or certify aesthetic quality.
+
+An optional [60-second visual walkthrough](assets/motion.html) shows how this workflow uses the actual approved figures. It is an authored explanation, not a live run, generated scientific result, or substitute for the required image inspections.
 
 ## Enter with four inputs
 

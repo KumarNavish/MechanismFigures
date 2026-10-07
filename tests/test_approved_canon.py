@@ -12,11 +12,14 @@ from _review import evaluate_review
 
 
 class GalleryHTML(HTMLParser):
-    def __init__(self):super().__init__();self.ids=[];self.images=[]
+    def __init__(self):super().__init__();self.ids=[];self.images=[];self.sections=[]
     def handle_starttag(self,tag,attrs):
         a=dict(attrs)
+        if tag=='section':self.sections.append(a.get('id'))
         if tag=='article':self.ids.append(a.get('id'))
-        if tag=='img':self.images.append(a.get('src'))
+        if tag=='img' and 'gallery' in self.sections:self.images.append(a.get('src'))
+    def handle_endtag(self,tag):
+        if tag=='section' and self.sections:self.sections.pop()
 
 
 class ApprovedCanonTests(unittest.TestCase):

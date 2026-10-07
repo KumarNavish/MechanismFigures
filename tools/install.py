@@ -48,7 +48,7 @@ def install(destination, check_only=False, source=SOURCE):
         staged = temp / NAME
         shutil.copytree(source, staged, ignore=shutil.ignore_patterns('__pycache__', '*.pyc', '.DS_Store', MARKER))
         if inventory(staged) != expected: raise ValueError('Copy verification failed; no installation was committed')
-        (staged / MARKER).write_text(json.dumps({'schema_version': 1, 'version': '0.2.0', 'files': expected}, indent=2) + '\n')
+        (staged / MARKER).write_text(json.dumps({'schema_version': 1, 'version': '0.3.0', 'files': expected}, indent=2) + '\n')
         if target.exists(): raise ValueError('Destination appeared during installation; no overwrite attempted')
         staged.rename(target)
     finally:

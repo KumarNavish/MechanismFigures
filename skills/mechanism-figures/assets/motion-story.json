@@ -1,0 +1,61 @@
+{
+  "version": "0.3.0",
+  "duration_seconds": 60,
+  "kind": "authored editorial walkthrough, not a live agent run",
+  "image_policy": "Only unchanged approved published assets; overlays and native UI guide attention. No generated scientific reference or claimed output.",
+  "chapters": [
+    "Question",
+    "Study",
+    "Construct",
+    "Critique",
+    "Deliver",
+    "Possibilities"
+  ],
+  "assets": [
+    {
+      "reference": "dreamfusion",
+      "asset": "assets/calibration/f022cea5-dreamfusion.png",
+      "sha256": "4a0b4f5506ac8a206733a22b4a0ca7e53a52a37f1fe6ba9145d834fea22d022f",
+      "publication": "https://openreview.net/forum?id=FjNys5c7VyY"
+    },
+    {
+      "reference": "alphafold",
+      "asset": "assets/calibration/94866d7c-alphafold.png",
+      "sha256": "96abc1ce03ee69229283a7ba38769ec011912bd2e644d1ba39624f02c77b1e91",
+      "publication": "https://www.nature.com/articles/s41586-021-03819-2/figures/3"
+    },
+    {
+      "reference": "graphcast",
+      "asset": "assets/calibration/7b9f9e1b-graphcast.png",
+      "sha256": "f3ad9f38ed289af2215b198693b839e62b6054f09ffe08606088fcb4feb32784",
+      "publication": "https://www.science.org/doi/10.1126/science.adi2336"
+    },
+    {
+      "reference": "cellrank",
+      "asset": "assets/calibration/e3277e8e-cellrank.png",
+      "sha256": "9b0011799630e4e71d5a9088c0c58ce14b4cfead6a0a9c47ab10c3f8756a4e81",
+      "publication": "https://www.nature.com/articles/s41592-021-01346-6/figures/1"
+    },
+    {
+      "reference": "alphafold",
+      "asset": "assets/calibration/82942714-alphafold.png",
+      "sha256": "cc3898ec047291dcfeadaea447fdba928d74174f972b6a75074ffcf8c56bd4fc",
+      "publication": "https://www.nature.com/articles/s41586-021-03819-2/figures/3"
+    },
+    {
+      "reference": "congealing",
+      "asset": "assets/calibration/afe52f89-congealing.jpg",
+      "sha256": "7f1a954b19683a9e783005bd1f39bcc4b3a5e76c0e33a50983e35f4e75ea537a",
+      "publication": "https://openaccess.thecvf.com/content/CVPR2023/html/Ofri-Amar_Neural_Congealing_Aligning_Images_to_a_Joint_Semantic_Atlas_CVPR_2023_paper.html"
+    }
+  ],
+  "controls": [
+    "play-pause",
+    "replay",
+    "seek",
+    "chapters",
+    "reduced-motion",
+    "reference-selection"
+  ],
+  "status_policy": "Release threshold is instructional policy, not a simulated scored verdict. Published targets are credited as references, not skill-generated results."
+}

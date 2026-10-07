@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.0 — 2026-10-07
+
+Added an authored 60-second walkthrough on the gallery and a shareable motion.html: question, reference inspection, visible mechanism, critique, delivery, and reference-quality possibilities. Uses only unchanged approved scientific images; no generated showcase or simulated agent result. Includes playback/seek/replay/chapter controls, reduced-motion mode, text transcript, and visibility-aware suspension. The 20-reference / 29-image canon and scientific review thresholds are unchanged.
+
 ## 0.2.0 — 2026-10-07
 
 Restore every approved real published figure: 20 references, 29 image assets, no text-only replacements. Present the original six anchors first, including full AlphaFold and CellRank figures. Remove self-generated demonstrations from the current public tree. Require two actual reference-image inspections with registered hashes, concrete composition/encoding/style observations, and output-to-reference comparisons. Preserve source-specific attribution and rights rather than applying the repository MIT license to images.

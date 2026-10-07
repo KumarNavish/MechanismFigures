@@ -17,7 +17,7 @@ def package(output):
             info=zipfile.ZipInfo('mechanism-figures/'+name,date_time=(2026,10,7,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED;info.external_attr=0o644<<16
             z.writestr(info,(SOURCE/name).read_bytes())
         info=zipfile.ZipInfo('mechanism-figures/PACKAGE.json',date_time=(2026,10,7,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED;info.external_attr=0o644<<16
-        z.writestr(info,json.dumps({'version':'0.2.0','files':files,'notice':'Original code/editorial material MIT; third-party image licenses remain separate.'},sort_keys=True,indent=2)+'\n')
+        z.writestr(info,json.dumps({'version':'0.3.0','files':files,'notice':'Original code/editorial material MIT; third-party image licenses remain separate.'},sort_keys=True,indent=2)+'\n')
     with zipfile.ZipFile(output) as z:
         broken=z.testzip()
         if broken:raise ValueError('Archive CRC failed: '+broken)
@@ -27,6 +27,6 @@ def package(output):
 
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--output',type=Path,default=Path('.build/mechanism-figures-v0.2.0.zip'));args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--output',type=Path,default=Path('.build/mechanism-figures-v0.3.0.zip'));args=parser.parse_args()
     try:print(json.dumps(package(args.output),indent=2))
     except (OSError,ValueError) as exc:print(json.dumps({'status':'packaging_failed','error':str(exc)}));sys.exit(2)
