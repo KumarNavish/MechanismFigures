@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "id": "lag-analytical-demo",
+  "creator_id": "ChatGPT-author",
+  "inputs": {
+    "project_context": "Original analytical worked example for MechanismFigures; not empirical research.",
+    "mechanism": "Show why one slow readout can correspond to opposite directions of change.",
+    "evidence": [
+      {
+        "id": "E1",
+        "kind": "formal",
+        "source": "render.py",
+        "local_path": "data.json",
+        "supports": "Specified analytic formula and displayed coordinates; check_math verifies representative and boundary cases.",
+        "does_not_support": "No novelty, measured runtime, population effect, biological inference, or cross-agent quality claim."
+      }
+    ],
+    "output_constraints": {
+      "audience": "Domain-competent scientist unfamiliar with the example",
+      "width_mm": 180,
+      "height_mm": 105,
+      "min_font_pt": 7,
+      "formats": [
+        "svg",
+        "png"
+      ],
+      "accessibility": "Meaning must survive grayscale; use direct labels and geometry."
+    }
+  },
+  "analysis": {
+    "insight": "The same slow response y=0.5 has rising and falling states distinguishable in joint coordinates.",
+    "entities": [
+      {
+        "id": "x",
+        "meaning": "Fast filter state, time constant 0.2",
+        "units": "dimensionless"
+      },
+      {
+        "id": "y",
+        "meaning": "Slow filter state, time constant 0.8",
+        "units": "dimensionless"
+      },
+      {
+        "id": "u",
+        "meaning": "Shared forcing, on until t=2 then off",
+        "units": "dimensionless; t in consistent arbitrary time units"
+      }
+    ],
+    "update_rule": "dx/dt=(u-x)/0.2; dy/dt=(u-y)/0.8, with both states initially zero.",
+    "assumptions": [
+      "Exact first-order dynamics and specified forcing schedule; no noisy state estimation."
+    ],
+    "claim_boundary": "Joint states illustrate two known forcing regimes; the picture does not infer dynamics from arbitrary snapshots.",
+    "falsifier": "If the exact states at y=0.5 had the same derivative, the claimed ambiguity would fail.",
+    "comparison": {
+      "baseline": "Slow readout y alone",
+      "held_fixed": [
+        "Forcing schedule",
+        "initial conditions",
+        "time constants",
+        "equal readout y=0.5"
+      ],
+      "intervention": "Observe the paired fast response and known regime",
+      "budget": "Exact analytical solution, no solver-performance comparison."
+    },
+    "unknowns": []
+  },
+  "design": {
+    "candidates": [
+      {
+        "id": "phase",
+        "construction": "Place the two responses in joint coordinates and mark equal-y states.",
+        "visible_gain": "Two branches occupy the same slow coordinate but have different fast states.",
+        "distortion_risk": "A curved cloud could be mistaken for observed dynamics unless the equations and time arrows are explicit.",
+        "evidence_needed": "Exact joint trajectory and forcing regimes."
+      },
+      {
+        "id": "time",
+        "construction": "Align both state trajectories against time with two y=0.5 crosshairs.",
+        "visible_gain": "Timing and forcing changes are explicit.",
+        "distortion_risk": "Reader must mentally join two separated times and values.",
+        "evidence_needed": "Exact time series and forcing schedule."
+      }
+    ],
+    "selected": "phase",
+    "encoding": [
+      {
+        "scientific": "Fast and slow state",
+        "visual": "Vertical x and horizontal y coordinates",
+        "units": "dimensionless",
+        "status": "formal",
+        "evidence_ids": [
+          "E1"
+        ]
+      },
+      {
+        "scientific": "Regime and direction",
+        "visual": "Direct on/off labels, A/B states and time-oriented arrows",
+        "units": "arbitrary consistent time units",
+        "status": "formal",
+        "evidence_ids": [
+          "E1"
+        ]
+      }
+    ],
+    "reference_readings": [
+      {
+        "id": "scvelo",
+        "asset_seen": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41587-020-0591-3/MediaObjects/41587_2020_591_Fig1_HTML.png",
+        "image_observed": true,
+        "insight": "When two quantities lag each other, pair them as coordinates; check whether direction or hysteresis becomes visible.",
+        "do_not_copy": "Do not infer a closed cycle merely because a projected cloud looks curved.",
+        "access_note": "Actual figure visually inspected; non-bundled references were inspected from a cached original-source image, not a generated stand-in."
+      },
+      {
+        "id": "cellrank",
+        "asset_seen": "assets/calibration/ff87748f-cellrank.png",
+        "image_observed": true,
+        "insight": "Connect a population view to one enlarged neighborhood where the update can be followed without abstraction.",
+        "do_not_copy": "Do not treat distances in a 2D embedding as the high-dimensional transition rule.",
+        "access_note": "Actual figure visually inspected; non-bundled references were inspected from a cached original-source image, not a generated stand-in."
+      }
+    ],
+    "reading_path": [
+      "Find the two points at slow response y=0.5.",
+      "Follow time arrows on the rise and fall branches.",
+      "Compare their fast states and opposite dy/dt signs."
+    ],
+    "prediction_probe": {
+      "question": "Can slow response y=0.5 alone reveal the direction?",
+      "expected": "No; one marked state is rising and the other is falling."
+    },
+    "counterfactual_probe": {
+      "question": "What changes in dy/dt if u switches from 1 to 0 while y=0.5?",
+      "expected": "The derivative changes from +0.625 to -0.625."
+    }
+  },
+  "outputs": {
+    "vector": "figure.svg",
+    "preview": "figure.png",
+    "caption": "caption.md",
+    "source": "render.py",
+    "additional": [
+      "preview.mjs",
+      "actual-size.png",
+      "grayscale.png"
+    ]
+  },
+  "reproduction": {
+    "command": "python3 render.py --kind lag --output . && node preview.mjs figure.svg figure.png",
+    "environment": "Python 3.9.6 standard library; optional preview: Node 26.8.2 and installed Chrome on macOS. SVG/data regeneration is independent of Chrome. QA derivatives: 680\u00d7397 px physical-size proxy at 96 CSS dpi, generated by the same installed Chrome; grayscale conversion via MuPDF 1.26.0. These are inspection derivatives, not extra scientific data.",
+    "seed": null
+  }
+}

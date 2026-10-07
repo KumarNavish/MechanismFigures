@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "",
+  "creator_id": "",
+  "inputs": {
+    "project_context": "",
+    "mechanism": "",
+    "evidence": [],
+    "output_constraints": {
+      "audience": "",
+      "width_mm": 180,
+      "height_mm": 105,
+      "min_font_pt": 7,
+      "formats": [
+        "svg",
+        "png"
+      ],
+      "accessibility": "Essential distinctions must survive grayscale."
+    }
+  },
+  "analysis": {
+    "insight": "",
+    "entities": [],
+    "update_rule": "",
+    "assumptions": [],
+    "claim_boundary": "",
+    "falsifier": "",
+    "comparison": {
+      "baseline": "",
+      "held_fixed": [],
+      "intervention": "",
+      "budget": ""
+    },
+    "unknowns": []
+  },
+  "design": {
+    "candidates": [],
+    "selected": "",
+    "encoding": [],
+    "reference_readings": [],
+    "reading_path": [],
+    "prediction_probe": {
+      "question": "",
+      "expected": ""
+    },
+    "counterfactual_probe": {
+      "question": "",
+      "expected": ""
+    }
+  },
+  "outputs": {
+    "vector": "figure.svg",
+    "preview": "figure.png",
+    "caption": "caption.md",
+    "source": "render.py",
+    "additional": []
+  },
+  "reproduction": {
+    "command": "",
+    "environment": "",
+    "seed": null
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "kind": "analytical demonstration",
+  "input": [
+    -1.8,
+    1.2
+  ],
+  "projection": [
+    0.0,
+    1.2
+  ],
+  "metric": "Euclidean",
+  "constraint": "x >= 0",
+  "checks": {
+    "projection_feasibility_idempotence_and_sampled_nearest_point_checks": true,
+    "analytic_lag_solution_and_equal_readout_opposite_direction": true
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "version": "0.1.0",
+  "scale": {
+    "minimum": 0,
+    "maximum": 5,
+    "integer_only": true
+  },
+  "acceptance": {
+    "weighted_minimum": 90,
+    "dimension_minimum": 4,
+    "scientific_fidelity": 5,
+    "all_hard_gates": "pass"
+  },
+  "dimensions": [
+    {
+      "id": "mechanistic_insight",
+      "weight": 18
+    },
+    {
+      "id": "scientific_fidelity",
+      "weight": 20
+    },
+    {
+      "id": "visual_intuition",
+      "weight": 12
+    },
+    {
+      "id": "information_hierarchy",
+      "weight": 8
+    },
+    {
+      "id": "encoding_originality",
+      "weight": 6
+    },
+    {
+      "id": "compositional_clarity",
+      "weight": 8
+    },
+    {
+      "id": "annotation_quality",
+      "weight": 6
+    },
+    {
+      "id": "aesthetic_refinement",
+      "weight": 8
+    },
+    {
+      "id": "publication_readiness",
+      "weight": 8
+    },
+    {
+      "id": "immediate_comprehensibility",
+      "weight": 6
+    }
+  ],
+  "hard_gates": [
+    "truthful_claims",
+    "defined_encoding",
+    "matched_comparison",
+    "evidence_status",
+    "reference_inspected",
+    "captionless_probe",
+    "final_size",
+    "no_clipping",
+    "reproducible",
+    "output_constraints"
+  ],
+  "notice": "A policy for recorded review, not an automated aesthetic or scientific truth detector. Cross-agent performance is not yet established."
+}

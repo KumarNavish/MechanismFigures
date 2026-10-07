@@ -1,0 +1,304 @@
+{
+  "schema_version": 1,
+  "status": "public diagnostic packets; no outcome trials run",
+  "tasks": [
+    {
+      "id": "projection",
+      "project_context": "Numerical optimization; public diagnostic task, not a holdout.",
+      "mechanism": "Explain why Euclidean projection onto x >= 0 preserves the tangential component rather than shrinking the whole vector.",
+      "available_evidence": {
+        "kind": "formal",
+        "formula": "P(x,y)=(max(x,0),y)",
+        "inputs": [
+          [
+            -1.8,
+            1.2
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1.4,
+            -0.5
+          ]
+        ],
+        "metric": "Euclidean; dimensionless coordinates"
+      },
+      "output_constraints": {
+        "audience": "Domain-competent scientist unfamiliar with the example",
+        "width_mm": 180,
+        "height_mm": 105,
+        "min_font_pt": 7,
+        "formats": [
+          "svg",
+          "png"
+        ],
+        "accessibility": "Meaning must survive grayscale; use direct labels and geometry."
+      }
+    },
+    {
+      "id": "lag",
+      "project_context": "Dynamics and sensing; public diagnostic task, not a holdout.",
+      "mechanism": "Show why one slow readout can correspond to opposite directions of change.",
+      "available_evidence": {
+        "kind": "formal",
+        "equations": [
+          "dx/dt=(u-x)/0.2",
+          "dy/dt=(u-y)/0.8"
+        ],
+        "forcing": "u=1 on [0,2], then 0",
+        "initial": [
+          0,
+          0
+        ],
+        "probe": "y=0.5 occurs once on rise and once on fall"
+      },
+      "output_constraints": {
+        "audience": "Domain-competent scientist unfamiliar with the example",
+        "width_mm": 180,
+        "height_mm": 105,
+        "min_font_pt": 7,
+        "formats": [
+          "svg",
+          "png"
+        ],
+        "accessibility": "Meaning must survive grayscale; use direct labels and geometry."
+      }
+    },
+    {
+      "id": "parallel-circuit",
+      "project_context": "Physical systems; public diagnostic task, not a holdout.",
+      "mechanism": "Explain how branch resistance determines current splitting at a fixed applied voltage.",
+      "available_evidence": {
+        "kind": "formal",
+        "V": 6,
+        "R1": 3,
+        "R2": 6,
+        "units": {
+          "V": "volts",
+          "R": "ohms",
+          "I": "amperes"
+        },
+        "equations": [
+          "I1=V/R1",
+          "I2=V/R2",
+          "I_total=I1+I2"
+        ],
+        "intervention": "Remove branch 2 while V remains fixed."
+      },
+      "output_constraints": {
+        "audience": "Domain-competent scientist unfamiliar with the example",
+        "width_mm": 180,
+        "height_mm": 105,
+        "min_font_pt": 7,
+        "formats": [
+          "svg",
+          "png"
+        ],
+        "accessibility": "Meaning must survive grayscale; use direct labels and geometry."
+      }
+    },
+    {
+      "id": "graph-reach",
+      "project_context": "Relational computation; public diagnostic task, not a holdout.",
+      "mechanism": "Show which nodes can influence a target after exactly two synchronous message-passing rounds.",
+      "available_evidence": {
+        "kind": "formal",
+        "nodes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        "target": 0,
+        "rule": "Each round reads only the previous round neighbor states; graph is undirected.",
+        "intervention": "Add edge [0,3].",
+        "coordinates": "No physical coordinates are implied."
+      },
+      "output_constraints": {
+        "audience": "Domain-competent scientist unfamiliar with the example",
+        "width_mm": 180,
+        "height_mm": 105,
+        "min_font_pt": 7,
+        "formats": [
+          "svg",
+          "png"
+        ],
+        "accessibility": "Meaning must survive grayscale; use direct labels and geometry."
+      }
+    },
+    {
+      "id": "cache-invariant",
+      "project_context": "Software systems; public diagnostic task, not a holdout.",
+      "mechanism": "Show which repeated computation is redundant and when a change invalidates that redundancy.",
+      "available_evidence": {
+        "kind": "formal",
+        "function": "f_v1(x)=x*x; f_v2(x)=x*x+1",
+        "events": [
+          [
+            "v1",
+            3
+          ],
+          [
+            "v1",
+            3
+          ],
+          [
+            "v1",
+            4
+          ],
+          [
+            "v2",
+            3
+          ]
+        ],
+        "valid_cache_key": [
+          "version",
+          "x"
+        ],
+        "comparison": "Identical returned values, with or without caching. No runtime measurements exist."
+      },
+      "output_constraints": {
+        "audience": "Domain-competent scientist unfamiliar with the example",
+        "width_mm": 180,
+        "height_mm": 105,
+        "min_font_pt": 7,
+        "formats": [
+          "svg",
+          "png"
+        ],
+        "accessibility": "Meaning must survive grayscale; use direct labels and geometry."
+      }
+    },
+    {
+      "id": "competing-paths",
+      "project_context": "Kinetic systems; public diagnostic task, not a holdout.",
+      "mechanism": "Explain how competition for one precursor changes the final split between two products.",
+      "available_evidence": {
+        "kind": "formal",
+        "equations": [
+          "dA/dt=-(kB+kC)*A",
+          "dB/dt=kB*A",
+          "dC/dt=kC*A"
+        ],
+        "initial": [
+          1,
+          0,
+          0
+        ],
+        "baseline": {
+          "kB": 1,
+          "kC": 1
+        },
+        "intervention": {
+          "kB": 3,
+          "kC": 1
+        },
+        "units": "A,B,C are normalized amounts; rates use reciprocal time."
+      },
+      "output_constraints": {
+        "audience": "Domain-competent scientist unfamiliar with the example",
+        "width_mm": 180,
+        "height_mm": 105,
+        "min_font_pt": 7,
+        "formats": [
+          "svg",
+          "png"
+        ],
+        "accessibility": "Meaning must survive grayscale; use direct labels and geometry."
+      }
+    },
+    {
+      "id": "measurement-support",
+      "project_context": "Measurement geometry; public diagnostic task, not a holdout.",
+      "mechanism": "Explain why two measurements at the same center differ because they average over different supports.",
+      "available_evidence": {
+        "kind": "formal",
+        "field": "f(x)=x^2",
+        "measurement": "mean over [-h,h] = h^2/3",
+        "supports": [
+          0.5,
+          1.0
+        ],
+        "centers": [
+          0,
+          0
+        ],
+        "note": "Support width is not a confidence interval."
+      },
+      "output_constraints": {
+        "audience": "Domain-competent scientist unfamiliar with the example",
+        "width_mm": 180,
+        "height_mm": 105,
+        "min_font_pt": 7,
+        "formats": [
+          "svg",
+          "png"
+        ],
+        "accessibility": "Meaning must survive grayscale; use direct labels and geometry."
+      }
+    },
+    {
+      "id": "association-only",
+      "project_context": "Scientific claim discipline; public diagnostic task, not a holdout.",
+      "mechanism": "The only available result is positive association. Assess whether a causal mechanism can honestly be claimed.",
+      "available_evidence": {
+        "kind": "measured",
+        "toy_records": {
+          "x": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "y": [
+            2.1,
+            3.9,
+            6.2,
+            8.0,
+            9.8
+          ]
+        },
+        "design": "Synthetic observational demonstration; no intervention, temporal ordering or confounder measurements.",
+        "allowed_result": "Association or competing hypotheses; needs_evidence is preferable to invented causality."
+      },
+      "output_constraints": {
+        "audience": "Domain-competent scientist unfamiliar with the example",
+        "width_mm": 180,
+        "height_mm": 105,
+        "min_font_pt": 7,
+        "formats": [
+          "svg",
+          "png"
+        ],
+        "accessibility": "Meaning must survive grayscale; use direct labels and geometry."
+      }
+    }
+  ]
+}

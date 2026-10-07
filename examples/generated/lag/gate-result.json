@@ -1,0 +1,70 @@
+{
+  "self_review": {
+    "status": "self_review_pass",
+    "accepted": true,
+    "reviews": [
+      {
+        "passed": true,
+        "reviewer": "ChatGPT-author",
+        "mode": "self",
+        "weighted_score": 90.0,
+        "dimensions": {
+          "mechanistic_insight": 5,
+          "scientific_fidelity": 5,
+          "visual_intuition": 5,
+          "information_hierarchy": 4,
+          "encoding_originality": 4,
+          "compositional_clarity": 4,
+          "annotation_quality": 4,
+          "aesthetic_refinement": 4,
+          "publication_readiness": 4,
+          "immediate_comprehensibility": 4
+        },
+        "errors": []
+      }
+    ],
+    "preflight": {
+      "status": "preflight_pass",
+      "errors": [],
+      "warnings": [
+        "Geometry checks do not prove no clipping, correct science, or visual quality"
+      ],
+      "notice": "File checks only. No aesthetic, scientific, or reproducibility claim is certified."
+    },
+    "notice": "Recorded review policy only. Reviewer identity, observations, and scientific truth are attestations, not authenticated by this tool."
+  },
+  "independent_required": {
+    "status": "needs_independent_review",
+    "accepted": false,
+    "reviews": [
+      {
+        "passed": true,
+        "reviewer": "ChatGPT-author",
+        "mode": "self",
+        "weighted_score": 90.0,
+        "dimensions": {
+          "mechanistic_insight": 5,
+          "scientific_fidelity": 5,
+          "visual_intuition": 5,
+          "information_hierarchy": 4,
+          "encoding_originality": 4,
+          "compositional_clarity": 4,
+          "annotation_quality": 4,
+          "aesthetic_refinement": 4,
+          "publication_readiness": 4,
+          "immediate_comprehensibility": 4
+        },
+        "errors": []
+      }
+    ],
+    "preflight": {
+      "status": "preflight_pass",
+      "errors": [],
+      "warnings": [
+        "Geometry checks do not prove no clipping, correct science, or visual quality"
+      ],
+      "notice": "File checks only. No aesthetic, scientific, or reproducibility claim is certified."
+    },
+    "notice": "Recorded review policy only. Reviewer identity, observations, and scientific truth are attestations, not authenticated by this tool."
+  }
+}
