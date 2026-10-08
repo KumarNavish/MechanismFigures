@@ -2,7 +2,7 @@
 
 **This is the quality standard for every figure task. Do not substitute a self-generated example, a remembered diagram, or a generic plotting template.**
 
-The complete [approved gallery](../assets/gallery.html) contains twenty real published references and twenty-nine figure assets. Its original six anchors are AlphaFold, CellRank, GraphCast, DreamFusion, AlphaDev, and Aardvark. The remaining fourteen are the already-approved grand gallery, not a new selection. Source credits and scientific limitations remain attached to each image.
+The current [curated gallery](../assets/gallery.html) contains twenty real published references and twenty-nine figure assets. Eight references explicitly retired by the user were replaced on 8 October 2026. The remaining twelve and their image bytes are unchanged; the current selection and retirement history are explicit in the registry. Source credits and scientific limitations remain attached to each image.
 
 ## 1. Look before drawing
 
@@ -38,7 +38,11 @@ For each reference, fill these fields in `design.reference_readings`:
 
 **DreamFusion:** retain a recognizable object through transformations and return feedback to the actual mutable state. Group fixed and trainable parts distinctly. A circular arrow around unnamed boxes is not an equivalent construction.
 
-**AlphaDev:** align before and after, leave eliminated work visible as an omission, and place the enabling invariant beside it. Do not claim speed from fewer drawn steps alone.
+**RFdiffusion:** align denoising states while keeping the fixed motif or conditioning object recognizable. Distinguish noisy state from clean-state prediction; a plausible backbone is not experimental proof of function.
+
+**Computational Caustics:** connect a target field to its transport map, local normals and realized surface. Show the inverse-design dependency; an attractive light pattern alone does not establish the model’s accuracy.
+
+**Biomimetic 4D Printing:** preserve one shape through curvature, print directions and the physical response. The specimen is evidence under stated conditions, not a decorative organic metaphor.
 
 **Aardvark:** make the layout join related evidence at the same entity and event. Preserve the roles of each modality; mere proximity does not establish a valid data join.
 

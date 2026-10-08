@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "verified_on": "2026-10-08",
+  "canonical": ".agents/skills/mechanism-figures",
+  "scope": "One operating-system user on this machine. Discovery is not guaranteed activation and does not install a cloud-account plugin.",
+  "hosts": [
+    {
+      "id": "codex",
+      "name": "Codex CLI / IDE / desktop skills",
+      "route": "shared",
+      "directory": ".agents/skills",
+      "invoke": "$mechanism-figures or select it from /skills",
+      "source": "https://learn.chatgpt.com/docs/build-skills",
+      "limit": "User-scoped for local projects. Restart or refresh discovery when needed; cloud environments need their own installation."
+    },
+    {
+      "id": "claude",
+      "name": "Claude Code",
+      "route": "adapter",
+      "directory": ".claude/skills",
+      "invoke": "/mechanism-figures or ask to use the skill",
+      "source": "https://code.claude.com/docs/en/skills",
+      "limit": "Local personal skills apply across projects; writing this folder does not upload the skill to Claude web/Cowork account storage."
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "route": "shared",
+      "directory": ".agents/skills",
+      "invoke": "Ask Cursor to use mechanism-figures; select the skill in the supported host UI",
+      "source": "https://cursor.com/help/customization/skills",
+      "limit": "Shared local skill discovery. Cursor cloud sync is a separate user-controlled feature; native ~/.cursor/skills sync is not enabled by this installer."
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini CLI",
+      "route": "shared",
+      "directory": ".agents/skills",
+      "invoke": "Ask to use mechanism-figures; review the host's skill activation consent",
+      "source": "https://geminicli.com/docs/cli/skills/",
+      "limit": "User-level agent-skills directory; workspace policy or activation consent can still apply."
+    },
+    {
+      "id": "opencode",
+      "name": "OpenCode",
+      "route": "shared",
+      "directory": ".agents/skills",
+      "invoke": "Ask OpenCode to load mechanism-figures through its skill tool",
+      "source": "https://opencode.ai/docs/skills/",
+      "limit": "Global agent-compatible discovery. Existing skill permissions and host settings remain unchanged."
+    },
+    {
+      "id": "copilot",
+      "name": "GitHub Copilot local skill clients",
+      "route": "shared",
+      "directory": ".agents/skills",
+      "invoke": "Ask Copilot to use mechanism-figures in a supported local agent client",
+      "source": "https://docs.github.com/en/copilot/concepts/agents/about-agent-skills",
+      "limit": "Local personal skills are not automatically copied to GitHub-hosted coding-agent environments."
+    },
+    {
+      "id": "windsurf",
+      "name": "Windsurf / Devin Desktop",
+      "route": "adapter",
+      "directory": ".codeium/windsurf/skills",
+      "invoke": "Ask Cascade to use mechanism-figures",
+      "source": "https://docs.devin.ai/desktop/cascade/skills",
+      "limit": "Adapter covers the documented legacy Windsurf global path. Current Devin Desktop can also discover the shared ~/.agents/skills path; no cloud setting is changed."
+    },
+    {
+      "id": "openclaw",
+      "name": "OpenClaw",
+      "route": "shared",
+      "directory": ".agents/skills",
+      "invoke": "Ask the local OpenClaw agent to use mechanism-figures",
+      "source": "https://docs.openclaw.ai/tools/skills",
+      "limit": "Shared personal skill discovery applies to the default OpenClaw state. A custom OPENCLAW_STATE_DIR uses separate configured roots and is not automatically covered. Agent eligibility and permissions still apply."
+    }
+  ],
+  "account_surfaces": [
+    {
+      "name": "ChatGPT web / mobile and account-wide plugin use",
+      "route": "portable plugin package; install through a supported account/workspace plugin flow",
+      "source": "https://developers.openai.com/plugins/build/plugins",
+      "status": "package_ready_not_directory_published",
+      "limit": "A GitHub repository, local skill folder or local marketplace entry is not a universal public-directory listing or account-wide installation."
+    },
+    {
+      "name": "Claude account skills",
+      "route": "Upload the standalone skill ZIP through the account's supported skill management UI",
+      "source": "https://code.claude.com/docs/en/skills",
+      "status": "manual_account_install",
+      "limit": "Local Claude Code skill files do not automatically upload to account skill storage. Preserve the synced directory and provider settings."
+    }
+  ]
+}

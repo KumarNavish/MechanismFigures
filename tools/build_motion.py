@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 SKILL=ROOT/'skills/mechanism-figures'
-VERSION='0.3.0'
+VERSION='0.4.0'
 
 
 def render_motion(references):

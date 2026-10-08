@@ -19,7 +19,7 @@ def audit():
     if len(ids)!=len(set(ids)):errors.append('Duplicate calibration IDs')
     canon=json.loads((SKILL/'assets/approved-canon.json').read_text())
     if ids != canon['approved_ids'] or len(ids)!=20:errors.append('Approved twenty-reference canon changed')
-    if ids[:6] != canon['core_ids']:errors.append('Original approved six anchors must appear first')
+    if ids[:6] != canon['core_ids']:errors.append('Current recorded anchors must appear first')
     if (ROOT/'examples').exists():errors.append('Self-generated examples must not be shipped as the visual standard')
     expected_assets=set()
     for r in refs:

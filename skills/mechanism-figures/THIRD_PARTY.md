@@ -1,6 +1,6 @@
 # Published reference figures: attribution and rights
 
-This is the previously approved twenty-reference gallery, restored in full. All scientific reference images are published figures or identified panels, not generated replacements. The six original anchors are AlphaFold, CellRank, GraphCast, DreamFusion, AlphaDev and Aardvark.
+This is the current twenty-reference gallery. Eight user-retired references were replaced on 2026-10-08; the other twelve and their image bytes are unchanged. All scientific reference images are published figures or identified panels, not generated replacements. Current anchor order and retired IDs are recorded in assets/approved-canon.json; replacements are curator selections responding to the user’s request, not retroactively labeled as previously approved.
 
 The MIT license applies to original code and editorial commentary only. **Published figures are third-party material and are not relicensed under MIT.** They are included with source-specific critical discussion. Inclusion here does not grant general image-reuse or further republication rights. Verified licenses, unverified reuse terms, original sources and modifications remain explicit for each item. Do not infer permission from a public URL, from inclusion, or from the code license.
 
@@ -54,17 +54,16 @@ Poole, Jain, Barron & Mildenhall. *DreamFusion: Text-to-3D using 2D Diffusion*. 
 
 - `assets/calibration/f022cea5-dreamfusion.png` — The supplied guide's Figure 3, reproduced in NVIDIA documentation. The author project and OpenReview publication are linked separately. SHA-256: `4a0b4f5506ac8a206733a22b4a0ca7e53a52a37f1fe6ba9145d834fea22d022f`.
 
-## AlphaDev
+## Mechanical Characters
 
-Mankowitz et al.. *Faster sorting algorithms discovered using deep reinforcement learning*. Nature (2023), Figure 3.
+Coros, Thomaszewski, Noris et al.. *Computational Design of Mechanical Characters*. SIGGRAPH / ACM TOG (2013), Figures 2 and 3.
 
-[Publication](https://www.nature.com/articles/s41586-023-06004-9) · [Original figure source](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-023-06004-9/MediaObjects/41586_2023_6004_Fig3_HTML.png) · [Recorded permission basis](https://www.nature.com/articles/s41586-023-06004-9)
+[Publication](https://cdl.ethz.ch/publications/computational-design-of-mechanical-characters/) · [Original figure source](https://s3-us-west-1.amazonaws.com/disneyresearch/wp-content/uploads/20140804211255/CDMC1.pdf) · [Recorded permission basis](https://cdl.ethz.ch/publications/computational-design-of-mechanical-characters/)
 
-**bundled** — Article Rights and permissions states CC BY 4.0; reviewed figure credit lines contain no separate restriction. Original and focused assets are separately labeled.
+**reference-excerpt** — Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse.
 
-[CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
-
-- `assets/calibration/c243c8d0-alphadev.png` — Publisher-hosted Figure 3, replacing the supplied guide's third-party blog image URL. The scientific figure is the same; this source replacement is explicit. SHA-256: `90a4613920c0676036626105b11f2803f3dd8ee390145e9a7e2fdac76194de3f`.
+- `assets/calibration/mechanical-figure.png` — Actual published primary figure, rasterized from the author/proceedings PDF with MuPDF 1.26.0. Extraction: {"source": "mechanical.pdf", "page_zero_based": 1, "crop_fraction_top_left": [0.083, 0.067, 0.918, 0.185], "output": "mechanical-fig2.png", "width": 2601, "height": 477, "sha256": "5c374fdc1a4a9daa5e56b8b722308c92559fb5dd18d036ac39db1c4384781e36", "bytes": 1087374, "renderer": "MuPDF 1.26.0; actual published figure rasterization, no redraw"} SHA-256: `5c374fdc1a4a9daa5e56b8b722308c92559fb5dd18d036ac39db1c4384781e36`.
+- `assets/calibration/mechanical-context.png` — Actual published related figure, rasterized from the author/proceedings PDF with MuPDF 1.26.0. Extraction: {"source": "mechanical.pdf", "page_zero_based": 2, "crop_fraction_top_left": [0.083, 0.063, 0.918, 0.2], "output": "mechanical-fig3.png", "width": 2601, "height": 553, "sha256": "3cf04e6076b4ccfa246e4a3dc5b041c72e9eb16ce60a03450427d6ce9603d1ec", "bytes": 931168, "renderer": "MuPDF 1.26.0; actual published figure rasterization, no redraw"} SHA-256: `3cf04e6076b4ccfa246e4a3dc5b041c72e9eb16ce60a03450427d6ce9603d1ec`.
 
 ## Aardvark
 
@@ -76,38 +75,36 @@ D. Lange, Judson-Torres, Zangle & Lex. *Aardvark: Composite Visualizations of Tr
 
 - `assets/calibration/af521a16-aardvark.jpg` — Full Figure 1 from the authors' manuscript deposited in PMC. Presented at VIS 2024; TVCG volume 31(1), January 2025. The conference/journal date distinction is retained. SHA-256: `68aa01b4f6400d42629784cf8ef55c4af63f6e4330e233df3d5c9dc430e23b8b`.
 
-## mip-NeRF
+## Computational Caustics
 
-Barron et al.. *Mip-NeRF: A Multiscale Representation for Anti-Aliasing Neural Radiance Fields*. ICCV (2021), Figure 1.
+Schwartzburg, Testuz, Tagliasacchi & Pauly. *High-contrast Computational Caustic Design*. SIGGRAPH / ACM TOG (2014), Figures 1 and 2.
 
-[Publication](https://openaccess.thecvf.com/content/ICCV2021/html/Barron_Mip-NeRF_A_Multiscale_Representation_for_Anti-Aliasing_Neural_Radiance_Fields_ICCV_2021_paper.html) · [Original figure source](https://arxiv.org/pdf/2103.13415) · [Recorded permission basis](https://openaccess.thecvf.com/content/ICCV2021/html/Barron_Mip-NeRF_A_Multiscale_Representation_for_Anti-Aliasing_Neural_Radiance_Fields_ICCV_2021_paper.html)
+[Publication](https://www.epfl.ch/labs/gcm/research-projects/computational-caustics/) · [Original figure source](https://theialab.ca/pubs/schwartzburg2014caustics.pdf) · [Recorded permission basis](https://www.epfl.ch/labs/gcm/research-projects/computational-caustics/)
 
-**reference-excerpt** — Approved published figure included for source-specific critical visual study. Original author/publisher rights remain; the repository MIT license does not license this image or grant further republication rights. A broadly reusable image license has not been established.
+**reference-excerpt** — Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse.
 
-- `assets/calibration/5ea69e05-mipnerf.png` — Actual figure rasterized from the authors' arXiv manuscript. The alternate view is Figure 3, not an uncropped Figure 1. SHA-256: `67582f35eefc5ee510b03d78eb08783580984f9c861fe19f82db6dd50b8459f9`.
-- `assets/calibration/f19aa5fb-mip-footprint.png` — Figure 3 · unequal pixel footprints SHA-256: `94dca5761a321b2eada79ee0b9ffa70b43a5a036c5cfb4bb7b80fef2a170d717`.
+- `assets/calibration/caustics-figure.png` — Actual published primary figure, rasterized from the author/proceedings PDF with MuPDF 1.26.0. Extraction: {"source": "caustics.pdf", "page_zero_based": 1, "crop_fraction_top_left": [0.08, 0.05, 0.93, 0.264], "output": "caustics-fig2.png", "width": 2601, "height": 849, "sha256": "1025c741106269f1003c831d178c8c2e31d3fc2faa2a4e55e3f671120c0a46f5", "bytes": 335071, "renderer": "MuPDF 1.26.0; actual published figure rasterization, no redraw"} Figure 2 photographic target: Philippe Halsman © Philippe Halsman Archive; source credit retained here. SHA-256: `1025c741106269f1003c831d178c8c2e31d3fc2faa2a4e55e3f671120c0a46f5`.
+- `assets/calibration/caustics-context.png` — Actual published related figure, rasterized from the author/proceedings PDF with MuPDF 1.26.0. Extraction: {"source": "caustics.pdf", "page_zero_based": 0, "crop_fraction_top_left": [0.086, 0.148, 0.925, 0.304], "output": "caustics-fig1.png", "width": 2601, "height": 627, "sha256": "563e05b724676af6bb845a3458e8893d82328c1004a2bb0a6e8df6ea267cdf4f", "bytes": 2694464, "renderer": "MuPDF 1.26.0; actual published figure rasterization, no redraw"} SHA-256: `563e05b724676af6bb845a3458e8893d82328c1004a2bb0a6e8df6ea267cdf4f`.
 
-## Grokking / modular addition
+## Reconfigurable Photonic Braids
 
-Nanda et al.. *Progress measures for grokking via mechanistic interpretability*. ICLR (2023), Figure 1.
+Sun et al.. *Reconfigurable non-Abelian integrated photonics*. Nature Communications (2025), Figure 1.
 
-[Publication](https://arxiv.org/abs/2301.05217) · [Original figure source](https://arxiv.org/pdf/2301.05217) · [Recorded permission basis](https://arxiv.org/abs/2301.05217)
+[Publication](https://www.nature.com/articles/s41467-025-62481-8) · [Original figure source](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-025-62481-8/MediaObjects/41467_2025_62481_Fig1_HTML.png) · [Recorded permission basis](https://www.nature.com/articles/s41467-025-62481-8)
 
-**reference-excerpt** — Approved published figure included for source-specific critical visual study. Original author/publisher rights remain; the repository MIT license does not license this image or grant further republication rights. A broadly reusable image license has not been established.
+**reference-excerpt** — Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse.
 
-- `assets/calibration/436a75eb-grokking.png` — Actual Figure 1 rasterized from the authors' arXiv manuscript. SHA-256: `09a000bcefb948b4c0a422d424d4e465c113f4c4c24a85c0a7c8d137cbc66aad`.
+- `assets/calibration/photonic-braids-figure.png` — Unmodified publisher-hosted Figure 1. SHA-256: `d9974026ea481171298db705f09c84f1f4cf09c6bbac56ddeed271c355a4a6be`.
 
-## 3D Gaussian Splatting
+## RFdiffusion
 
-Kerbl et al.. *3D Gaussian Splatting for Real-Time Radiance Field Rendering*. SIGGRAPH / ACM TOG (2023), Figure 4.
+Watson et al.. *De novo design of protein structure and function with RFdiffusion*. Nature (2023), Figure 1.
 
-[Publication](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/) · [Original figure source](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/3d_gaussian_splatting_low.pdf) · [Recorded permission basis](https://arxiv.org/abs/2308.04079)
+[Publication](https://www.nature.com/articles/s41586-023-06415-8) · [Original figure source](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-023-06415-8/MediaObjects/41586_2023_6415_Fig1_HTML.png) · [Recorded permission basis](https://www.nature.com/articles/s41586-023-06415-8)
 
-**bundled** — Author manuscript license link is CC BY 4.0. Actual paper figure crop, not a reconstruction; figure-specific treatment is recorded below.
+**reference-excerpt** — Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse.
 
-[CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
-
-- `assets/calibration/gaussian-fig4.png` — Published Figure 4, page 6 of the author paper, normalized crop [0.087,0.099,0.463,0.278]. MuPDF rasterization preserves the transparent primitives; no scientific content redrawn. SHA-256: `95cf85419380887abe7961150ad6a787f46b74cb0a775eae829c4a482145023a`.
+- `assets/calibration/rfdiffusion-figure.png` — Unmodified publisher-hosted Figure 1. SHA-256: `4fb2ab597652f9378eff4c283e1c929104fc114067c7cc2d45c6e683bad92411`.
 
 ## RNA velocity / scVelo
 
@@ -119,16 +116,15 @@ Bergen et al.. *Generalizing RNA velocity to transient cell states through dynam
 
 - `assets/calibration/17c20634-scvelo.png` — Full publisher figure, raster-resized without changing its content. SHA-256: `1dd26713ab1d2ca06c30b89d10170fb0504fcfd32d3042d1a34b1cd9a69139c0`.
 
-## DNA self-assembly
+## Biomimetic 4D Printing
 
-Wagenbauer, Sigl & Dietz. *Gigadalton-scale shape-programmable DNA assemblies*. Nature (2017), Figure 1a–b.
+Gladman, Matsumoto, Nuzzo, Mahadevan & Lewis. *Biomimetic 4D printing*. Nature Materials (2016), Figure 4.
 
-[Publication](https://www.nature.com/articles/nature24651) · [Original figure source](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnature24651/MediaObjects/41586_2017_Article_BFnature24651_Fig1_HTML.jpg) · [Recorded permission basis](https://www.nature.com/articles/nature24651)
+[Publication](https://www.nature.com/articles/nmat4544) · [Original figure source](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnmat4544/MediaObjects/41563_2016_Article_BFnmat4544_Fig4_HTML.jpg) · [Recorded permission basis](https://www.nature.com/articles/nmat4544)
 
-**reference-excerpt** — Approved published figure included for source-specific critical visual study. Original author/publisher rights remain; the repository MIT license does not license this image or grant further republication rights. A broadly reusable image license has not been established.
+**reference-excerpt** — Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse.
 
-- `assets/calibration/62d8c71c-dna.jpg` — Publisher figure; panels a–b cropped together. Full figure available in the viewer. SHA-256: `089a84fb457002edc3fa5676defd2ef9ad4c1940e7c1f31411cba0ca41007e2e`.
-- `assets/calibration/dc1782e3-dna.jpg` — Full published figure SHA-256: `c507c55387ba66f8afe8ae9c6325e1ea1fc7331e94e33f89ebd58efb87fcd410`.
+- `assets/calibration/bioprint4d-figure.jpg` — Unmodified publisher-hosted Figure 4. SHA-256: `7cf4ff5c115165f3528e9e1f3ffecdd71571da67f4e7ce2592fb7125066a81c8`.
 
 ## NeRF
 
@@ -152,15 +148,15 @@ Ofri-Amar et al.. *Neural Congealing: Aligning Images to a Joint Semantic Atlas*
 
 - `assets/calibration/afe52f89-congealing.jpg` — Actual Figure 1 from the authors' March 2023 arXiv manuscript; butterfly examples retained in their original order. SHA-256: `7f1a954b19683a9e783005bd1f39bcc4b3a5e76c0e33a50983e35f4e75ea537a`.
 
-## MEGA-plate evolution
+## Diffusive Mechanical Machines
 
-Baym et al.. *Spatiotemporal microbial evolution on antibiotic landscapes*. Science (2016), Figure 1B.
+Janbaz & Coulais. *Diffusive kinks turn kirigami sheets into machines*. Nature Communications (2024), Figure 5.
 
-[Publication](https://pmc.ncbi.nlm.nih.gov/articles/PMC5534434/) · [Original figure source](https://www.molecularecologist.com/wp-content/uploads/2016/09/MEGA2.jpg) · [Recorded permission basis](https://pmc.ncbi.nlm.nih.gov/articles/PMC5534434/)
+[Publication](https://www.nature.com/articles/s41467-024-45602-7) · [Original figure source](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-024-45602-7/MediaObjects/41467_2024_45602_Fig5_HTML.png) · [Recorded permission basis](https://www.nature.com/articles/s41467-024-45602-7)
 
-**reference-excerpt** — Approved published figure included for source-specific critical visual study. Original author/publisher rights remain; the repository MIT license does not license this image or grant further republication rights. A broadly reusable image license has not been established.
+**reference-excerpt** — Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse.
 
-- `assets/calibration/aa6050ba-mega.jpg` — Published Figure 1B reproduced by The Molecular Ecologist; scientific interpretation checked against the paper. Image host is secondary, not the publisher. SHA-256: `8c36c1f9449e6a9ad9ec127e78078cd0f2d6bbf79f7163cf550bee263ff27dbd`.
+- `assets/calibration/diffusive-machines-figure.png` — Unmodified publisher-hosted Figure 5. SHA-256: `8cd85865a4d9c85dffee00f649fa794143301eb0995ac3f70c20b96ac312222b`.
 
 ## Multisample Flow Matching
 
@@ -199,15 +195,16 @@ Raghavan et al.. *Engineering flexible machine learning systems by traversing fu
 - `assets/calibration/c1bbd0b1-fip.png` — Publisher Figure 1, panel a cropped. Full figure available in the viewer. SHA-256: `8cf5139aa2fb353d9d12aa0493aa5f2eacb6b6a5a997e5e1d145a18dfd41d313`.
 - `assets/calibration/58b095f5-fip.png` — Full published figure SHA-256: `e6279162f5dc5eb6e1b8f5545f60b6921e8a941ef8abda554a3860d21d74ea79`.
 
-## GNNExplainer
+## Generative Omnimatte
 
-Ying et al.. *GNNExplainer: Generating Explanations for Graph Neural Networks*. NeurIPS (2019), Figure 2.
+Lee, Lu, Rumbley, Geyer, Huang, Dekel & Cole. *Generative Omnimatte: Learning to Decompose Video into Layers*. CVPR (2025), Figure 1; related Figure 4.
 
-[Publication](https://proceedings.neurips.cc/paper_files/paper/2019/hash/d80b7040b773199015de6d3b4293c8ff-Abstract.html) · [Original figure source](https://proceedings.neurips.cc/paper_files/paper/2019/file/d80b7040b773199015de6d3b4293c8ff-Paper.pdf) · [Recorded permission basis](https://proceedings.neurips.cc/paper_files/paper/2019/hash/d80b7040b773199015de6d3b4293c8ff-Abstract.html)
+[Publication](https://gen-omnimatte.github.io/) · [Original figure source](https://openaccess.thecvf.com/content/CVPR2025/papers/Lee_Generative_Omnimatte_Learning_to_Decompose_Video_into_Layers_CVPR_2025_paper.pdf) · [Recorded permission basis](https://gen-omnimatte.github.io/)
 
-**reference-excerpt** — Approved published figure included for source-specific critical visual study. Original author/publisher rights remain; the repository MIT license does not license this image or grant further republication rights. A broadly reusable image license has not been established.
+**reference-excerpt** — Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse.
 
-- `assets/calibration/4b618381-gnn.png` — Actual Figure 2 rasterized from the NeurIPS proceedings PDF. SHA-256: `ca1d59b567be2a10e4a6a78196f7816fdc62d6eda205623f6d52d1e46e679067`.
+- `assets/calibration/genomnimatte-figure.png` — Actual published primary figure, rasterized from the author/proceedings PDF with MuPDF 1.26.0. Extraction: {"source": "genomnimatte.pdf", "page_zero_based": 0, "crop_fraction_top_left": [0.084, 0.275, 0.91, 0.579], "output": "genomnimatte-fig1.png", "width": 2601, "height": 1239, "sha256": "e90b87bb0211b3a0d5bfd6fc0b02727a39e0e76b3d36635194612e9f7c4051f6", "bytes": 3688076, "renderer": "MuPDF 1.26.0; actual published figure rasterization, no redraw"} SHA-256: `e90b87bb0211b3a0d5bfd6fc0b02727a39e0e76b3d36635194612e9f7c4051f6`.
+- `assets/calibration/genomnimatte-context.png` — Actual published related figure, rasterized from the author/proceedings PDF with MuPDF 1.26.0. Extraction: {"source": "genomnimatte.pdf", "page_zero_based": 3, "crop_fraction_top_left": [0.084, 0.08, 0.91, 0.332], "output": "genomnimatte-fig4.png", "width": 2601, "height": 1028, "sha256": "bb4d46f0cf9608edfc471246e53799ef6814a2c03258b6da0cd21ac292ded100", "bytes": 804255, "renderer": "MuPDF 1.26.0; actual published figure rasterization, no redraw"} SHA-256: `bb4d46f0cf9608edfc471246e53799ef6814a2c03258b6da0cd21ac292ded100`.
 
 ## Shape-morphing kirigami
 
@@ -222,13 +219,12 @@ Hong et al.. *Boundary curvature guided programmable shape-morphing kirigami she
 - `assets/calibration/fc3c6acf-kirigami.jpg` — Publisher Figure 1; panels a–f cropped together. Force–displacement panel excluded from the focused view. SHA-256: `96741301d6c48c2a7960ca4eec72757c3f6d2e05a3880d4054f2e6dcc951eae1`.
 - `assets/calibration/f4bfe551-kirigami.png` — Full published figure SHA-256: `530129726a7ecb50e65ab33771218081b2c7f0ba891282bf876c826167919cc7`.
 
-## TopoMap
+## Scutoids in Curved Tissue
 
-Doraiswamy et al.. *TopoMap: A 0-dimensional Homology Preserving Projection of High-Dimensional Data*. IEEE VIS / TVCG (2020), Figure 4; alternate Figure 2.
+Gómez-Gálvez, Vicente-Munuera, Tagua et al.. *Scutoids are a geometrical solution to three-dimensional packing of epithelia*. Nature Communications (2018), Figure 1.
 
-[Publication](https://virtual.ieeevis.org/year/2020/paper_f-scivis-1049.html) · [Original figure source](https://arxiv.org/pdf/2009.01512) · [Recorded permission basis](https://virtual.ieeevis.org/year/2020/paper_f-scivis-1049.html)
+[Publication](https://www.nature.com/articles/s41467-018-05376-1) · [Original figure source](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-018-05376-1/MediaObjects/41467_2018_5376_Fig1_HTML.png) · [Recorded permission basis](https://www.nature.com/articles/s41467-018-05376-1)
 
-**reference-excerpt** — Approved published figure included for source-specific critical visual study. Original author/publisher rights remain; the repository MIT license does not license this image or grant further republication rights. A broadly reusable image license has not been established.
+**reference-excerpt** — Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse. Original Figure 1e beetle photograph is credited by the paper to Dr Nicolas Gompel, with permission; that credit is not a license for further reuse.
 
-- `assets/calibration/627981ba-topomap.png` — Actual figures from the authors' arXiv manuscript. Presented at VIS 2020; TVCG journal issue 2021. SHA-256: `d847c7821776b04fc47f34e9337a3437f2e095cf169e3e4e4fcbecb54be2c410`.
-- `assets/calibration/9b9fbfab-topomap-balls.png` — Figure 2 · growth and merge events SHA-256: `5d47814af89651a5f2008afad235ee56ee10f684d476296c9ecfe4cd49c31488`.
+- `assets/calibration/scutoids-figure.png` — Unmodified publisher-hosted Figure 1. Panel e beetle photograph credited in the source to Dr Nicolas Gompel; do not assume the article license overrides image-specific credit. SHA-256: `728746e6727da5874328658e23d9cdafcb427a65480c5c7119f1744735bc3535`.

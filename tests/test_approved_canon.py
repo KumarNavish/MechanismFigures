@@ -32,9 +32,9 @@ class ApprovedCanonTests(unittest.TestCase):
         for r in data['references']:
             self.assertTrue(r['assets']);self.assertTrue(r['display_assets'])
             self.assertTrue(all(a['origin']=='published-reference' for a in r['assets']))
-    def test_original_six_anchors_appear_first(self):
+    def test_current_anchors_follow_explicit_curation(self):
         refs=load_json(SKILL/'assets/calibration.json')['references']
-        self.assertEqual([r['id'] for r in refs[:6]],['alphafold','cellrank','graphcast','dreamfusion','alphadev','aardvark'])
+        self.assertEqual([r['id'] for r in refs[:6]],['alphafold','cellrank','graphcast','dreamfusion','mechanical','aardvark'])
     def test_all_29_asset_files_have_matching_hashes(self):
         assets=[a for r in load_json(SKILL/'assets/calibration.json')['references'] for a in r['assets']]
         self.assertEqual(len(assets),29)
@@ -42,7 +42,7 @@ class ApprovedCanonTests(unittest.TestCase):
         for a in assets:self.assertEqual(hashlib.sha256((SKILL/a['path']).read_bytes()).hexdigest(),a['sha256'])
     def test_gallery_contains_every_reference_image_without_javascript(self):
         parser=GalleryHTML();parser.feed((SKILL/'assets/gallery.html').read_text())
-        self.assertEqual(len(parser.ids),20);self.assertEqual(len(parser.images),21)
+        self.assertEqual(len(parser.ids),20);self.assertEqual(len(parser.images),sum(len(r['display_assets']) for r in load_json(SKILL/'assets/calibration.json')['references']))
         for src in parser.images:
             self.assertFalse(src.startswith(('http:','https:','data:')))
             self.assertTrue((SKILL/'assets'/src).is_file())
@@ -51,6 +51,16 @@ class ApprovedCanonTests(unittest.TestCase):
         self.assertNotIn('class="source-only"',s)
         self.assertNotIn('examples/generated',s)
         self.assertFalse((ROOT/'examples').exists())
+    def test_user_retired_references_are_not_active(self):
+        refs=load_json(SKILL/'assets/calibration.json')['references'];ids={r['id'] for r in refs};retired={'alphadev','mipnerf','grokking','gaussian','dna','mega','gnn','topomap'}
+        self.assertFalse(ids & retired)
+        for rid in retired:self.assertFalse((SKILL/'references/cases'/(rid+'.md')).exists())
+    def test_twelve_retained_references_preserve_their_exact_images(self):
+        decision=load_json(ROOT/'docs/curation-2026-10-08.json');self.assertEqual(decision['retained_reference_count'],12)
+        for path,sha in decision['retained_asset_hashes'].items():self.assertEqual(hashlib.sha256((SKILL/path).read_bytes()).hexdigest(),sha)
+    def test_all_eight_replacements_have_a_documented_visual_decision(self):
+        decision=load_json(ROOT/'docs/curation-2026-10-08.json');self.assertEqual(len(decision['replacements']),8)
+        for r in decision['replacements']:self.assertTrue(r['source'].startswith('https://'));self.assertTrue(r['reason']);self.assertTrue(r['figure'])
     def test_two_observed_reference_images_are_required(self):
         c=valid_contract();c['design']['reference_readings'][1]['image_observed']=False
         self.assertTrue(validate_contract(c))

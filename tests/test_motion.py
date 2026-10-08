@@ -63,7 +63,7 @@ class MotionTests(unittest.TestCase):
         self.assertIn('Read the walkthrough',s)
         self.assertIn('Animation timeline',s)
     def test_original_gallery_is_not_replaced(self):
-        p=self.parse('gallery.html');self.assertEqual(len(p.images)-len(p.story_images),21)
+        p=self.parse('gallery.html');self.assertEqual(len(p.images)-len(p.story_images),sum(len(r['display_assets']) for r in self.registry['references']))
         self.assertEqual(len(self.registry['references']),20)
         self.assertEqual(sum(len(r['assets']) for r in self.registry['references']),29)
     def test_no_remote_image_or_script_dependencies(self):

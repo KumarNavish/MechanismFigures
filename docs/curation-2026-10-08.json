@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-08",
+  "reason": "Explicit user-directed recuration of eight attached references.",
+  "retained_reference_count": 12,
+  "retained_asset_hashes": {
+    "assets/calibration/94866d7c-alphafold.png": "96abc1ce03ee69229283a7ba38769ec011912bd2e644d1ba39624f02c77b1e91",
+    "assets/calibration/82942714-alphafold.png": "cc3898ec047291dcfeadaea447fdba928d74174f972b6a75074ffcf8c56bd4fc",
+    "assets/calibration/ff87748f-cellrank.png": "7eeca7a6a75679185c4f307cc1c2e362ee7a52cb52c062bcd4ed06b945ab02d7",
+    "assets/calibration/e3277e8e-cellrank.png": "9b0011799630e4e71d5a9088c0c58ce14b4cfead6a0a9c47ab10c3f8756a4e81",
+    "assets/calibration/7b9f9e1b-graphcast.png": "f3ad9f38ed289af2215b198693b839e62b6054f09ffe08606088fcb4feb32784",
+    "assets/calibration/f022cea5-dreamfusion.png": "4a0b4f5506ac8a206733a22b4a0ca7e53a52a37f1fe6ba9145d834fea22d022f",
+    "assets/calibration/af521a16-aardvark.jpg": "68aa01b4f6400d42629784cf8ef55c4af63f6e4330e233df3d5c9dc430e23b8b",
+    "assets/calibration/17c20634-scvelo.png": "1dd26713ab1d2ca06c30b89d10170fb0504fcfd32d3042d1a34b1cd9a69139c0",
+    "assets/calibration/14900912-nerf.png": "e5e5b4b304623b24eb3da07837a767a639c67291b650b045216ebee7c03215b9",
+    "assets/calibration/afe52f89-congealing.jpg": "7f1a954b19683a9e783005bd1f39bcc4b3a5e76c0e33a50983e35f4e75ea537a",
+    "assets/calibration/e65934cc-flow.jpg": "2c8c92f836499cfd098c981a3ec0ba7a7f011081cc4ad4a515d6722f6e29cd7e",
+    "assets/calibration/a4bc70a9-torus-a.png": "9d3a6904f224744001271b61fa7175247a8f4aa120ccfc6f41f7630114175024",
+    "assets/calibration/42be2c29-torus-b.png": "978e809b7e1460eef0b4fe149e4288c98e600116018797ecb0e73dde328c992d",
+    "assets/calibration/1663f848-torus2.png": "903d931ad3003e4b2c59a7227151fd6104fb6f81b28df959a89e8f2930b52ddc",
+    "assets/calibration/c1bbd0b1-fip.png": "8cf5139aa2fb353d9d12aa0493aa5f2eacb6b6a5a997e5e1d145a18dfd41d313",
+    "assets/calibration/58b095f5-fip.png": "e6279162f5dc5eb6e1b8f5545f60b6921e8a941ef8abda554a3860d21d74ea79",
+    "assets/calibration/fc3c6acf-kirigami.jpg": "96741301d6c48c2a7960ca4eec72757c3f6d2e05a3880d4054f2e6dcc951eae1",
+    "assets/calibration/f4bfe551-kirigami.png": "530129726a7ecb50e65ab33771218081b2c7f0ba891282bf876c826167919cc7"
+  },
+  "replacements": [
+    {
+      "old_id": "alphadev",
+      "new_id": "mechanical",
+      "source": "https://cdl.ethz.ch/publications/computational-design-of-mechanical-characters/",
+      "figure": "Figure 2; related Figure 3",
+      "reason": "Replaces a code-dominated aligned diff with a visible behavior-to-structure transformation and a fabricated consequence."
+    },
+    {
+      "old_id": "mipnerf",
+      "new_id": "caustics",
+      "source": "https://www.epfl.ch/labs/gcm/research-projects/computational-caustics/",
+      "figure": "Figure 2; related Figure 1",
+      "reason": "Replaces a sparse footprint schematic with an inverse-design construction joining transport, geometry, fabrication and a visible optical result."
+    },
+    {
+      "old_id": "grokking",
+      "new_id": "photonic-braids",
+      "source": "https://www.nature.com/articles/s41467-025-62481-8",
+      "figure": "Figure 1",
+      "reason": "Replaces circles plus dense trigonometric text with a layered physical construction that exposes the location and ordering of abstract operations."
+    },
+    {
+      "old_id": "gaussian",
+      "new_id": "rfdiffusion",
+      "source": "https://www.nature.com/articles/s41586-023-06415-8",
+      "figure": "Figure 1",
+      "reason": "Replaces a two-row blob-repair cartoon with a scientifically denser geometric trajectory, multiple explicit conditions, and a visible invariant."
+    },
+    {
+      "old_id": "dna",
+      "new_id": "bioprint4d",
+      "source": "https://www.nature.com/articles/nmat4544",
+      "figure": "Figure 4",
+      "reason": "Replaces a static exploded assembly plus micrograph with a complete target \u2192 geometry \u2192 fabrication instruction \u2192 deformation argument."
+    },
+    {
+      "old_id": "mega",
+      "new_id": "diffusive-machines",
+      "source": "https://www.nature.com/articles/s41467-024-45602-7",
+      "figure": "Figure 5",
+      "reason": "Replaces a dense ancestry overlay with a directly observable, time-resolved mechanical consequence and its local geometric explanation."
+    },
+    {
+      "old_id": "gnn",
+      "new_id": "genomnimatte",
+      "source": "https://gen-omnimatte.github.io/",
+      "figure": "Figure 1; related Figure 4",
+      "reason": "Replaces a node/feature mask schematic with a concrete layer decomposition, visible nonlocal effects and matched scene-level interventions."
+    },
+    {
+      "old_id": "topomap",
+      "new_id": "scutoids",
+      "source": "https://www.nature.com/articles/s41467-018-05376-1",
+      "figure": "Figure 1",
+      "reason": "Replaces a toy component-merging sequence with a tangible geometry in which the topological change is physically visible."
+    }
+  ],
+  "not_selected": [
+    {
+      "id": "guided_ensembles",
+      "reason": "Box-heavy pipeline; the geometric relation is secondary."
+    },
+    {
+      "id": "pocketgen",
+      "reason": "Useful molecular context, but generic module inventory dominates the full figure."
+    },
+    {
+      "id": "shock_plasticity",
+      "reason": "Outcome curves dominate the candidate panel."
+    },
+    {
+      "id": "fractal_boundary",
+      "reason": "Decorative glow and conceptual labels do not reveal a sufficiently concrete operation."
+    },
+    {
+      "id": "metamaterial_robot",
+      "reason": "Crowded montage; too much decoding before the mechanism becomes perceptible."
+    },
+    {
+      "id": "neuralcages",
+      "reason": "The candidate overview relies on a conventional network pipeline."
+    },
+    {
+      "id": "growth_program",
+      "reason": "Overlaps the selected 4D-printing construction without equally direct fabrication-to-shape correspondence."
+    },
+    {
+      "id": "omnimatte2021",
+      "reason": "The newer layer/exploded-scene construction gives a clearer perceptual comparison."
+    },
+    {
+      "id": "bistable_auxetics",
+      "reason": "Strong local mechanism, but redundant with selected material-programming cases in this eight-slot revision."
+    }
+  ],
+  "review_boundary": "Selection is a reasoned visual critique, not a controlled user study or proof that these are the globally best figures."
+}

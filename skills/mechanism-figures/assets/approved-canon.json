@@ -1,12 +1,13 @@
 {
-  "schema_version": 1,
-  "id": "approved-published-canon-v1",
+  "schema_version": 2,
+  "id": "curated-published-canon-v2",
+  "selection_date": "2026-10-08",
   "core_ids": [
     "alphafold",
     "cellrank",
     "graphcast",
     "dreamfusion",
-    "alphadev",
+    "mechanical",
     "aardvark"
   ],
   "approved_ids": [
@@ -14,25 +15,35 @@
     "cellrank",
     "graphcast",
     "dreamfusion",
-    "alphadev",
+    "mechanical",
     "aardvark",
-    "mipnerf",
-    "grokking",
-    "gaussian",
+    "caustics",
+    "photonic-braids",
+    "rfdiffusion",
     "scvelo",
-    "dna",
+    "bioprint4d",
     "nerf",
     "congealing",
-    "mega",
+    "diffusive-machines",
     "flow",
     "torus",
     "fip",
-    "gnn",
+    "genomnimatte",
     "kirigami",
-    "topomap"
+    "scutoids"
   ],
   "reference_count": 20,
   "image_count": 29,
-  "provenance": "User-approved six-reference HTML merged with the already-approved twenty-reference grand gallery. This release restores those images, not a new reference selection.",
+  "provenance": "User requested replacing eight specific attached references; twelve retained references and their image bytes are unchanged. Eight replacement choices are curator selections in response to that request, not falsely labeled as previously approved.",
+  "retired_ids": [
+    "alphadev",
+    "dna",
+    "gaussian",
+    "gnn",
+    "grokking",
+    "mega",
+    "mipnerf",
+    "topomap"
+  ],
   "no_generated_calibration": true
 }
