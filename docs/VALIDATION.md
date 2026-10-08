@@ -1,21 +1,23 @@
-# Validation scope
+# Validation scope — v0.4.0
 
-## Current release: 0.2.0
+## Curation
 
-The visual calibration set is the complete, previously approved twenty-reference gallery: twenty-nine actual published image assets, with full/selected/context figures and source attribution. No self-generated image is included as a visual reference or teaching standard. The old generated demonstrations were removed from the current tree; immutable 0.1.0 history is not the current calibration standard.
+The current twenty-reference gallery replaces the eight entries explicitly rejected on 8 October 2026 with eight curator-selected, actual published alternatives. The twelve retained references keep their original asset bytes. New selections are not falsely described as previously approved. The active set remains twenty references and twenty-nine images; source attribution, figure treatment, evidence status and scientific boundaries accompany each entry.
 
-The original six anchors—AlphaFold, CellRank, GraphCast, DreamFusion, AlphaDev and Aardvark—appear first. A canonical registry and file hashes prevent missing images, unapproved substitution, and silent changes to the curated selection. Static HTML contains actual image elements for every reference, so images do not depend on JavaScript or third-party hotlink availability.
+The current six anchors are AlphaFold, CellRank, GraphCast, DreamFusion, Mechanical Characters and Aardvark. Retired images are absent from the current gallery and package, but their prior version remains in repository history. No generated figure is used as visual calibration. The unchanged motion sequence still illustrates the workflow using retained publications.
 
 ## What the tests check
 
-Contract completeness, evidence and source integrity, output constraints, stale review detection, safe paths and SVGs, non-destructive installation, canonical reference membership, twenty references/twenty-nine image files, no generated-reference folder, two actually observed reference records, registered image paths/hashes, concrete composition/encoding/style observations, and final output-to-reference comparison fields.
+Contract completeness, evidence/source integrity, output constraints, stale reviews, unsafe paths/SVGs, required two-image inspection records, registered image hashes, concrete style observations and output-to-reference comparisons. Curation regressions verify all eight retirements, eight replacements, twenty active references, twenty-nine image files, and byte-for-byte preservation of the twelve retained references.
 
-Review records remain agent/human attestations. A JSON field cannot prove actual image inspection, scientific validity or visual quality. Independent reviewers are still needed for independent acceptance. Synthetic unit-test fixtures are not calibration images and are not empirical quality evidence.
+Global-install tests use isolated homes and exercise one canonical installation, host adapters, copy fallback strategy, idempotence, dry-run/doctor without writes, explicit updates, unchanged global instructions, conflict detection, preserved versions, transaction rollback, recovery, path safety and account-scope disclosure. Tests never invoke an agent model.
 
-## Browser validation
+The CLI can verify local files and recorded review policy; it cannot authenticate image inspection, scientific truth, visual quality, account activation or independent reviewer identity. Synthetic unit-test fixtures are not calibration images or empirical quality evidence.
 
-The reader is checked on desktop and mobile for all twenty primary figures, every full/focused/context asset, search, mechanism filters, the native-size viewer, Escape/scroll restoration, no missing image responses and no document overflow. The local reader is checked with public-network requests blocked; the deployed page and image bytes are verified after publication.
+## Rendered validation
 
-## What has not been established
+The desktop/mobile gallery checks actual image decoding, all full/focused/context views, native-size inspection, search/filter interactions, accessible viewer close and layout overflow. Mechanical Characters and Computational Caustics display their paired physical context and explanatory construction. Motion checks cover playback, seeking, completed chapter states, reduced-motion first load, source inspection and preservation of the full reference gallery. After publication, deployment and image bytes must match the tested local build.
 
-There is no cross-agent efficacy study, independently measured reference-quality pass rate, generalization result or proven time/token saving. Rubric thresholds are demanding design policy. The diagnostic task packets and matched evaluation protocol remain available under benchmarks/PROTOCOL.md; passing tooling tests is not evidence that every agent will produce exceptional figures.
+## Not established
+
+No cross-agent efficacy study, independently measured reference-quality pass rate, held-out transfer result, universal agent/account activation, or measured time/token saving is claimed. The threshold is review policy, not a guarantee. See `benchmarks/PROTOCOL.md` for the matched independent evaluation needed to establish those outcomes.

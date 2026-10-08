@@ -1,0 +1,20 @@
+{
+  "name": "mechanism-figures-local",
+  "interface": {
+    "displayName": "MechanismFigures \u2014 local source"
+  },
+  "plugins": [
+    {
+      "name": "mechanism-figures",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

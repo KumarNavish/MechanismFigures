@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "0.4.0",
   "duration_seconds": 60,
   "kind": "authored editorial walkthrough, not a live agent run",
   "image_policy": "Only unchanged approved published assets; overlays and native UI guide attention. No generated scientific reference or claimed output.",

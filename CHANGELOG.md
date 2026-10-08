@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.0 — 2026-10-08
+
+Retired the eight references explicitly rejected by the user and replaced them with visually inspected published constructions. The other twelve references and their image hashes are unchanged; the active set remains twenty references and twenty-nine assets. Added a shared user-global installer, documented host adapters, conflict detection, version backups, interruption recovery, and a read-only doctor. Reorganized entry points for install/use/maintenance, added a portable plugin manifest and local catalog, and documented the boundary between local scope, activation and cloud-account installation. No model runner or account setting is invoked.
+
 ## 0.3.0 — 2026-10-07
 
 Added an authored 60-second walkthrough on the gallery and a shareable motion.html: question, reference inspection, visible mechanism, critique, delivery, and reference-quality possibilities. Uses only unchanged approved scientific images; no generated showcase or simulated agent result. Includes playback/seek/replay/chapter controls, reduced-motion mode, text transcript, and visibility-aware suspension. The 20-reference / 29-image canon and scientific review thresholds are unchanged.

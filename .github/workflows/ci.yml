@@ -20,3 +20,5 @@ jobs:
       - run: python tools/build_gallery.py && git diff --exit-code
       - run: python tools/install.py --dest "$RUNNER_TEMP/isolated-skills"
       - run: python tools/install.py --dest "$RUNNER_TEMP/isolated-skills" --check
+      - run: python install.py --global --agents all --home "$RUNNER_TEMP/global-skill-user"
+      - run: python install.py --doctor --home "$RUNNER_TEMP/global-skill-user"

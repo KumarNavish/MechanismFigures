@@ -1,0 +1,6 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mechanism-figures",
+  "version": "0.4.0",
+  "description": "Create mechanism-revealing scientific figures from evidence, calibrated against real published references; inspect and revise rather than decorate conventional plots."
+}

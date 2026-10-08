@@ -1,0 +1,21 @@
+# MechanismFigures
+
+> Scientific mechanism → real visual calibration → composition → implementation → evidence-linked critique.
+
+## Install
+- [Start here](START_HERE.md)
+- [Global installation](docs/INSTALL.md)
+- [Agent hosts and account boundaries](docs/HOSTS.md)
+
+## Use
+- [Skill entry](skills/mechanism-figures/SKILL.md)
+- [Progressive navigation](skills/mechanism-figures/references/INDEX.md)
+- [Current figure index](skills/mechanism-figures/references/calibration-index.md)
+- [Quality rubric](skills/mechanism-figures/references/critique.md)
+
+## Evidence and maintenance
+- [Curation](docs/CURATION.md)
+- [Maintainer map](docs/MAINTAINING.md)
+- [Evaluation protocol](benchmarks/PROTOCOL.md)
+
+No model calls or paid APIs. Actual published images only. Local installation is not account-wide plugin installation or guaranteed invocation in every chat.

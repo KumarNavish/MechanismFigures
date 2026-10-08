@@ -1,7 +1,5 @@
 {
   "schema_version": 1,
-  "version": "0.2.0",
-  "calibration_policy": "Only the approved real published figures; no self-generated calibration examples. Every reference has a visible image.",
   "references": [
     {
       "id": "alphafold",
@@ -296,73 +294,88 @@
       "display_figure": "Figure 3"
     },
     {
-      "id": "alphadev",
-      "label": "AlphaDev",
-      "title": "An invariant makes an instruction unnecessary.",
-      "paper": "Faster sorting algorithms discovered using deep reinforcement learning",
-      "authors": "Mankowitz et al.",
-      "venue": "Nature",
-      "year": 2023,
-      "figure": "Figure 3",
-      "source": "https://www.nature.com/articles/s41586-023-06004-9",
-      "imageSource": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-023-06004-9/MediaObjects/41586_2023_6004_Fig3_HTML.png",
-      "evidence": "Algorithm structure + aligned assembly pseudocode",
-      "look": "Read the circled comparator structure beside the matched code; find the removed instruction and the simplified expression that replaces its work.",
-      "mechanism": "An ordering relation established earlier permits a simplification while retaining the required sorting behavior.",
-      "construction": "Keep before/after instructions aligned and connect the local sorting-network structure to the changed expressions.",
-      "eye": "The missing line is justified by information the program already has—not by quietly changing the task.",
-      "stronger": "A speedup bar reports a consequence. The paired structure and code expose the redundancy that permits the saving.",
-      "borrow": "Show the invariant, the removed work, and the unchanged output contract together.",
-      "limit": "The figure explains specific transformations, not a universal optimality or speed claim. Correctness and hardware-dependent cost require separate checks.",
+      "id": "mechanical",
+      "label": "Mechanical Characters",
+      "title": "Let the mechanism grow inside the same object.",
+      "paper": "Computational Design of Mechanical Characters",
+      "authors": "Coros, Thomaszewski, Noris et al.",
+      "venue": "SIGGRAPH / ACM TOG",
+      "year": 2013,
+      "figure": "Figure 2; related Figure 3",
+      "display_figure": "Figures 2 and 3",
+      "source": "https://cdl.ethz.ch/publications/computational-design-of-mechanical-characters/",
+      "imageSource": "https://s3-us-west-1.amazonaws.com/disneyresearch/wp-content/uploads/20140804211255/CDMC1.pdf",
+      "evidence": "Mechanism-synthesis diagram plus fabricated physical example.",
+      "look": "Follow the same character from a to f; its foot path is the persistent target.",
+      "mechanism": "A desired cyclic motion is converted into constrained linkages, then connected through a gear train so one actuator drives the character.",
+      "construction": "Let the mechanism grow inside the same object.",
+      "eye": "The sketched path becomes a linkage; the linkage becomes a connected, physically fabricated mechanism.",
+      "stronger": "A motion-error curve reports fit. Keeping the character and its actuation points in place exposes which physical structures make the movement possible.",
+      "borrow": "Grow the implementing structure around one persistent scientific object; use color to distinguish target behavior from the parts that realize it.",
+      "limit": "The paper targets cyclic motions and a constrained library of assemblies. The overview is not a universal synthesis guarantee; fabrication and fit require separate validation.",
+      "commentary_origin": "MechanismFigures editorial reading of the cited publication. Replacement selected after the user retired the previous image on 2026-10-08; not an author endorsement or a new empirical result.",
       "transfer": {
-        "group": "contrast",
-        "move": "Make the eliminated work visible",
-        "when": "A local invariant allows an algorithm to omit or simplify an operation.",
+        "group": "transformation",
+        "move": "Let the mechanism grow inside the same object.",
+        "when": "Replaces a code-dominated aligned diff with a visible behavior-to-structure transformation and a fabricated consequence.",
         "trace": [
-          "Locate the circled comparators in a and the ordering established before them.",
-          "Compare matching lines in b and c; the removed instruction leaves a visible gap.",
-          "Read the changed expressions: the optimization uses an existing ordering relation, not a different sorting task."
+          "Follow the same character from a to f; its foot path is the persistent target.",
+          "In b–d, trace the red motion curve into a linkage, then follow the gears connecting the drives.",
+          "Compare e with the fabricated object in f; inspect related Figure 3 to see which paths different mechanisms can trace."
         ],
-        "map": "Comparator → your local operation; ordering invariant → precondition; paired code → before/after implementation; missing line → saved work.",
-        "keep": "Hold the input/output contract fixed. Show the precondition that makes the missing work redundant.",
+        "map": "Replace the character with the project object, its motion curve with the desired behavior, and linkages with the actual constraints or operators that realize it.",
+        "keep": "Keep the target object, actuation point, motion phase and intended path identifiable at every step.",
         "build": [
-          "Draw the local dependency or invariant beside the baseline code.",
-          "Align the modified code line for line, leaving omissions visible.",
-          "Connect the changed expression to a correctness check and a separate cost measurement."
+          "Show the desired behavior directly on the object rather than in a separate specification box.",
+          "Add only the parts that implement that behavior; expose their connections in the same coordinates.",
+          "Finish with the realized object and a matched behavior check, distinguishing rendering from fabrication."
         ],
-        "check": "Can the reader state why the removed operation is unnecessary? Verify equivalence under the stated precondition, and measure runtime separately.",
-        "example": "For a caching method, align the two execution traces and remove only recomputation whose inputs are demonstrably unchanged.",
-        "avoid": "Fewer displayed instructions do not automatically establish lower runtime on every machine.",
-        "pair": "gaussian"
+        "check": "Can a reader point from one segment of the desired motion to the component that constrains it?",
+        "avoid": "Do not put decorative gears behind a non-mechanical process or infer accuracy merely because a mechanism can be drawn.",
+        "example": "Adapt the stated operation to the project only when its mapping and evidence preserve the scientific relationship."
       },
-      "commentary_origin": "MechanismFigures design interpretation; not a quotation or endorsement by the paper authors.",
+      "visual_style": {
+        "observed": "The character silhouette and red actuation curve persist while yellow and green gears accumulate. The visual sequence introduces physical complexity without changing the reader’s coordinate frame.",
+        "apply": "Grow the implementing structure around one persistent scientific object; use color to distinguish target behavior from the parts that realize it."
+      },
       "assets": [
         {
-          "path": "assets/calibration/c243c8d0-alphadev.png",
+          "path": "assets/calibration/mechanical-figure.png",
           "kind": "focused",
-          "treatment": "Publisher-hosted Figure 3, replacing the supplied guide's third-party blog image URL. The scientific figure is the same; this source replacement is explicit.",
-          "sha256": "90a4613920c0676036626105b11f2803f3dd8ee390145e9a7e2fdac76194de3f",
-          "bytes": 236803,
-          "origin": "published-reference"
+          "treatment": "Actual published primary figure, rasterized from the author/proceedings PDF with MuPDF 1.26.0. Extraction: {\"source\": \"mechanical.pdf\", \"page_zero_based\": 1, \"crop_fraction_top_left\": [0.083, 0.067, 0.918, 0.185], \"output\": \"mechanical-fig2.png\", \"width\": 2601, \"height\": 477, \"sha256\": \"5c374fdc1a4a9daa5e56b8b722308c92559fb5dd18d036ac39db1c4384781e36\", \"bytes\": 1087374, \"renderer\": \"MuPDF 1.26.0; actual published figure rasterization, no redraw\"}",
+          "sha256": "5c374fdc1a4a9daa5e56b8b722308c92559fb5dd18d036ac39db1c4384781e36",
+          "bytes": 1087374,
+          "origin": "published-reference",
+          "label": "Figure 2 · desired motion becomes a fabricated mechanism"
+        },
+        {
+          "path": "assets/calibration/mechanical-context.png",
+          "kind": "related",
+          "treatment": "Actual published related figure, rasterized from the author/proceedings PDF with MuPDF 1.26.0. Extraction: {\"source\": \"mechanical.pdf\", \"page_zero_based\": 2, \"crop_fraction_top_left\": [0.083, 0.063, 0.918, 0.2], \"output\": \"mechanical-fig3.png\", \"width\": 2601, \"height\": 553, \"sha256\": \"3cf04e6076b4ccfa246e4a3dc5b041c72e9eb16ce60a03450427d6ce9603d1ec\", \"bytes\": 931168, \"renderer\": \"MuPDF 1.26.0; actual published figure rasterization, no redraw\"}",
+          "sha256": "3cf04e6076b4ccfa246e4a3dc5b041c72e9eb16ce60a03450427d6ce9603d1ec",
+          "bytes": 931168,
+          "origin": "published-reference",
+          "label": "Figure 3 · different mechanism geometries trace different paths"
         }
       ],
-      "rights": {
-        "status": "bundled",
-        "license": "CC-BY-4.0",
-        "license_url": "https://creativecommons.org/licenses/by/4.0/",
-        "basis_url": "https://www.nature.com/articles/s41586-023-06004-9",
-        "checked": "2026-10-07",
-        "note": "Article Rights and permissions states CC BY 4.0; reviewed figure credit lines contain no separate restriction. Original and focused assets are separately labeled."
-      },
-      "approved_origin": "Previously approved grand reference gallery; original six-reference canon retained first.",
-      "visual_style": {
-        "observed": "Before/after code is line-aligned beside the comparator structure. Deleted instructions leave visible gaps; only the altered expressions receive emphasis.",
-        "apply": "Use matched structure and implementation views. Preserve positions, expose the precondition beside the removed work, and highlight only the actual change—not the entire proposed method."
-      },
       "display_assets": [
-        "assets/calibration/c243c8d0-alphadev.png"
+        "assets/calibration/mechanical-figure.png",
+        "assets/calibration/mechanical-context.png"
       ],
-      "display_figure": "Figure 3"
+      "rights": {
+        "status": "reference-excerpt",
+        "license": null,
+        "license_url": null,
+        "basis_url": "https://cdl.ethz.ch/publications/computational-design-of-mechanical-characters/",
+        "checked": "2026-10-08",
+        "note": "Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse."
+      },
+      "curation": {
+        "replaces": "alphadev",
+        "requested_on": "2026-10-08",
+        "reason": "Replaces a code-dominated aligned diff with a visible behavior-to-structure transformation and a fabricated consequence."
+      },
+      "display_layout": "stacked"
     },
     {
       "id": "aardvark",
@@ -434,219 +447,232 @@
       "display_figure": "Figure 1"
     },
     {
-      "id": "mipnerf",
-      "label": "mip-NeRF",
-      "title": "A pixel sees a volume, not a point.",
-      "paper": "Mip-NeRF: A Multiscale Representation for Anti-Aliasing Neural Radiance Fields",
-      "authors": "Barron et al.",
-      "venue": "ICCV",
-      "year": 2021,
-      "figure": "Figure 1",
-      "source": "https://openaccess.thecvf.com/content/ICCV2021/html/Barron_Mip-NeRF_A_Multiscale_Representation_for_Anti-Aliasing_Neural_Radiance_Fields_ICCV_2021_paper.html",
-      "imageSource": "https://arxiv.org/pdf/2103.13415",
-      "evidence": "Representation schematic",
-      "look": "Compare isolated ray samples with the finite conical region and its Gaussian approximation.",
-      "mechanism": "Pixel footprints change with viewing scale; point samples discard the spatial extent being averaged.",
-      "construction": "Widen the ray into a cone. Give every sample a volume, then show how that volume is encoded.",
-      "eye": "Two samples at one position can represent different measurements because their footprints differ.",
-      "stronger": "An anti-aliasing score shows improvement. The cone shows which missing information the representation restores.",
-      "borrow": "When a point hides extent, draw the support of the measurement—not a larger decorative point.",
-      "limit": "The Gaussian is an approximation to a conical frustum. This schematic explains the representation, not its empirical advantage.",
-      "transfer": {
-        "group": "structure",
-        "move": "Make the support visible",
-        "when": "Scale, uncertainty, receptive fields, spatial averaging or integration are being lost in point representations.",
-        "trace": [
-          "Find the isolated points on the left ray: none has a size.",
-          "Look at the middle cone: one pixel covers a growing region of space.",
-          "Compare the Gaussian on the right: the encoded quantity now includes that region, not just its center."
-        ],
-        "map": "Ray sample → your local query; cone → its actual support; integrated encoding → the operation that depends on that support.",
-        "keep": "Keep the same center and orientation when comparing supports. Extent must encode a defined physical or statistical quantity.",
-        "build": [
-          "Draw two measurements sharing a center but having different supports.",
-          "Place the approximation or aggregation directly on each support.",
-          "Attach the consequence that differs only because the supports differ."
-        ],
-        "check": "Can the reader explain why identical centers do not imply identical measurements? Check support units, normalization and the approximation.",
-        "example": "For uncertain sensor readings, show each sensor's measured footprint and the field it averages—not identical dots with different labels.",
-        "avoid": "Do not use a fuzzy blob as an undefined symbol for uncertainty.",
-        "pair": "nerf"
-      },
-      "commentary_origin": "MechanismFigures design interpretation; not a quotation or endorsement by the paper authors.",
-      "assets": [
-        {
-          "path": "assets/calibration/5ea69e05-mipnerf.png",
-          "kind": "focused",
-          "treatment": "Actual figure rasterized from the authors' arXiv manuscript. The alternate view is Figure 3, not an uncropped Figure 1.",
-          "sha256": "67582f35eefc5ee510b03d78eb08783580984f9c861fe19f82db6dd50b8459f9",
-          "bytes": 247948,
-          "origin": "published-reference"
-        },
-        {
-          "path": "assets/calibration/f19aa5fb-mip-footprint.png",
-          "kind": "related",
-          "treatment": "Figure 3 · unequal pixel footprints",
-          "sha256": "94dca5761a321b2eada79ee0b9ffa70b43a5a036c5cfb4bb7b80fef2a170d717",
-          "bytes": 137275,
-          "origin": "published-reference"
-        }
-      ],
-      "rights": {
-        "status": "reference-excerpt",
-        "license": null,
-        "license_url": null,
-        "basis_url": "https://openaccess.thecvf.com/content/ICCV2021/html/Barron_Mip-NeRF_A_Multiscale_Representation_for_Anti-Aliasing_Neural_Radiance_Fields_ICCV_2021_paper.html",
-        "checked": "2026-10-07",
-        "note": "Approved published figure included for source-specific critical visual study. Original author/publisher rights remain; the repository MIT license does not license this image or grant further republication rights. A broadly reusable image license has not been established."
-      },
-      "approved_origin": "Previously approved grand reference gallery; original six-reference canon retained first.",
-      "visual_style": {
-        "observed": "One camera geometry contrasts point samples, finite conical support and its Gaussian approximation. Similar positions make the missing extent visible.",
-        "apply": "Use the same origin, orientation and measurement center across alternatives. Give the support a defined spatial body; transparent layers should expose overlap, not merely soften the styling."
-      },
-      "display_assets": [
-        "assets/calibration/5ea69e05-mipnerf.png"
-      ],
-      "display_figure": "Figure 1"
-    },
-    {
-      "id": "grokking",
-      "label": "Grokking / modular addition",
-      "title": "Addition becomes composition of rotations.",
-      "paper": "Progress measures for grokking via mechanistic interpretability",
-      "authors": "Nanda et al.",
-      "venue": "ICLR",
-      "year": 2023,
-      "figure": "Figure 1",
-      "source": "https://arxiv.org/abs/2301.05217",
-      "imageSource": "https://arxiv.org/pdf/2301.05217",
-      "evidence": "Reverse-engineered algorithm schematic",
-      "look": "Follow the angles for a and b into the combined angle, then compare candidate c at the readout.",
-      "mechanism": "The studied transformer computes modular addition using Fourier features and trigonometric composition.",
-      "construction": "Translate features into rotations on circles; carry those rotations through composition and candidate readout.",
-      "eye": "The answer is an alignment operation: the correct candidate cancels the combined phase.",
-      "stronger": "A grokking curve says when generalization appears. These circles show what computation supports it.",
-      "borrow": "Find the mathematical operation inside the model, then construct a visual object on which that operation can be performed.",
-      "limit": "This explains a specific modular-addition setting. The figure is a mechanistic summary; separate analyses and ablations support it.",
+      "id": "caustics",
+      "label": "Computational Caustics",
+      "title": "Make the desired image become a physical ray map.",
+      "paper": "High-contrast Computational Caustic Design",
+      "authors": "Schwartzburg, Testuz, Tagliasacchi & Pauly",
+      "venue": "SIGGRAPH / ACM TOG",
+      "year": 2014,
+      "figure": "Figure 2; related Figure 1",
+      "display_figure": "Figures 1 and 2",
+      "source": "https://www.epfl.ch/labs/gcm/research-projects/computational-caustics/",
+      "imageSource": "https://theialab.ca/pubs/schwartzburg2014caustics.pdf",
+      "evidence": "Inverse-optics construction plus a photographed physical light projection.",
+      "look": "Locate the light source, transparent surface and receiving screen; keep their roles distinct.",
+      "mechanism": "A transport map from source to target irradiance specifies surface normals; surface optimization produces a refractor whose light distribution approximates the target.",
+      "construction": "Make the desired image become a physical ray map.",
+      "eye": "Moving light on the receiver requires changing where the surface sends each ray—not painting the surface with the target picture.",
+      "stronger": "An image-error score hides the inverse-design dependency. The linked receiver, transport map, normals and refractor make the dependency inspectable.",
+      "borrow": "Expose the inverse map from a desired field to local controls, then return to a measured physical consequence.",
+      "limit": "The surface is an optimized approximation under an optical model. Target imagery and physical photographs have their own rights and are not new evidence for another project.",
+      "commentary_origin": "MechanismFigures editorial reading of the cited publication. Replacement selected after the user retired the previous image on 2026-10-08; not an author endorsement or a new empirical result.",
       "transfer": {
         "group": "transformation",
-        "move": "Draw the mathematical operation itself",
-        "when": "A computation has a precise geometric interpretation such as rotation, projection, composition or alignment.",
+        "move": "Make the desired image become a physical ray map.",
+        "when": "Replaces a sparse footprint schematic with an inverse-design construction joining transport, geometry, fabrication and a visible optical result.",
         "trace": [
-          "Read bottom to top: a and b become angles on the circle.",
-          "At the middle circle, the two rotations compose to a + b.",
-          "At the top, subtracting candidate c reveals which phase aligns with the answer."
+          "Locate the light source, transparent surface and receiving screen; keep their roles distinct.",
+          "Follow the target irradiance backwards into the transport assignment and the corresponding surface-normal field.",
+          "Use related Figure 1 to connect the optimized physical acrylic surface with the projected caustic as it rotates."
         ],
-        "map": "Token values → your input variables; rotations → an established algebraic representation; alignment → the readout criterion.",
-        "keep": "Preserve the mapping between algebraic value and geometric position through every stage.",
+        "map": "Replace light with the conserved or transported quantity, the receiver with the target domain, and surface normals with the real controllable field.",
+        "keep": "Preserve source/target domains, flux accounting and the mapping between a local control and its downstream effect.",
         "build": [
-          "Identify an exact or empirically established operation, not a metaphor chosen for appearance.",
-          "Apply it visibly to one small worked example.",
-          "Put the corresponding model stage or equation beside the operation."
+          "Show both where the quantity starts and where it must arrive.",
+          "Draw the correspondence that turns the desired outcome into local control parameters.",
+          "Place the implemented structure and its measured consequence beside that mapping; label model and experiment separately."
         ],
-        "check": "Can a reader perform the toy computation by following the picture? Test several inputs and the boundary cases.",
-        "example": "For a projection algorithm, show the actual vector, feasible subspace and projected vector rather than a box labeled projection.",
-        "avoid": "A pleasing circle is not evidence that the learned algorithm is rotational.",
-        "pair": "alphafold"
+        "check": "Can the reader explain how changing one local surface region changes a particular part of the received pattern?",
+        "avoid": "Do not borrow ray geometry for a process with no defensible transport mapping, or imply exact image recovery from an illustrative example.",
+        "example": "Adapt the stated operation to the project only when its mapping and evidence preserve the scientific relationship."
       },
-      "commentary_origin": "MechanismFigures design interpretation; not a quotation or endorsement by the paper authors.",
+      "visual_style": {
+        "observed": "The same receiver plane makes source and target distributions comparable; ray direction, normal direction and physical surface remain attached, not split into abstract module names.",
+        "apply": "Expose the inverse map from a desired field to local controls, then return to a measured physical consequence."
+      },
       "assets": [
         {
-          "path": "assets/calibration/436a75eb-grokking.png",
+          "path": "assets/calibration/caustics-figure.png",
           "kind": "focused",
-          "treatment": "Actual Figure 1 rasterized from the authors' arXiv manuscript.",
-          "sha256": "09a000bcefb948b4c0a422d424d4e465c113f4c4c24a85c0a7c8d137cbc66aad",
-          "bytes": 298997,
-          "origin": "published-reference"
+          "treatment": "Actual published primary figure, rasterized from the author/proceedings PDF with MuPDF 1.26.0. Extraction: {\"source\": \"caustics.pdf\", \"page_zero_based\": 1, \"crop_fraction_top_left\": [0.08, 0.05, 0.93, 0.264], \"output\": \"caustics-fig2.png\", \"width\": 2601, \"height\": 849, \"sha256\": \"1025c741106269f1003c831d178c8c2e31d3fc2faa2a4e55e3f671120c0a46f5\", \"bytes\": 335071, \"renderer\": \"MuPDF 1.26.0; actual published figure rasterization, no redraw\"} Figure 2 photographic target: Philippe Halsman © Philippe Halsman Archive; source credit retained here.",
+          "sha256": "1025c741106269f1003c831d178c8c2e31d3fc2faa2a4e55e3f671120c0a46f5",
+          "bytes": 335071,
+          "origin": "published-reference",
+          "label": "Figure 2 · the inverse optical construction"
+        },
+        {
+          "path": "assets/calibration/caustics-context.png",
+          "kind": "related",
+          "treatment": "Actual published related figure, rasterized from the author/proceedings PDF with MuPDF 1.26.0. Extraction: {\"source\": \"caustics.pdf\", \"page_zero_based\": 0, \"crop_fraction_top_left\": [0.086, 0.148, 0.925, 0.304], \"output\": \"caustics-fig1.png\", \"width\": 2601, \"height\": 627, \"sha256\": \"563e05b724676af6bb845a3458e8893d82328c1004a2bb0a6e8df6ea267cdf4f\", \"bytes\": 2694464, \"renderer\": \"MuPDF 1.26.0; actual published figure rasterization, no redraw\"}",
+          "sha256": "563e05b724676af6bb845a3458e8893d82328c1004a2bb0a6e8df6ea267cdf4f",
+          "bytes": 2694464,
+          "origin": "published-reference",
+          "label": "Figure 1 · fabricated acrylic and the resulting light pattern"
         }
+      ],
+      "display_assets": [
+        "assets/calibration/caustics-context.png",
+        "assets/calibration/caustics-figure.png"
       ],
       "rights": {
         "status": "reference-excerpt",
         "license": null,
         "license_url": null,
-        "basis_url": "https://arxiv.org/abs/2301.05217",
-        "checked": "2026-10-07",
-        "note": "Approved published figure included for source-specific critical visual study. Original author/publisher rights remain; the repository MIT license does not license this image or grant further republication rights. A broadly reusable image license has not been established."
+        "basis_url": "https://www.epfl.ch/labs/gcm/research-projects/computational-caustics/",
+        "checked": "2026-10-08",
+        "note": "Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse."
       },
-      "approved_origin": "Previously approved grand reference gallery; original six-reference canon retained first.",
-      "visual_style": {
-        "observed": "Aligned model stages, trigonometric expressions and circles describe the same operation. Colored phase arrows preserve the identity of the operands through composition and readout.",
-        "apply": "Align symbolic, geometric and computational views of the same worked instance. Use color to preserve operand identity and direct labels to connect equations to the visible rotation."
+      "curation": {
+        "replaces": "mipnerf",
+        "requested_on": "2026-10-08",
+        "reason": "Replaces a sparse footprint schematic with an inverse-design construction joining transport, geometry, fabrication and a visible optical result."
       },
-      "display_assets": [
-        "assets/calibration/436a75eb-grokking.png"
-      ],
-      "display_figure": "Figure 1"
+      "display_layout": "stacked"
     },
     {
-      "id": "gaussian",
-      "label": "3D Gaussian Splatting",
-      "title": "Different geometric errors require different repairs.",
-      "paper": "3D Gaussian Splatting for Real-Time Radiance Field Rendering",
-      "authors": "Kerbl et al.",
-      "venue": "SIGGRAPH / ACM TOG",
-      "year": 2023,
-      "figure": "Figure 4",
-      "source": "https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/",
-      "imageSource": "https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/3d_gaussian_splatting_low.pdf",
-      "evidence": "Adaptive-refinement schematic",
-      "look": "Keep your eye on the black target outline. Compare missing coverage above with an oversized splat below.",
-      "mechanism": "Insufficient coverage and oversized primitives call for different density-control operations.",
-      "construction": "Hold the target shape fixed. Show cloning versus splitting, followed by continued optimization, in matched rows.",
-      "eye": "One error needs another primitive; the other needs a large primitive broken into smaller ones.",
-      "stronger": "One loss value collapses both failures. Spatial overlap makes the reason for each repair visible.",
-      "borrow": "Put the error and its repair in the same coordinates; preserve the target across the counterfactual.",
-      "limit": "The cartoon idealizes densification. The full method also uses optimization signals and thresholds not visible here.",
+      "id": "photonic-braids",
+      "label": "Reconfigurable Photonic Braids",
+      "title": "Give an algebraic operation a traversable physical route.",
+      "paper": "Reconfigurable non-Abelian integrated photonics",
+      "authors": "Sun et al.",
+      "venue": "Nature Communications",
+      "year": 2025,
+      "figure": "Figure 1",
+      "display_figure": "Figure 1",
+      "source": "https://www.nature.com/articles/s41467-025-62481-8",
+      "imageSource": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-025-62481-8/MediaObjects/41467_2025_62481_Fig1_HTML.png",
+      "evidence": "Layered device schematic and mathematical operation mapping; performance requires separate measurements.",
+      "look": "Trace one input waveguide through the layered chip rather than beginning with the matrix notation.",
+      "mechanism": "A tunable photonic building block implements mode transformations through ordered couplings; connected blocks realize reconfigurable braiding operations.",
+      "construction": "Give an algebraic operation a traversable physical route.",
+      "eye": "The transformation has an ordered path through a real device; electrodes change an operation at a specific location.",
+      "stronger": "A matrix equation lists a transformation. The layered device and enlarged coupling sequence show where it is implemented and how blocks compose.",
+      "borrow": "Place the operator on the substrate that carries it; use an enlarged local view to make the global algebra physically traceable.",
+      "limit": "This is a device/operation schematic. The non-Abelian claim and reconfiguration performance rely on the paper’s model and measurements, not the appearance of crossed lines.",
+      "commentary_origin": "MechanismFigures editorial reading of the cited publication. Replacement selected after the user retired the previous image on 2026-10-08; not an author endorsement or a new empirical result.",
       "transfer": {
-        "group": "contrast",
-        "move": "Give each error its own repair",
-        "when": "One scalar loss combines qualitatively different spatial or structural failures.",
+        "group": "structure",
+        "move": "Give an algebraic operation a traversable physical route.",
+        "when": "Replaces circles plus dense trigonometric text with a layered physical construction that exposes the location and ordering of abstract operations.",
         "trace": [
-          "Keep the black target outline fixed in both rows.",
-          "Above, the small splat leaves geometry uncovered: cloning adds coverage.",
-          "Below, one splat is too large for the geometry: splitting gives smaller adjustable pieces."
+          "Trace one input waveguide through the layered chip rather than beginning with the matrix notation.",
+          "Zoom into b: follow steps I, II and III through the coupling regions and the auxiliary path.",
+          "Map that repeated physical block to the compact operation sequence in c."
         ],
-        "map": "Outline → your target; splat → model primitive; mismatch type → diagnostic; clone/split → distinct interventions.",
-        "keep": "The target, coordinates and comparison scale must stay fixed across repairs.",
+        "map": "Replace optical modes with the project’s transported states and coupling regions with the actual operators that change them.",
+        "keep": "Keep state labels, operation order and the correspondence between abstract transformations and physical/local implementation.",
         "build": [
-          "Show the two failure configurations in matched rows.",
-          "Apply only the corresponding local repair in each row.",
-          "Show the post-repair state in the same coordinate system."
+          "Draw the real substrate with a restrained distinction between inactive context and active routes.",
+          "Enlarge one elementary operation while keeping its interfaces connected to the global device.",
+          "Align the compositional algebra with the path that implements it; expose a change in operation order only when scientifically justified."
         ],
-        "check": "Can the reader select the appropriate repair from the error's shape alone? Validate that the intervention resolves that error rather than another confounder.",
-        "example": "For adaptive meshing, contrast an uncovered feature with an element spanning too much curvature, then show their different refinements.",
-        "avoid": "Do not show improvement by silently moving or simplifying the target.",
-        "pair": "alphadev"
+        "check": "Can the reader identify which local control changes which state transformation, and trace the order of composed operations?",
+        "avoid": "Do not interpret a drawn crossing as literal mode exchange without the coupling model; a braid-like shape alone is not evidence of non-Abelian behavior.",
+        "example": "Adapt the stated operation to the project only when its mapping and evidence preserve the scientific relationship."
       },
-      "commentary_origin": "MechanismFigures design interpretation; not a quotation or endorsement by the paper authors.",
+      "visual_style": {
+        "observed": "Gray waveguides establish the substrate, blue/red distinguish layers and couplings, and gold control traces connect visible electrodes to precise regions. A close-up resolves the local operation before a compact algebraic summary.",
+        "apply": "Place the operator on the substrate that carries it; use an enlarged local view to make the global algebra physically traceable."
+      },
       "assets": [
         {
-          "path": "assets/calibration/gaussian-fig4.png",
+          "path": "assets/calibration/photonic-braids-figure.png",
           "kind": "focused",
-          "treatment": "Published Figure 4, page 6 of the author paper, normalized crop [0.087,0.099,0.463,0.278]. MuPDF rasterization preserves the transparent primitives; no scientific content redrawn.",
-          "sha256": "95cf85419380887abe7961150ad6a787f46b74cb0a775eae829c4a482145023a",
-          "bytes": 814079,
+          "treatment": "Unmodified publisher-hosted Figure 1.",
+          "sha256": "d9974026ea481171298db705f09c84f1f4cf09c6bbac56ddeed271c355a4a6be",
+          "bytes": 1219205,
           "origin": "published-reference"
         }
       ],
-      "rights": {
-        "status": "bundled",
-        "license": "CC-BY-4.0",
-        "license_url": "https://creativecommons.org/licenses/by/4.0/",
-        "basis_url": "https://arxiv.org/abs/2308.04079",
-        "checked": "2026-10-07",
-        "note": "Author manuscript license link is CC BY 4.0. Actual paper figure crop, not a reconstruction; figure-specific treatment is recorded below."
-      },
-      "approved_origin": "Previously approved grand reference gallery; original six-reference canon retained first.",
-      "visual_style": {
-        "observed": "The target outline stays fixed across two matched rows. Changes in primitive coverage are visible before the clone/split labels explain the repair.",
-        "apply": "Keep the target and scale fixed; show error, local repair and resulting fit in aligned positions. Represent the primitive itself, not a box naming the operation."
-      },
       "display_assets": [
-        "assets/calibration/gaussian-fig4.png"
+        "assets/calibration/photonic-braids-figure.png"
       ],
-      "display_figure": "Figure 4"
+      "rights": {
+        "status": "reference-excerpt",
+        "license": null,
+        "license_url": null,
+        "basis_url": "https://www.nature.com/articles/s41467-025-62481-8",
+        "checked": "2026-10-08",
+        "note": "Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse."
+      },
+      "curation": {
+        "replaces": "grokking",
+        "requested_on": "2026-10-08",
+        "reason": "Replaces circles plus dense trigonometric text with a layered physical construction that exposes the location and ordering of abstract operations."
+      }
+    },
+    {
+      "id": "rfdiffusion",
+      "label": "RFdiffusion",
+      "title": "Keep the constraint visible while structure emerges.",
+      "paper": "De novo design of protein structure and function with RFdiffusion",
+      "authors": "Watson et al.",
+      "venue": "Nature",
+      "year": 2023,
+      "figure": "Figure 1",
+      "display_figure": "Figure 1",
+      "source": "https://www.nature.com/articles/s41586-023-06415-8",
+      "imageSource": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-023-06415-8/MediaObjects/41586_2023_6415_Fig1_HTML.png",
+      "evidence": "Model architecture, conditioned generative trajectories and example protein structures; not all examples are experimental validation.",
+      "look": "Read the noising/reverse-generative sequence in a, then identify the fixed conditioning object in each row of b.",
+      "mechanism": "Iterative denoising constructs protein backbones; conditioning supplies symmetry, a binding target or a fixed motif that constrains what the trajectory can become.",
+      "construction": "Keep the constraint visible while structure emerges.",
+      "eye": "Different design conditions change the space of possible outcomes; a fixed motif remains visible while its surrounding scaffold forms.",
+      "stronger": "A designability curve reports success. Aligned intermediate structures reveal what is held fixed, what changes, and how a candidate is progressively organized.",
+      "borrow": "Use aligned state sequences in which the protected or conditioning object remains recognizable throughout the update.",
+      "limit": "The figure describes model construction and examples. Structural plausibility and predicted designability are not equivalent to experimental confirmation of binding or activity.",
+      "commentary_origin": "MechanismFigures editorial reading of the cited publication. Replacement selected after the user retired the previous image on 2026-10-08; not an author endorsement or a new empirical result.",
+      "transfer": {
+        "group": "dynamics",
+        "move": "Keep the constraint visible while structure emerges.",
+        "when": "Replaces a two-row blob-repair cartoon with a scientifically denser geometric trajectory, multiple explicit conditions, and a visible invariant.",
+        "trace": [
+          "Read the noising/reverse-generative sequence in a, then identify the fixed conditioning object in each row of b.",
+          "Follow each row’s persistent motif or symmetry through the intermediate structures into the final backbone.",
+          "Compare the noisy input row with the clean-structure prediction row at matched denoising steps in c."
+        ],
+        "map": "Replace the protein with the project’s evolving state and the fixed motif with the actual constraint, target or protected substructure.",
+        "keep": "Preserve the time-step alignment, conditioning identity, and distinction between current noisy state and predicted clean state.",
+        "build": [
+          "Anchor each row with its actual constraint, shown as a tangible object rather than a text-only condition.",
+          "Show matched intermediate states with stable object identities and a common viewing convention.",
+          "Place the final candidate and its independent validity evidence beside the trajectory, without treating a plausible shape as functional proof."
+        ],
+        "check": "Can a reader identify the unchanged constraint and distinguish the current state from its clean-state prediction?",
+        "avoid": "Do not copy protein imagery for a non-structural problem or imply that a smooth denoising sequence alone validates a designed function.",
+        "example": "Adapt the stated operation to the project only when its mapping and evidence preserve the scientific relationship."
+      },
+      "visual_style": {
+        "observed": "Rows are organized by a visible conditioning object; restrained, persistent colors distinguish fixed motifs from evolving structure. Matched temporal columns turn a complicated model into an inspectable transformation.",
+        "apply": "Use aligned state sequences in which the protected or conditioning object remains recognizable throughout the update."
+      },
+      "assets": [
+        {
+          "path": "assets/calibration/rfdiffusion-figure.png",
+          "kind": "focused",
+          "treatment": "Unmodified publisher-hosted Figure 1.",
+          "sha256": "4fb2ab597652f9378eff4c283e1c929104fc114067c7cc2d45c6e683bad92411",
+          "bytes": 1287655,
+          "origin": "published-reference"
+        }
+      ],
+      "display_assets": [
+        "assets/calibration/rfdiffusion-figure.png"
+      ],
+      "rights": {
+        "status": "reference-excerpt",
+        "license": null,
+        "license_url": null,
+        "basis_url": "https://www.nature.com/articles/s41586-023-06415-8",
+        "checked": "2026-10-08",
+        "note": "Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse."
+      },
+      "curation": {
+        "replaces": "gaussian",
+        "requested_on": "2026-10-08",
+        "reason": "Replaces a two-row blob-repair cartoon with a scientifically denser geometric trajectory, multiple explicit conditions, and a visible invariant."
+      }
     },
     {
       "id": "scvelo",
@@ -718,81 +744,76 @@
       "display_figure": "Figure 1"
     },
     {
-      "id": "dna",
-      "label": "DNA self-assembly",
-      "title": "A wedge already contains a ring.",
-      "paper": "Gigadalton-scale shape-programmable DNA assemblies",
-      "authors": "Wagenbauer, Sigl & Dietz",
-      "venue": "Nature",
-      "year": 2017,
-      "figure": "Figure 1a–b",
-      "source": "https://www.nature.com/articles/nature24651",
-      "imageSource": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnature24651/MediaObjects/41586_2017_Article_BFnature24651_Fig1_HTML.jpg",
-      "evidence": "Design geometry + microscopy",
-      "look": "Follow the separated V-shaped block into the closing ring; then compare the ring with the micrograph beside it.",
-      "mechanism": "Local building-block geometry and complementary interfaces constrain the size of a self-limiting assembly.",
-      "construction": "Pull one wedge out of the ring. Expose its interfaces. Place the corresponding experimental assemblies beside it.",
-      "eye": "Repeating the same turn closes a loop: global size is built into the local part.",
-      "stronger": "A ring-size histogram reports the outcome. The exploded assembly explains why that outcome is geometrically plausible.",
-      "borrow": "If a local rule creates a global pattern, expose one part at the exact place it joins the whole.",
-      "limit": "The rendering explains the design. Microscopy supports assembly; geometry alone does not establish yield or defect rates.",
+      "id": "bioprint4d",
+      "label": "Biomimetic 4D Printing",
+      "title": "Translate a target shape into the local directions that create it.",
+      "paper": "Biomimetic 4D printing",
+      "authors": "Gladman, Matsumoto, Nuzzo, Mahadevan & Lewis",
+      "venue": "Nature Materials",
+      "year": 2016,
+      "figure": "Figure 4",
+      "display_figure": "Figure 4",
+      "source": "https://www.nature.com/articles/nmat4544",
+      "imageSource": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnmat4544/MediaObjects/41563_2016_Article_BFnmat4544_Fig4_HTML.jpg",
+      "evidence": "Target geometry, calculated print directions and photographed material deformation.",
+      "look": "Move from the natural form in a to its mathematical surface and extracted curvatures in b–c.",
+      "mechanism": "A spatially programmed print path controls anisotropic swelling; local orientation patterns are chosen so hydration bends a flat printed structure toward a desired shape.",
+      "construction": "Translate a target shape into the local directions that create it.",
+      "eye": "The flower is not decoration: its curvature becomes an orientation field, which becomes a printed structure that changes shape.",
+      "stronger": "A final-shape image shows resemblance. The sequence through curvature and print path makes the design dependency visible.",
+      "borrow": "Let one recognizable global form pass through its geometric decomposition, local program and actual physical response.",
+      "limit": "The illustrated specimen and model demonstrate the stated material/printing system, not universal shape programmability for any material or arbitrary loading condition.",
+      "commentary_origin": "MechanismFigures editorial reading of the cited publication. Replacement selected after the user retired the previous image on 2026-10-08; not an author endorsement or a new empirical result.",
       "transfer": {
         "group": "structure",
-        "move": "Expose the part that dictates the whole",
-        "when": "A repeated local interface, angle or packing rule determines a global structure.",
+        "move": "Translate a target shape into the local directions that create it.",
+        "when": "Replaces a static exploded assembly plus micrograph with a complete target → geometry → fabrication instruction → deformation argument.",
         "trace": [
-          "Look at the V-shaped module pulled out below the ring.",
-          "Follow its mating faces back into the assembly.",
-          "Compare the designed ring with the neighboring micrograph of actual assemblies."
+          "Move from the natural form in a to its mathematical surface and extracted curvatures in b–c.",
+          "Compare the two print-path directions in d with the predicted structure in e.",
+          "Read the fabricated before/after states in f as the consequence of that local programming."
         ],
-        "map": "Wedge → your repeating unit; interface → interaction rule; ring → emergent global structure; micrograph → independent observation.",
-        "keep": "Preserve the same module and interface in the exploded and assembled views. Show design and observation as different evidence types.",
+        "map": "Replace the target flower with the project’s desired geometry; replace printing orientation with the local material/control direction that causes deformation.",
+        "keep": "Keep target geometry, orientation convention, stimulus and experimental scale explicit; distinguish simulation from physical specimens.",
         "build": [
-          "Show the global structure, then extract one decisive local unit without losing its location.",
-          "Expose the interface or geometric restriction that controls repetition.",
-          "Place a matched real outcome beside the predicted structure."
+          "Represent the desired global form and the local geometric quantity needed to create it.",
+          "Make the fabrication/control field readable on the same shape or a clearly linked flattened domain.",
+          "Show the actual response under a specified stimulus alongside the predicted target."
         ],
-        "check": "Can the reader predict the global change caused by changing the local unit? Test that prediction independently.",
-        "example": "For a lattice, extract one joint to show why its permitted rotation creates the global deformation mode.",
-        "avoid": "An exploded view of arbitrary parts is not explanatory unless the decisive interaction is exposed.",
-        "pair": "kirigami"
+        "check": "Can the reader connect a local direction in the program to a region of the final curvature?",
+        "avoid": "Do not use a flower as a general symbol for growth; retain it only when its geometry is the design input.",
+        "example": "Adapt the stated operation to the project only when its mapping and evidence preserve the scientific relationship."
       },
-      "commentary_origin": "MechanismFigures design interpretation; not a quotation or endorsement by the paper authors.",
+      "visual_style": {
+        "observed": "A consistent silhouette connects nature, mathematical geometry, directional paths and a glowing physical lattice; shared contours do more work than generic arrows or prose.",
+        "apply": "Let one recognizable global form pass through its geometric decomposition, local program and actual physical response."
+      },
       "assets": [
         {
-          "path": "assets/calibration/62d8c71c-dna.jpg",
+          "path": "assets/calibration/bioprint4d-figure.jpg",
           "kind": "focused",
-          "treatment": "Publisher figure; panels a–b cropped together. Full figure available in the viewer.",
-          "sha256": "089a84fb457002edc3fa5676defd2ef9ad4c1940e7c1f31411cba0ca41007e2e",
-          "bytes": 494216,
-          "origin": "published-reference"
-        },
-        {
-          "path": "assets/calibration/dc1782e3-dna.jpg",
-          "kind": "full",
-          "treatment": "Full published figure",
-          "sha256": "c507c55387ba66f8afe8ae9c6325e1ea1fc7331e94e33f89ebd58efb87fcd410",
-          "bytes": 506178,
+          "treatment": "Unmodified publisher-hosted Figure 4.",
+          "sha256": "7cf4ff5c115165f3528e9e1f3ffecdd71571da67f4e7ce2592fb7125066a81c8",
+          "bytes": 344102,
           "origin": "published-reference"
         }
+      ],
+      "display_assets": [
+        "assets/calibration/bioprint4d-figure.jpg"
       ],
       "rights": {
         "status": "reference-excerpt",
         "license": null,
         "license_url": null,
-        "basis_url": "https://www.nature.com/articles/nature24651",
-        "checked": "2026-10-07",
-        "note": "Approved published figure included for source-specific critical visual study. Original author/publisher rights remain; the repository MIT license does not license this image or grant further republication rights. A broadly reusable image license has not been established."
+        "basis_url": "https://www.nature.com/articles/nmat4544",
+        "checked": "2026-10-08",
+        "note": "Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse."
       },
-      "approved_origin": "Previously approved grand reference gallery; original six-reference canon retained first.",
-      "visual_style": {
-        "observed": "One V-shaped unit is pulled out of a closing ring and shown from useful orientations; the neighboring micrograph checks the assembled object.",
-        "apply": "Use an exploded view only to expose the decisive interface. Keep the extracted unit traceable to the whole and put independent physical evidence beside the predicted structure."
-      },
-      "display_assets": [
-        "assets/calibration/62d8c71c-dna.jpg"
-      ],
-      "display_figure": "Figure 1a–b"
+      "curation": {
+        "replaces": "dna",
+        "requested_on": "2026-10-08",
+        "reason": "Replaces a static exploded assembly plus micrograph with a complete target → geometry → fabrication instruction → deformation argument."
+      }
     },
     {
       "id": "nerf",
@@ -933,73 +954,76 @@
       "display_figure": "Figure 1"
     },
     {
-      "id": "mega",
-      "label": "MEGA-plate evolution",
-      "title": "An evolutionary tree grows inside its obstacle course.",
-      "paper": "Spatiotemporal microbial evolution on antibiotic landscapes",
-      "authors": "Baym et al.",
-      "venue": "Science",
-      "year": 2016,
-      "figure": "Figure 1B",
-      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5534434/",
-      "imageSource": "https://www.molecularecologist.com/wp-content/uploads/2016/09/MEGA2.jpg",
-      "evidence": "Observed colony landscape + inferred ancestry overlay",
-      "look": "Move inward from either edge through the antibiotic bands; follow the branching lineages on the actual plate.",
-      "mechanism": "Adaptation unfolds while expanding populations encounter successively stronger antibiotic barriers.",
-      "construction": "Place the ancestry tree directly on the physical growth landscape, with resistance measurements and concentration bands.",
-      "eye": "Evolution has a route through space: branching and advancement occur in a structured environment, not in an abstract tree.",
-      "stronger": "A resistance-versus-time curve removes the geography. A detached tree removes the selective obstacles.",
-      "borrow": "When history depends on an environment, embed the history in that environment rather than placing it in a separate panel.",
-      "limit": "The photograph is observed; ancestry connections are inferred from video. Resistance measurements and environmental concentration are distinct quantities.",
+      "id": "diffusive-machines",
+      "label": "Diffusive Mechanical Machines",
+      "title": "Show time as a wave of changing geometry.",
+      "paper": "Diffusive kinks turn kirigami sheets into machines",
+      "authors": "Janbaz & Coulais",
+      "venue": "Nature Communications",
+      "year": 2024,
+      "figure": "Figure 5",
+      "display_figure": "Figure 5",
+      "source": "https://www.nature.com/articles/s41467-024-45602-7",
+      "imageSource": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-024-45602-7/MediaObjects/41467_2024_45602_Fig5_HTML.png",
+      "evidence": "Time-resolved physical demonstrations, linkage model and simulated deformation states.",
+      "look": "Track the white ball and the evolving row of mechanisms down the time-stamped photographs in a.",
+      "mechanism": "A relaxation-driven transition propagates through a structured sheet; coupling its local shape changes to linkages produces spatially sequenced transport and actuation.",
+      "construction": "Show time as a wave of changing geometry.",
+      "eye": "The moving object advances as the transition travels through the material; different positions are different stages of the same operation.",
+      "stronger": "A displacement-versus-time curve loses the mechanism’s location. Time-stamped specimens and the linkage cycle attach movement to the local change that produces it.",
+      "borrow": "Put measured time on the unchanged physical scene, then attach a local geometric cycle to the event it generates.",
+      "limit": "The paper’s material relaxation and loading history are essential. Photos and simulations have distinct evidential roles; the figure does not establish unrestricted autonomous actuation.",
+      "commentary_origin": "MechanismFigures editorial reading of the cited publication. Replacement selected after the user retired the previous image on 2026-10-08; not an author endorsement or a new empirical result.",
       "transfer": {
         "group": "evidence",
-        "move": "Place history inside its environment",
-        "when": "Branching, adaptation or movement depends on spatially organized obstacles or resources.",
+        "move": "Show time as a wave of changing geometry.",
+        "when": "Replaces a dense ancestry overlay with a directly observable, time-resolved mechanical consequence and its local geometric explanation.",
         "trace": [
-          "Read the antibiotic bands from the outside toward the center.",
-          "Follow a lineage as the colony expands and branches across those bands.",
-          "Keep the ancestry overlay and the photographed growth landscape in view together."
+          "Track the white ball and the evolving row of mechanisms down the time-stamped photographs in a.",
+          "Compare the sequential releases in b with the four-bar linkage in c.",
+          "Trace the stretch–relaxation–unloading cycle in e and relate it to the trajectory in d."
         ],
-        "map": "Plate → your environment; concentration band → barrier; lineage → inferred history; colony image → observed state.",
-        "keep": "Do not detach the path from its physical coordinates. Mark inferred ancestry separately from direct observation.",
+        "map": "Replace the sheet with a distributed state system, the kink with a local transition front, and the carried object with the consequence whose position matters.",
+        "keep": "Keep specimen orientation, timestamps, actuation sequence and energy/stimulus accounting; a snapshot montage is not automatically a tracked trajectory.",
         "build": [
-          "Use the environment as the base layer.",
-          "Place events and trajectories at their actual locations and stages.",
-          "Attach the relevant local measurements without replacing the environmental context."
+          "Use matched camera views with the same landmarks across time.",
+          "Expose one local mechanism at the moment it changes the observable outcome.",
+          "Link that local cycle to the space-time propagation, with measured versus simulated content clearly separated."
         ],
-        "check": "Can the reader explain where progression stalled and where it advanced? Validate event ordering and ancestry separately.",
-        "example": "For adaptive exploration, overlay the verified search trajectory and branch points on the actual obstacle or reward landscape.",
-        "avoid": "A shortest path drawn after the fact is not an observed history.",
-        "pair": "aardvark"
+        "check": "Can the reader locate the advancing transition and relate it to the transported or released object at each time?",
+        "avoid": "Do not draw a traveling wave merely to imply causation, or describe stored/relaxing energy as energy-free motion.",
+        "example": "Adapt the stated operation to the project only when its mapping and evidence preserve the scientific relationship."
       },
-      "commentary_origin": "MechanismFigures design interpretation; not a quotation or endorsement by the paper authors.",
+      "visual_style": {
+        "observed": "Repeated photographs keep the same physical stage while the event progresses; the local linkage and color-coded cycle explain the sequence instead of replacing it with a timeline alone.",
+        "apply": "Put measured time on the unchanged physical scene, then attach a local geometric cycle to the event it generates."
+      },
       "assets": [
         {
-          "path": "assets/calibration/aa6050ba-mega.jpg",
+          "path": "assets/calibration/diffusive-machines-figure.png",
           "kind": "focused",
-          "treatment": "Published Figure 1B reproduced by The Molecular Ecologist; scientific interpretation checked against the paper. Image host is secondary, not the publisher.",
-          "sha256": "8c36c1f9449e6a9ad9ec127e78078cd0f2d6bbf79f7163cf550bee263ff27dbd",
-          "bytes": 176350,
+          "treatment": "Unmodified publisher-hosted Figure 5.",
+          "sha256": "8cd85865a4d9c85dffee00f649fa794143301eb0995ac3f70c20b96ac312222b",
+          "bytes": 1741126,
           "origin": "published-reference"
         }
+      ],
+      "display_assets": [
+        "assets/calibration/diffusive-machines-figure.png"
       ],
       "rights": {
         "status": "reference-excerpt",
         "license": null,
         "license_url": null,
-        "basis_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5534434/",
-        "checked": "2026-10-07",
-        "note": "Approved published figure included for source-specific critical visual study. Original author/publisher rights remain; the repository MIT license does not license this image or grant further republication rights. A broadly reusable image license has not been established."
+        "basis_url": "https://www.nature.com/articles/s41467-024-45602-7",
+        "checked": "2026-10-08",
+        "note": "Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse."
       },
-      "approved_origin": "Previously approved grand reference gallery; original six-reference canon retained first.",
-      "visual_style": {
-        "observed": "Lineages are drawn directly on the colony photograph and concentration bands, retaining the geography in which adaptation occurred.",
-        "apply": "Let the environment carry the layout. Place histories and local measurements at their actual coordinates and keep the visual status of photographed evidence distinct from inferred ancestry."
-      },
-      "display_assets": [
-        "assets/calibration/aa6050ba-mega.jpg"
-      ],
-      "display_figure": "Figure 1B"
+      "curation": {
+        "replaces": "mega",
+        "requested_on": "2026-10-08",
+        "reason": "Replaces a dense ancestry overlay with a directly observable, time-resolved mechanical consequence and its local geometric explanation."
+      }
     },
     {
       "id": "flow",
@@ -1234,73 +1258,84 @@
       "display_figure": "Figure 1a"
     },
     {
-      "id": "gnn",
-      "label": "GNNExplainer",
-      "title": "Subtract the irrelevant routes without moving the graph.",
-      "paper": "GNNExplainer: Generating Explanations for Graph Neural Networks",
-      "authors": "Ying et al.",
-      "venue": "NeurIPS",
-      "year": 2019,
-      "figure": "Figure 2",
-      "source": "https://proceedings.neurips.cc/paper_files/paper/2019/hash/d80b7040b773199015de6d3b4293c8ff-Abstract.html",
-      "imageSource": "https://proceedings.neurips.cc/paper_files/paper/2019/file/d80b7040b773199015de6d3b4293c8ff-Paper.pdf",
-      "evidence": "Explanation-method schematic",
-      "look": "Keep the red target node fixed. Watch message routes disappear and feature entries get crossed out.",
-      "mechanism": "An explanation selects graph structure and node-feature information relevant to a model's prediction.",
-      "construction": "Repeat the same graph layout. Retain the explanatory routes; hollow out other nodes and mask feature dimensions.",
-      "eye": "The proposed explanation is a specific pathway through a specific neighborhood—not a list of important variables.",
-      "stronger": "A feature ranking discards connectivity. Fixed-layout subtraction exposes both relational and feature selection.",
-      "borrow": "To explain selection, preserve the original world and visibly remove what the explanation excludes.",
-      "limit": "This schematic illustrates a learned explanation. Relevance masks are not automatically causal interventions or ground-truth mechanisms.",
+      "id": "genomnimatte",
+      "label": "Generative Omnimatte",
+      "title": "Give an object’s nonlocal effects their own visible layer.",
+      "paper": "Generative Omnimatte: Learning to Decompose Video into Layers",
+      "authors": "Lee, Lu, Rumbley, Geyer, Huang, Dekel & Cole",
+      "venue": "CVPR",
+      "year": 2025,
+      "figure": "Figure 1; related Figure 4",
+      "display_figure": "Figure 1; related Figure 4",
+      "source": "https://gen-omnimatte.github.io/",
+      "imageSource": "https://openaccess.thecvf.com/content/CVPR2025/papers/Lee_Generative_Omnimatte_Learning_to_Decompose_Video_into_Layers_CVPR_2025_paper.pdf",
+      "evidence": "Published model outputs, object-associated layer decomposition and edited-video demonstrations.",
+      "look": "For one row in Figure 1, keep the input scene fixed while following the separated transparent layers.",
+      "mechanism": "Video is decomposed into object-associated RGBA layers that include effects such as shadows/reflections; removal-conditioned videos and a clean background support layer reconstruction.",
+      "construction": "Give an object’s nonlocal effects their own visible layer.",
+      "eye": "Removing an object must also account for what it changes elsewhere in the image; a silhouette mask is not the entire associated contribution.",
+      "stronger": "A segmentation score hides residual shadows and incomplete objects. Exploded layers and matched removal/edit results make that distinction directly inspectable.",
+      "borrow": "Make a latent decomposition spatial, then reveal its consequences through a matched edit rather than an isolated feature-importance ranking.",
+      "limit": "These are published model outputs. The authors report limits for physical interactions and difficult associations; RGBA color layers do not model every shape-changing effect.",
+      "commentary_origin": "MechanismFigures editorial reading of the cited publication. Replacement selected after the user retired the previous image on 2026-10-08; not an author endorsement or a new empirical result.",
       "transfer": {
         "group": "contrast",
-        "move": "Subtract routes without changing the world",
-        "when": "An explanation selects dependencies or features from a larger relational structure.",
+        "move": "Give an object’s nonlocal effects their own visible layer.",
+        "when": "Replaces a node/feature mask schematic with a concrete layer decomposition, visible nonlocal effects and matched scene-level interventions.",
         "trace": [
-          "Locate the red target node in both panels.",
-          "Compare the same neighborhood with and without highlighted message routes.",
-          "Inspect the crossed-out feature entries: the explanation selects information as well as edges."
+          "For one row in Figure 1, keep the input scene fixed while following the separated transparent layers.",
+          "Compare the object-removal and edited results: look beyond the foreground silhouette to its associated effects.",
+          "In related Figure 4, trace preserve/remove/uncertain trimask regions into solo videos and the common clean background."
         ],
-        "map": "Target node → prediction of interest; edges → allowable dependencies; mask → proposed explanatory subset.",
-        "keep": "Fix graph positions and target identity before and after selection. Distinguish selected importance from established causality.",
+        "map": "Replace the object with the project entity and its layer with the spatially distributed contribution supported by the model or evidence.",
+        "keep": "Keep scene identity, pixel correspondence and known/estimated content distinct. A generated counterfactual is not a real-world intervention.",
         "build": [
-          "Render the original relational structure with its target clearly identified.",
-          "Repeat that structure without re-layout.",
-          "Remove or mute the excluded routes and feature entries, retaining enough context to compare."
+          "Show the original scene and an exploded representation of the contributions without changing their coordinates.",
+          "Place a matched deletion or edit beside the decomposition so missed effects become visible.",
+          "Expose the inference/reconstruction operation and distinguish observed pixels from generatively completed regions."
         ],
-        "check": "Can the reader trace the retained pathway? Test prediction fidelity and any causal claim separately.",
-        "example": "For a dependency audit, keep a fixed software-call graph and reveal the subset actually exercised by one failure.",
-        "avoid": "Re-layout after filtering makes selection look like structural change.",
-        "pair": "alphafold"
+        "check": "Does the comparison expose effects outside the object mask, and are inferred/filled pixels labeled honestly?",
+        "avoid": "Do not equate an attention map or generative completion with causal proof; do not silently label hallucinated occluded content as observed.",
+        "example": "Adapt the stated operation to the project only when its mapping and evidence preserve the scientific relationship."
       },
-      "commentary_origin": "MechanismFigures design interpretation; not a quotation or endorsement by the paper authors.",
+      "visual_style": {
+        "observed": "Transparent, spatially aligned sheets turn a hidden decomposition into a stack the reader can inspect. Real scenes remain repeated at matched scale, and interventions make the decomposition testable by eye.",
+        "apply": "Make a latent decomposition spatial, then reveal its consequences through a matched edit rather than an isolated feature-importance ranking."
+      },
       "assets": [
         {
-          "path": "assets/calibration/4b618381-gnn.png",
+          "path": "assets/calibration/genomnimatte-figure.png",
           "kind": "focused",
-          "treatment": "Actual Figure 2 rasterized from the NeurIPS proceedings PDF.",
-          "sha256": "ca1d59b567be2a10e4a6a78196f7816fdc62d6eda205623f6d52d1e46e679067",
-          "bytes": 260887,
+          "treatment": "Actual published primary figure, rasterized from the author/proceedings PDF with MuPDF 1.26.0. Extraction: {\"source\": \"genomnimatte.pdf\", \"page_zero_based\": 0, \"crop_fraction_top_left\": [0.084, 0.275, 0.91, 0.579], \"output\": \"genomnimatte-fig1.png\", \"width\": 2601, \"height\": 1239, \"sha256\": \"e90b87bb0211b3a0d5bfd6fc0b02727a39e0e76b3d36635194612e9f7c4051f6\", \"bytes\": 3688076, \"renderer\": \"MuPDF 1.26.0; actual published figure rasterization, no redraw\"}",
+          "sha256": "e90b87bb0211b3a0d5bfd6fc0b02727a39e0e76b3d36635194612e9f7c4051f6",
+          "bytes": 3688076,
+          "origin": "published-reference"
+        },
+        {
+          "path": "assets/calibration/genomnimatte-context.png",
+          "kind": "related",
+          "treatment": "Actual published related figure, rasterized from the author/proceedings PDF with MuPDF 1.26.0. Extraction: {\"source\": \"genomnimatte.pdf\", \"page_zero_based\": 3, \"crop_fraction_top_left\": [0.084, 0.08, 0.91, 0.332], \"output\": \"genomnimatte-fig4.png\", \"width\": 2601, \"height\": 1028, \"sha256\": \"bb4d46f0cf9608edfc471246e53799ef6814a2c03258b6da0cd21ac292ded100\", \"bytes\": 804255, \"renderer\": \"MuPDF 1.26.0; actual published figure rasterization, no redraw\"}",
+          "sha256": "bb4d46f0cf9608edfc471246e53799ef6814a2c03258b6da0cd21ac292ded100",
+          "bytes": 804255,
           "origin": "published-reference"
         }
+      ],
+      "display_assets": [
+        "assets/calibration/genomnimatte-figure.png"
       ],
       "rights": {
         "status": "reference-excerpt",
         "license": null,
         "license_url": null,
-        "basis_url": "https://proceedings.neurips.cc/paper_files/paper/2019/hash/d80b7040b773199015de6d3b4293c8ff-Abstract.html",
-        "checked": "2026-10-07",
-        "note": "Approved published figure included for source-specific critical visual study. Original author/publisher rights remain; the repository MIT license does not license this image or grant further republication rights. A broadly reusable image license has not been established."
+        "basis_url": "https://gen-omnimatte.github.io/",
+        "checked": "2026-10-08",
+        "note": "Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse."
       },
-      "approved_origin": "Previously approved grand reference gallery; original six-reference canon retained first.",
-      "visual_style": {
-        "observed": "The target node and graph positions stay fixed while unselected routes become quiet and feature entries are crossed out.",
-        "apply": "Use fixed-layout subtraction. Keep the original neighborhood recognizable while selectively revealing which edges and features explain the prediction; never re-layout to make selection look like structural change."
-      },
-      "display_assets": [
-        "assets/calibration/4b618381-gnn.png"
-      ],
-      "display_figure": "Figure 2"
+      "curation": {
+        "replaces": "gnn",
+        "requested_on": "2026-10-08",
+        "reason": "Replaces a node/feature mask schematic with a concrete layer decomposition, visible nonlocal effects and matched scene-level interventions."
+      }
     },
     {
       "id": "kirigami",
@@ -1380,81 +1415,76 @@
       "display_figure": "Figure 1a–f"
     },
     {
-      "id": "topomap",
-      "label": "TopoMap",
-      "title": "Flatten the data without changing which pieces merge first.",
-      "paper": "TopoMap: A 0-dimensional Homology Preserving Projection of High-Dimensional Data",
-      "authors": "Doraiswamy et al.",
-      "venue": "IEEE VIS / TVCG",
-      "year": 2020,
-      "figure": "Figure 4; alternate Figure 2",
-      "source": "https://virtual.ieeevis.org/year/2020/paper_f-scivis-1049.html",
-      "imageSource": "https://arxiv.org/pdf/2009.01512",
-      "evidence": "Constructive algorithm schematic",
-      "look": "Follow the same colored components as they rotate and move; inspect the controlled gap before each merge.",
-      "mechanism": "The projection preserves the connected-component merge structure associated with increasing distance thresholds.",
-      "construction": "Move whole components while controlling the next joining distance. The alternate figure makes thresholds into growing balls.",
-      "eye": "Placement is constrained by the next merge event, not chosen merely to make an appealing cluster map.",
-      "stronger": "A finished embedding hides what it preserves. Showing its construction makes the invariant inspectable.",
-      "borrow": "For a preservation claim, show the transformations allowed by the invariant—and the precise event they must not change.",
-      "limit": "The guarantee concerns 0-dimensional persistence: connected components. It does not preserve all distances, loops, or higher-dimensional topology.",
+      "id": "scutoids",
+      "label": "Scutoids in Curved Tissue",
+      "title": "Let a change of neighbors become a three-dimensional shape.",
+      "paper": "Scutoids are a geometrical solution to three-dimensional packing of epithelia",
+      "authors": "Gómez-Gálvez, Vicente-Munuera, Tagua et al.",
+      "venue": "Nature Communications",
+      "year": 2018,
+      "figure": "Figure 1",
+      "display_figure": "Figure 1",
+      "source": "https://www.nature.com/articles/s41467-018-05376-1",
+      "imageSource": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-018-05376-1/MediaObjects/41467_2018_5376_Fig1_HTML.png",
+      "evidence": "Geometric packing model and constructed cell shapes; the beetle panel is a naming analogy.",
+      "look": "Compare the prism and frustum assumptions in a–b with the nested apical/basal surfaces in c.",
+      "mechanism": "Packing between differently curved apical and basal surfaces can involve neighbor exchanges along cell depth; a scutoid has a vertex arrangement that permits such a transition.",
+      "construction": "Let a change of neighbors become a three-dimensional shape.",
+      "eye": "The two surfaces need not have the same adjacency. The intermediate cell geometry explains how one tiling can connect to the other.",
+      "stronger": "A connectivity table reports neighbors but hides where they change. The nested surfaces and isolated cell shapes make the topological transition spatial.",
+      "borrow": "Show adjacency-changing structure through linked sections and one extracted local interface, not only a flattened graph.",
+      "limit": "This figure develops a geometric model and examples of packing; it does not imply every curved epithelium has one universal cell geometry. The beetle panel is a naming analogy, not mechanistic evidence.",
+      "commentary_origin": "MechanismFigures editorial reading of the cited publication. Replacement selected after the user retired the previous image on 2026-10-08; not an author endorsement or a new empirical result.",
       "transfer": {
         "group": "structure",
-        "move": "Show construction under an invariant",
-        "when": "An algorithm transforms a representation while preserving a precisely defined structure.",
+        "move": "Let a change of neighbors become a three-dimensional shape.",
+        "when": "Replaces a toy component-merging sequence with a tangible geometry in which the topological change is physically visible.",
         "trace": [
-          "Track the colored components as complete groups, not independent points.",
-          "Watch the groups rotate and translate before the next connection.",
-          "In the related ball-growth view, see that each joining event occurs at a particular distance threshold."
+          "Compare the prism and frustum assumptions in a–b with the nested apical/basal surfaces in c.",
+          "Follow the same colored cells between the two surfaces; identify which neighboring relationships change.",
+          "Inspect d and g: the extra vertex and triangular face give that neighbor transition a physical geometry."
         ],
-        "map": "Component → your preserved group; merge event → invariant relation; placement → allowed transformation; gap → constraint.",
-        "keep": "Define the invariant narrowly: this example concerns connected-component persistence, not all topology or distances.",
+        "map": "Replace epithelial layers with two linked sections of the project geometry, and colored cells with persistent elements whose adjacency changes between them.",
+        "keep": "Preserve element identity and distinguish intrinsic adjacency from distance or perspective in a projection.",
         "build": [
-          "Show the pre-transformation objects with stable identity.",
-          "Depict each allowed move and the condition it must preserve.",
-          "Expose the next critical event so the reader can inspect why the move remains valid."
+          "Place the linked boundary sections in one three-dimensional frame.",
+          "Track a few corresponding elements and expose the location of the adjacency change.",
+          "Extract the smallest local shape that permits the global connection, keeping its interfaces visible."
         ],
-        "check": "Can each step be checked against the invariant? Compute the preserved quantity before and after, including edge cases.",
-        "example": "For constrained optimization, show feasible moves and the constraint boundary that prevents an invalid shortcut.",
-        "avoid": "A visually similar endpoint is not proof of invariant preservation.",
-        "pair": "grokking"
+        "check": "Can the reader point to the vertex/face where a neighboring relationship changes through depth?",
+        "avoid": "Do not import a scutoid shape into an unrelated graph merely because topology is involved; the geometric packing relation must be real.",
+        "example": "Adapt the stated operation to the project only when its mapping and evidence preserve the scientific relationship."
       },
-      "commentary_origin": "MechanismFigures design interpretation; not a quotation or endorsement by the paper authors.",
+      "visual_style": {
+        "observed": "Persistent cell colors connect the inner/outer tilings to isolated three-dimensional pieces; translucent surfaces reveal depth without hiding the interface that changes.",
+        "apply": "Show adjacency-changing structure through linked sections and one extracted local interface, not only a flattened graph."
+      },
       "assets": [
         {
-          "path": "assets/calibration/627981ba-topomap.png",
+          "path": "assets/calibration/scutoids-figure.png",
           "kind": "focused",
-          "treatment": "Actual figures from the authors' arXiv manuscript. Presented at VIS 2020; TVCG journal issue 2021.",
-          "sha256": "d847c7821776b04fc47f34e9337a3437f2e095cf169e3e4e4fcbecb54be2c410",
-          "bytes": 399399,
-          "origin": "published-reference"
-        },
-        {
-          "path": "assets/calibration/9b9fbfab-topomap-balls.png",
-          "kind": "related",
-          "treatment": "Figure 2 · growth and merge events",
-          "sha256": "5d47814af89651a5f2008afad235ee56ee10f684d476296c9ecfe4cd49c31488",
-          "bytes": 363027,
+          "treatment": "Unmodified publisher-hosted Figure 1. Panel e beetle photograph credited in the source to Dr Nicolas Gompel; do not assume the article license overrides image-specific credit.",
+          "sha256": "728746e6727da5874328658e23d9cdafcb427a65480c5c7119f1744735bc3535",
+          "bytes": 863535,
           "origin": "published-reference"
         }
+      ],
+      "display_assets": [
+        "assets/calibration/scutoids-figure.png"
       ],
       "rights": {
         "status": "reference-excerpt",
         "license": null,
         "license_url": null,
-        "basis_url": "https://virtual.ieeevis.org/year/2020/paper_f-scivis-1049.html",
-        "checked": "2026-10-07",
-        "note": "Approved published figure included for source-specific critical visual study. Original author/publisher rights remain; the repository MIT license does not license this image or grant further republication rights. A broadly reusable image license has not been established."
+        "basis_url": "https://www.nature.com/articles/s41467-018-05376-1",
+        "checked": "2026-10-08",
+        "note": "Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse. Original Figure 1e beetle photograph is credited by the paper to Dr Nicolas Gompel, with permission; that credit is not a license for further reuse."
       },
-      "approved_origin": "Previously approved grand reference gallery; original six-reference canon retained first.",
-      "visual_style": {
-        "observed": "The same components and point identities remain visible while they move, rotate and merge at controlled distances.",
-        "apply": "Show the permitted transformations and the specific invariant they preserve. Keep identities consistent through steps and make the next merge event visibly determine placement."
-      },
-      "display_assets": [
-        "assets/calibration/627981ba-topomap.png"
-      ],
-      "display_figure": "Figure 4; alternate Figure 2"
+      "curation": {
+        "replaces": "topomap",
+        "requested_on": "2026-10-08",
+        "reason": "Replaces a toy component-merging sequence with a tangible geometry in which the topological change is physically visible."
+      }
     }
   ]
 }
