@@ -8,4 +8,4 @@ File checks and review scores are not scientific proof. A missing capability is 
 
 The optional installer copies only a declared payload, refuses modified/unmanaged targets, preserves previous managed versions, and records recovery state outside skill-discovery directories. Do not mix installation owners or force adoption of an existing Git/skills-CLI folder.
 
-Report reproducible code vulnerabilities privately through the repository owner's available contact channel; do not publish working credentials or protected research examples in an issue. For harmless usability defects, use the issue template.
+Report reproducible code vulnerabilities privately through the repository owner's available contact channel; do not publish working credentials or protected research examples in an issue. For harmless usability defects, open an issue with a non-sensitive reproduction.
