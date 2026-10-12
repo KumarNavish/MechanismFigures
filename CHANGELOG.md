@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.0 — 2026-10-12
+
+Adopt the supplied Anatomy repository standard: one root skill, standard skills-CLI/Git/ZIP routes, image-led README, original geometry/SVG and model-driven motion helpers, 1×/4× rendered capture, craft/verification guides and evaluation cases. Preserve all current reference image bytes and scientific thresholds. Legacy gallery/motion URLs redirect without introducing duplicate skill discovery. The conservative Python installer uses an explicit payload and remains available for existing managed installations.
+
 ## 0.4.0 — 2026-10-08
 
 Retired the eight references explicitly rejected by the user and replaced them with visually inspected published constructions. The other twelve references and their image hashes are unchanged; the active set remains twenty references and twenty-nine assets. Added a shared user-global installer, documented host adapters, conflict detection, version backups, interruption recovery, and a read-only doctor. Reorganized entry points for install/use/maintenance, added a portable plugin manifest and local catalog, and documented the boundary between local scope, activation and cloud-account installation. No model runner or account setting is invoked.

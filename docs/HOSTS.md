@@ -15,11 +15,11 @@ Verified against primary host documentation on **8 October 2026**. The machine-r
 
 ## ChatGPT on desktop versus web/mobile
 
-OpenAI documents standalone skills for the ChatGPT desktop app and Codex local clients, and plugin-bundled skills for Chat/Work across web, desktop and mobile. The portable package at this repository's root exposes `skills/mechanism-figures`; it needs no MCP server or model API. [Skill scope](https://learn.chatgpt.com/docs/build-skills) · [Plugin packaging and local marketplaces](https://developers.openai.com/plugins/build/plugins).
+OpenAI documents standalone skills for the ChatGPT desktop app and Codex local clients, and plugin-bundled skills for Chat/Work across web, desktop and mobile. The generated plugin archive wraps the root skill under `skills/mechanism-figures`; the repository itself exposes one root `SKILL.md` and needs no MCP server or model API. [Skill scope](https://learn.chatgpt.com/docs/build-skills) · [Plugin packaging and local marketplaces](https://developers.openai.com/plugins/build/plugins).
 
-The repository marketplace is `.agents/plugins/marketplace.json`. In a supported local authoring environment, use this repository as the marketplace root and review the plugin in the desktop Plugins Directory. The entry is **available**, not silently installed or enabled. Restart/refresh when required by the host. The installer never edits `~/.agents/plugins/marketplace.json`, `config.toml` or account policy.
+The root repository is now a standard **skill**, not a directly installable local marketplace. The optional plugin ZIP builder places the same payload under `skills/mechanism-figures` inside a separate plugin package. Use that generated archive only through a supported account/workspace flow. The root `plugin.json` is maintainer packaging metadata; no marketplace or account is silently enabled.
 
-Local marketplace discovery, workspace publication and universal public-directory publication are different states. This repository and release are public on GitHub; **that alone is not a public-directory listing or an account-wide installation**. No account-wide installation is claimed unless the provider confirms it. The plugin package is ready for the provider's supported import/review/publication flow, subject to source-image rights and provider review.
+GitHub publication and a portable ZIP are not a public plugin-directory listing or account-wide installation. No account activation is claimed without provider confirmation. Local CLI/Git discovery and account installation remain separate.
 
 ## Claude account skills and other cloud clients
 
@@ -27,7 +27,7 @@ Claude's account skill management and synchronization are separate from local au
 
 ## Any other capable agent
 
-Use the standard `skills/mechanism-figures/` folder in that host's supported personal-skill location, or explicitly tell it to read `SKILL.md` and open the referenced images. No undocumented global search path is invented. An agent without image-viewing/file capabilities must report that missing capability; a text-only summary cannot be certified as visual calibration.
+Install the repository's root skill payload in that host's supported personal-skill location, or explicitly tell it to read `SKILL.md` and open the referenced images. No undocumented global search path is invented. An agent without image-viewing/file capabilities must report that missing capability; a text-only summary cannot be certified as visual calibration.
 
 ## What “always learn from the style” means
 

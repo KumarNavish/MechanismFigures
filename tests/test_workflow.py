@@ -12,7 +12,7 @@ import unittest
 import zlib
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILL = ROOT / 'skills/mechanism-figures'
+SKILL = ROOT
 sys.path.insert(0, str(SKILL / 'scripts'))
 from _contract import ValidationError, digest, load_json, preflight, snapshot, svg_checks, validate_contract
 from _review import blank_review, evaluate_review, gate, rubric

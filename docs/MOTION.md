@@ -1,6 +1,6 @@
 # Motion walkthrough
 
-The gallery now contains an authored, 60-second explanation and a standalone `skills/mechanism-figures/assets/motion.html`. It is editorial motion, not an agent execution, research experiment, or generated-output claim.
+The gallery now contains an authored, 60-second explanation and a standalone `assets/motion.html`. It is editorial motion, not an agent execution, research experiment, or generated-output claim.
 
 ## Narrative
 

@@ -8,7 +8,7 @@ import re
 import sys
 
 ROOT=Path(__file__).resolve().parents[1]
-SKILL=ROOT/'skills/mechanism-figures'
+SKILL=ROOT
 EXCLUDED={'.git','.work','.build','.local-calibration','__pycache__'}
 
 
@@ -44,7 +44,7 @@ def audit():
     skill=(SKILL/'SKILL.md').read_text()
     if not skill.startswith('---\n') or len(skill.splitlines())>=500:errors.append('Invalid/oversized skill entry point')
     match=re.search(r'^name: (.+)$',skill,re.M)
-    if not match or match[1]!=SKILL.name:errors.append('Skill name does not match directory')
+    if not match or match[1]!='mechanism-figures':errors.append('Skill name does not match directory')
     for field,limit in [('description',1024),('compatibility',500)]:
         m=re.search(r'^'+field+r': (.+)$',skill,re.M)
         if not m or not 0<len(m[1])<=limit:errors.append('Invalid frontmatter '+field)

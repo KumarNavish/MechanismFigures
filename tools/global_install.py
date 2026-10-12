@@ -10,10 +10,10 @@ import shutil
 import sys
 import uuid
 
-from install import SOURCE, NAME, MARKER, inventory
+from install import SOURCE, NAME, MARKER, inventory, copy_payload
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = '0.4.0'
+VERSION = '0.5.0'
 PROFILES = json.loads((Path(__file__).parent/'agent_hosts.json').read_text())
 
 
@@ -109,7 +109,7 @@ def plan(home, agents='all', update=False, mode='auto', source=SOURCE):
 
 
 def build_tree(source, dest, expected):
-    shutil.copytree(source,dest,ignore=shutil.ignore_patterns('__pycache__','*.pyc','.DS_Store',MARKER))
+    copy_payload(source,dest,expected)
     if inventory(dest)!=expected:raise ValueError('Staged copy does not match source')
     atomic_json(dest/MARKER,{'schema_version':1,'version':VERSION,'files':expected})
 

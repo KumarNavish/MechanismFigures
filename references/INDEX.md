@@ -10,3 +10,14 @@
 | What files are required | `../assets/templates/figure.json`, `artifacts.md` | Reproducible handoff, not a screenshot alone. |
 
 Do not read every case. Do not route installation or account-sync issues into scientific reasoning. Global setup is documented at the repository's `docs/INSTALL.md` and `docs/HOSTS.md`.
+
+## Construction and rendered craft
+
+| Need | Load |
+|---|---|
+| Inventory entities, joins and the visual world | [craft.md](craft.md) |
+| Use the optional original geometry/SVG helpers | [kit.md](kit.md) |
+| Connect scientific state to honest motion | [motion.md](motion.md) |
+| Capture and inspect final-size and 4× detail | [verify.md](verify.md) |
+
+The published cases remain the visual standard. The kit is an implementation aid, not a replacement reference gallery.

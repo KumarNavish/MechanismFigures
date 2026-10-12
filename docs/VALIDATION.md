@@ -1,4 +1,12 @@
-# Validation scope — v0.4.0
+# Validation scope — v0.5.0
+
+## Root-skill distribution and craft tools
+
+The repository has one root SKILL.md, an original bounded SVG/geometry kit, a pure-state presentation helper, and a 1x/4x browser capture tool. The existing review policy and all twenty-nine published image bytes are unchanged. The legacy website paths redirect; they are not duplicate skill definitions.
+
+135 Python regressions passed in isolation and in GitHub CI on Python 3.9 and 3.12. The standard skills 1.7.2 installer found exactly one skill and successfully installed the selected Codex, Claude Code and OpenCode routes in an isolated Linux user. Codex and OpenCode share the .agents path; Claude Code has its own copy. All image hashes and review-helper execution were verified after installation. No model-backed host was launched; file discovery is not runtime or cloud-account activation.
+
+The capture helper ran on an existing Chrome in the hosted CI environment without sandbox-disabling flags. It produced a full view and four 4x tiles for a test-only fixture, a published 4D-printing reference card, and the existing walkthrough at a fixed time. Browser diagnostics found no broken images or runtime errors; the PNGs were retained for separate visual inspection. Test fixtures are not scientific results or positive calibration examples.
 
 ## Curation
 
