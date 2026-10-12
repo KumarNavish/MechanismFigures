@@ -1,0 +1,26 @@
+name: Apply verified root skill layout
+on:
+  push:
+    branches: [work/anatomy-standard]
+    paths: [.github/migrations/**, .github/workflows/root-migration.yml]
+permissions:
+  contents: read
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Apply exact source migration and test it
+        run: python3 .github/migrations/root-layout.py
+      - name: Require the locally tested Git tree, then commit only on the work branch
+        run: |
+          git add -A
+          ACTUAL=$(git write-tree)
+          test "$ACTUAL" = '42cdedb0783e1220d3d133050728c34642db6b96'
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Apply verified Anatomy-standard root skill layout'
+          git push origin HEAD:work/anatomy-standard
+          echo "Verified tree: $ACTUAL"

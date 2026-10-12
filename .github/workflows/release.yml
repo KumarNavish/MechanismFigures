@@ -1,0 +1,26 @@
+name: Publish versioned skill packages
+on:
+  push:
+    branches: [main]
+    paths: [VERSION]
+permissions:
+  contents: read
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - run: python3 -m unittest discover -s tests -q && python3 tools/check_repo.py
+      - run: python3 tools/package.py --kind skill && python3 tools/package.py --kind plugin
+      - name: Publish a new immutable version name without overwriting an existing release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION=$(cat VERSION)
+          if gh release view "v$VERSION" >/dev/null 2>&1; then
+            echo 'Release already exists; refusing to replace its assets.'
+            exit 1
+          fi
+          gh release create "v$VERSION" .build/*v"$VERSION".zip .build/*v"$VERSION".zip.sha256 --target "$GITHUB_SHA" --title "MechanismFigures v$VERSION" --notes "Anatomy-standard root skill, standard installation, published visual calibration, original construction helpers, and rendered 1x/4x verification. See README and docs/ANATOMY_STANDARD.md. Reference image bytes and scientific review thresholds are unchanged. Local files do not imply account-wide activation or proven cross-agent quality."

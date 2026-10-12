@@ -1,32 +1,33 @@
 # Start here
 
-## Install once
+## Install the standard skill
 
-```bash
-python3 install.py --global --agents all
-python3 install.py --doctor
+```sh
+npx skills add KumarNavish/MechanismFigures -g -a codex
 ```
 
-Updating an existing managed installation: `python3 install.py --global --agents all --update`.
+Use `-a claude-code` or `-a opencode` for those hosts. Then request `$mechanism-figures` in Codex, `/mechanism-figures` in Claude Code, or use the host’s skill picker.
 
-This installs one user-level skill and the required host adapters. It does not modify global prompts, launch agents, or upload to web/mobile accounts. [Exact scope, supported hosts and recovery](docs/INSTALL.md).
+The repository **is** the skill: one root [SKILL.md](SKILL.md), with the kit, references, assets and scripts beside it. Direct Git clone and ZIP installation also work. Existing Python-managed users should use the explicit safe update path in [INSTALL.md](docs/INSTALL.md), not overwrite their folder with a different installer.
 
-## Use it in a scientific project
+## Give the agent four inputs
 
 ```text
-Use mechanism-figures for this figure.
-Context: …
-Mechanism/result: …
-Evidence/data: …
+Use mechanism-figures.
+Project context: …
+Mechanism or result: …
+Data and evidence: …
 Output constraints: …
 ```
 
-The agent starts at [SKILL.md](skills/mechanism-figures/SKILL.md), opens two actual images, states a project-specific visual mapping, builds, inspects and revises. [Gallery](skills/mechanism-figures/assets/gallery.html) · [60-second walkthrough](skills/mechanism-figures/assets/motion.html).
+The agent follows [SKILL.md](SKILL.md), opens two actual published figures, identifies the visual world and parts, implements from evidence, inspects the real render at 1× and 4×, and repairs it before review.
 
-## Distribute across products
+[Gallery](assets/gallery.html) · [Motion walkthrough](assets/motion.html) · [Craft](references/craft.md) · [Quality gate](references/critique.md).
 
-The repository is a portable skill **and** a minimal Agent Plugins package. [Account/cloud setup](docs/HOSTS.md) explains what a local installation cannot do. GitHub publication is not a universal plugin-directory listing.
+## Scope
 
-## Maintain or evaluate
+Global means this local user across projects, not every cloud account or guaranteed automatic invocation in every chat. The standalone skill and optional generated plugin archive have separate installation routes. [Host boundaries](docs/HOSTS.md).
 
-[Architecture and sources of truth](docs/MAINTAINING.md) · [Curation decisions](docs/CURATION.md) · [Independent evaluation protocol](benchmarks/PROTOCOL.md).
+## Maintain
+
+[Repository standards adapted from Anatomy](docs/ANATOMY_STANDARD.md) · [Maintainer guide](docs/MAINTAINING.md) · [Evaluation protocol](benchmarks/PROTOCOL.md).
