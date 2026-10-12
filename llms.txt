@@ -7,11 +7,17 @@
 - [Global installation](docs/INSTALL.md)
 - [Agent hosts and account boundaries](docs/HOSTS.md)
 
+## Craft and implementation
+- [Craft](references/craft.md)
+- [Construction kit](references/kit.md)
+- [Rendered verification](references/verify.md)
+- [Anatomy adaptation](docs/ANATOMY_STANDARD.md)
+
 ## Use
-- [Skill entry](skills/mechanism-figures/SKILL.md)
-- [Progressive navigation](skills/mechanism-figures/references/INDEX.md)
-- [Current figure index](skills/mechanism-figures/references/calibration-index.md)
-- [Quality rubric](skills/mechanism-figures/references/critique.md)
+- [Skill entry](SKILL.md)
+- [Progressive navigation](references/INDEX.md)
+- [Current figure index](references/calibration-index.md)
+- [Quality rubric](references/critique.md)
 
 ## Evidence and maintenance
 - [Curation](docs/CURATION.md)

@@ -13,7 +13,7 @@ import statistics
 import sys
 
 ROOT=Path(__file__).resolve().parents[1]
-sys.path.insert(0,str(ROOT/'skills/mechanism-figures/scripts'))
+sys.path.insert(0,str(ROOT/'scripts'))
 from _contract import ValidationError, local_file
 from _review import gate
 

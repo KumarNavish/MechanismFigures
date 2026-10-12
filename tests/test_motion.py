@@ -7,7 +7,7 @@ import re
 import unittest
 
 ROOT=Path(__file__).resolve().parents[1]
-SKILL=ROOT/'skills/mechanism-figures'
+SKILL=ROOT
 
 
 class MotionHTML(HTMLParser):

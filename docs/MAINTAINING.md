@@ -4,13 +4,13 @@
 
 | Concern | Edit here | Generated/read-only outputs |
 |---|---|---|
-| Entry workflow | `skills/mechanism-figures/SKILL.md` | Loaded only when selected. |
-| Scientific case, original asset, provenance and style | `skills/mechanism-figures/assets/calibration.json` | `references/cases/*.md`, gallery, credit documents. |
+| Entry workflow | `SKILL.md` | Loaded only when selected. |
+| Scientific case, original asset, provenance and style | `assets/calibration.json` | `references/cases/*.md`, gallery, credit documents. |
 | Current selection and retired references | `assets/approved-canon.json` within the skill | Curation audit tests. `docs/curation-2026-10-08.json` preserves the change rationale. |
 | Review policy | `assets/rubric.json` and `references/critique.md` | Hash-bound reviews; do not change thresholds after seeing evaluation results. |
 | Host discovery routes | `tools/agent_hosts.json` | Global installer/doctor, documented scope. |
 | Motion | `tools/motion.*`, `tools/build_motion.py` | `assets/motion.html`, `assets/motion-story.json`, embedded gallery section. |
-| Distribution | `plugin.json`, `.agents/plugins/marketplace.json`, `tools/package.py` | Skill ZIP, plugin ZIP and checksums. |
+| Distribution | `plugin.json` (generated-plugin metadata), `tools/package.py` | Skill ZIP, plugin ZIP and checksums. |
 
 ## Local validation
 
@@ -26,7 +26,7 @@ Use `--home` pointing to an isolated temporary directory for installer smoke tes
 
 ## Agent context budget
 
-Installation docs stay outside the active scientific workflow. The skill loads only the input/decision guide, review policy and two relevant cases; it does not preload twenty figure explanations. New requirements belong at the decision where they matter, not in a giant always-on prompt. [Agent navigation index](../skills/mechanism-figures/references/INDEX.md).
+Installation docs stay outside the active scientific workflow. The skill loads only the input/decision guide, review policy and two relevant cases; it does not preload twenty figure explanations. New requirements belong at the decision where they matter, not in a giant always-on prompt. [Agent navigation index](../references/INDEX.md).
 
 ## Image and scientific safety
 
@@ -37,3 +37,9 @@ When changing the selection, record the request, explicit old/new IDs, retained 
 ## Releases
 
 Set the package version consistently. Build both archives, inspect their manifests and hashes, test fresh installation, run unit and rendered browser checks, then publish the exact tested commit. Confirm the remote commit, GitHub Actions result, live gallery bytes and release checksums. Do not overwrite an uncertain release mutation without reconciling its original receipt.
+
+## Root skill standard
+
+One source tree is installable by standard skills CLI, direct Git clone or ZIP: root `SKILL.md`, `kit/`, `references/`, `assets/`, `scripts/`, `agents/`, `evals/`. Keep only legacy website redirects under `skills/mechanism-figures`; do not add a second nested `SKILL.md`. `tools/install.py` inventories an explicit payload so private `.git`, `.work`, caches and jobs are never copied.
+
+The gallery/motion reader retains its independent curation edition while packaging versions advance. Canon image hashes and scientific review thresholds remain unchanged by this layout migration.
