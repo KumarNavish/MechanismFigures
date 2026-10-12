@@ -1,0 +1,34 @@
+name: Migration source snapshot
+on:
+  push:
+    branches: [work/anatomy-standard]
+    paths: [.github/workflows/source-snapshot.yml]
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Archive public source only
+        run: |
+          mkdir -p "$RUNNER_TEMP/exports"
+          git archive --format=tar HEAD > "$RUNNER_TEMP/exports/mechanism-source.tar"
+          git rev-parse HEAD > "$RUNNER_TEMP/exports/mechanism-source.sha"
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: wheresryan22/anatomy
+          ref: 689dcf966e63d92be10a5d593c6e19e10acd4422
+          path: reference-source
+          persist-credentials: false
+      - name: Archive reference without executing its code
+        run: |
+          git -C reference-source archive --format=tar HEAD > "$RUNNER_TEMP/exports/anatomy-source.tar"
+          git -C reference-source rev-parse HEAD > "$RUNNER_TEMP/exports/anatomy-source.sha"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: migration-source
+          path: ${{ runner.temp }}/exports/
+          retention-days: 2
