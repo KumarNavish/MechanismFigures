@@ -1,0 +1,45 @@
+name: Verify published release and gallery
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/scripts/verify_publication.py
+      - .github/workflows/verify-publication.yml
+      - tests/test_publication_verification.py
+  release:
+    types: [published]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Read the published release and download its exact assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          VERSION=$(cat VERSION)
+          [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          TAG="v$VERSION"
+          mkdir -p "$RUNNER_TEMP/published-packages" "$RUNNER_TEMP/publication-report"
+          gh api "repos/$GITHUB_REPOSITORY/releases/tags/$TAG" > "$RUNNER_TEMP/publication-report/release.json"
+          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" --dir "$RUNNER_TEMP/published-packages" --pattern "*v$VERSION.zip" --pattern "*v$VERSION.zip.sha256"
+          git fetch --depth=1 origin "refs/tags/$TAG:refs/tags/$TAG"
+          RELEASE_COMMIT=$(git rev-parse "$TAG^{commit}")
+          python3 .github/scripts/verify_publication.py \
+            --packages "$RUNNER_TEMP/published-packages" \
+            --metadata "$RUNNER_TEMP/publication-report/release.json" \
+            --release-commit "$RELEASE_COMMIT" \
+            --out "$RUNNER_TEMP/publication-report/verification.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: publication-verification
+          path: ${{ runner.temp }}/publication-report/
+          retention-days: 14
+          if-no-files-found: error
