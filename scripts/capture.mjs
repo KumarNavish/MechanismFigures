@@ -35,7 +35,7 @@ const candidates=[process.env.CHROME_PATH,'/usr/bin/google-chrome','/usr/bin/chr
 const executable=candidates.find(p=>fs.existsSync(p));
 if (!executable) throw new Error('No installed Chrome found. Set CHROME_PATH. No browser is downloaded.');
 const temp=fs.mkdtempSync(path.join(os.tmpdir(),'mf-capture-'));
-let browser,ws,sid,serial=0;const pending=new Map(),errors=[],requests=[];
+let browser,browserClosed,ws,sid,serial=0;const pending=new Map(),errors=[],requests=[];
 const sha=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 function command(method,params={},sessionId=sid) {
   return new Promise((resolve,reject)=>{const id=++serial,timer=setTimeout(()=>{pending.delete(id);reject(new Error('CDP timeout: '+method));},20000);pending.set(id,{resolve,reject,timer});ws.send(JSON.stringify({id,method,params,...(sessionId?{sessionId}:{})}));});
@@ -47,6 +47,7 @@ async function evaluate(expression) {
 }
 try {
   browser=spawn(executable,['--headless=new','--remote-debugging-port=0','--user-data-dir='+temp,'--no-first-run','--disable-extensions','--disable-background-networking','--disable-sync','about:blank'],{stdio:['ignore','ignore','pipe']});
+  browserClosed=new Promise(resolve=>browser.once('close',resolve));
   const endpoint=await new Promise((resolve,reject)=>{let log='';const timer=setTimeout(()=>reject(new Error('Browser did not start; use an allowed host, not weaker sandbox settings. '+log.slice(-500))),15000);browser.on('error',e=>{clearTimeout(timer);reject(e);});browser.stderr.on('data',b=>{log+=b;const m=log.match(/DevTools listening on (ws:\/\/[^\s]+)/);if(m){clearTimeout(timer);resolve(m[1]);}});browser.on('exit',code=>{clearTimeout(timer);if(!log.includes('DevTools listening'))reject(new Error('Browser exited '+code+': '+log.slice(-500)));});});
   ws=new WebSocket(endpoint);await new Promise((resolve,reject)=>{ws.addEventListener('open',resolve,{once:true});ws.addEventListener('error',reject,{once:true});});
   ws.addEventListener('message',e=>{const m=JSON.parse(e.data),p=pending.get(m.id);if(p){pending.delete(m.id);clearTimeout(p.timer);m.error?p.reject(new Error(JSON.stringify(m.error))):p.resolve(m.result);}if(m.method==='Runtime.exceptionThrown')errors.push(m.params.exceptionDetails.text);if(m.method==='Network.requestWillBeSent')requests.push(m.params.request.url);});
@@ -79,6 +80,15 @@ try {
 finally {
   if(ws&&ws.readyState===WebSocket.OPEN){try{await command('Browser.close',{},null);}catch{}ws.close();}
   for(const p of pending.values())clearTimeout(p.timer);
-  if(browser&&browser.exitCode===null)browser.kill('SIGTERM');
-  await new Promise(r=>setTimeout(r,150));fs.rmSync(temp,{recursive:true,force:true,maxRetries:3,retryDelay:100});
+  // Browser.close replies before Chrome has finished writing its profile.
+  // Let it exit gracefully before deleting the directory it still owns.
+  async function waitForBrowserClose(){
+    let timer;
+    try{return await Promise.race([browserClosed.then(()=>true),new Promise(resolve=>{timer=setTimeout(()=>resolve(false),5000);})]);}
+    finally{clearTimeout(timer);}
+  }
+  let closed=!browser||await waitForBrowserClose();
+  if(!closed){browser.kill('SIGTERM');closed=await waitForBrowserClose();}
+  if(closed)await fs.promises.rm(temp,{recursive:true,force:true,maxRetries:3,retryDelay:100});
+  else{console.error('Browser has not closed; retained its profile at '+temp);process.exitCode=2;}
 }
