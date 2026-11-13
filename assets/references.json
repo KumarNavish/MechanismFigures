@@ -1,0 +1,2045 @@
+{
+ "schema_version": 2,
+ "note": "All images are published figures or crops of them. No image is generated.",
+ "retired_ids": [
+  "alphadev",
+  "dna",
+  "gaussian",
+  "gnn",
+  "grokking",
+  "mega",
+  "mipnerf",
+  "topomap"
+ ],
+ "moves": {
+  "cutaway": {
+   "name": "Cutaway",
+   "shows": "An operation inside a closed body."
+  },
+  "exploded": {
+   "name": "Exploded view",
+   "shows": "How parts join."
+  },
+  "layers": {
+   "name": "Layer stack",
+   "shows": "A sequence of layers."
+  },
+  "ghost": {
+   "name": "Ghost and focus",
+   "shows": "One active part in a large assembly."
+  },
+  "sequence": {
+   "name": "Fixed-camera sequence",
+   "shows": "A change of state, shape or time."
+  },
+  "unroll": {
+   "name": "Unroll pair",
+   "shows": "The logic of a curved surface."
+  },
+  "rays": {
+   "name": "Ray trace",
+   "shows": "Sampling, projection or transport through a volume."
+  },
+  "field": {
+   "name": "Field on geometry",
+   "shows": "A quantity on a surface or in a volume."
+  },
+  "zoom": {
+   "name": "Linked zoom",
+   "shows": "A local rule that gives a global result."
+  },
+  "state-space": {
+   "name": "State-space geometry",
+   "shows": "Dynamics, optimisation or invariance."
+  },
+  "index": {
+   "name": "Index to geometry",
+   "shows": "What an index or tensor refers to."
+  },
+  "inverse": {
+   "name": "Target to consequence",
+   "shows": "An inverse design."
+  },
+  "counterfactual": {
+   "name": "Matched counterfactual",
+   "shows": "The effect of one intervention."
+  },
+  "loop": {
+   "name": "Loop through one object",
+   "shows": "A feedback or training cycle."
+  },
+  "block": {
+   "name": "Block diagram",
+   "shows": "A process in a landscape or a medium."
+  }
+ },
+ "references": [
+  {
+   "id": "photonic-braids",
+   "label": "Reconfigurable Photonic Braids",
+   "title": "Give an algebraic operation a traversable physical route.",
+   "paper": "Reconfigurable non-Abelian integrated photonics",
+   "authors": "Sun et al.",
+   "venue": "Nature Communications",
+   "year": 2025,
+   "figure": "Figure 1",
+   "source": "https://www.nature.com/articles/s41467-025-62481-8",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-025-62481-8/MediaObjects/41467_2025_62481_Fig1_HTML.png",
+   "dim": "3d",
+   "moves": [
+    "layers",
+    "exploded",
+    "zoom",
+    "index"
+   ],
+   "mechanism": "A tunable photonic building block implements mode transformations through ordered couplings; connected blocks realize reconfigurable braiding operations.",
+   "trace": [
+    "Trace one input waveguide through the layered chip rather than beginning with the matrix notation.",
+    "Zoom into b: follow steps I, II and III through the coupling regions and the auxiliary path.",
+    "Map that repeated physical block to the compact operation sequence in c."
+   ],
+   "lesson": "Gray waveguides establish the substrate, blue/red distinguish layers and couplings, and gold control traces connect visible electrodes to precise regions. A close-up resolves the local operation before a compact algebraic summary.",
+   "borrow": "Place the operator on the substrate that carries it; use an enlarged local view to make the global algebra physically traceable.",
+   "check": "Can the reader identify which local control changes which state transformation, and trace the order of composed operations?",
+   "avoid": "Do not interpret a drawn crossing as literal mode exchange without the coupling model; a braid-like shape alone is not evidence of non-Abelian behavior.",
+   "limit": "This is a device/operation schematic. The non-Abelian claim and reconfiguration performance rely on the paper’s model and measurements, not the appearance of crossed lines.",
+   "approval": "curator selection of 2026-10-08",
+   "rights": {
+    "status": "reference-excerpt",
+    "license": null,
+    "license_url": null,
+    "basis_url": "https://www.nature.com/articles/s41467-025-62481-8",
+    "note": "Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/photonic-braids-figure.png",
+     "kind": "focused",
+     "sha256": "d9974026ea481171298db705f09c84f1f4cf09c6bbac56ddeed271c355a4a6be",
+     "bytes": 1219205,
+     "note": "Unmodified publisher-hosted Figure 1."
+    }
+   ]
+  },
+  {
+   "id": "plenoxels",
+   "label": "Plenoxels",
+   "title": "A ray crosses a voxel grid, and each sample blends the eight corners of its voxel.",
+   "paper": "Plenoxels: Radiance Fields without Neural Networks",
+   "authors": "Fridovich-Keil, Yu et al.",
+   "venue": "CVPR",
+   "year": 2022,
+   "figure": "Method overview figure",
+   "source": "https://arxiv.org/abs/2112.05131",
+   "image_source": "https://arxiv.org/e-print/2112.05131",
+   "dim": "3d",
+   "moves": [
+    "rays",
+    "zoom"
+   ],
+   "mechanism": "A scene is a sparse grid of voxels. Each grid corner stores a density and spherical-harmonic coefficients. A sample on a camera ray reads a trilinear blend of the eight corners round it, and the samples on the ray integrate to one pixel colour.",
+   "trace": [
+    "Panel a: follow the ray from the camera through the training image into the sparse grid. One voxel is solid blue.",
+    "Panel b: that voxel, enlarged. The orange arrows bring the values of the eight corners to the sample on the ray.",
+    "Panel c: the samples on the ray become a density curve and one predicted colour."
+   ],
+   "lesson": "One ray is the persistent object. It keeps its direction and its style from the scene, to the enlarged voxel, to the plot. The zoom is a blue cone that starts at the marked voxel. The grid is dots and dashes, so it gives structure and no clutter.",
+   "borrow": "Carry one sample through the full method. Keep its line in the same direction in each panel. Enlarge the one cell where the operation occurs, and join the two views with a cone.",
+   "check": "Can the reader follow one line from the input to the output with no break?",
+   "limit": "The right third is flat and holds a formula. The figure shows one ray. The optimisation over all rays is one line of text.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://arxiv.org/abs/2112.05131",
+    "note": "The arXiv abstract page states CC BY 4.0. The image is a raster of the vector figure in the arXiv source."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/plenoxels.png",
+     "kind": "full figure",
+     "sha256": "1e0b601f1e1c057167e9cbcd536563611078b02d57b5b85d5a84c59a32e88089",
+     "bytes": 388250,
+     "note": "Raster at 2800 pixels wide of the vector file figures/overview.pdf in the arXiv source. Not redrawn."
+    }
+   ]
+  },
+  {
+   "id": "flagellar-stator",
+   "label": "Flagellar motor stator",
+   "title": "With the stator in place, protons flow and the stator grips the rotor ring.",
+   "paper": "Structural insights into flagellar stator–rotor interactions",
+   "authors": "Chang et al.",
+   "venue": "eLife",
+   "year": 2019,
+   "figure": "Figure 5",
+   "source": "https://elifesciences.org/articles/48979",
+   "image_source": "https://cdn.elifesciences.org/articles/48979/elife-48979-fig5-v3.tif",
+   "dim": "3d",
+   "moves": [
+    "counterfactual",
+    "cutaway",
+    "zoom"
+   ],
+   "mechanism": "Sixteen stator units insert between the collar and the C-ring of the motor. Protons go through each stator, and the stator touches the FliG ring of the rotor, where the torque is made.",
+   "trace": [
+    "Compare the top row (no stator, ΔmotB) with the bottom row (wild type). The yellow stator units appear in the bottom row only.",
+    "Columns C and G: a cut through the motor. In G, follow the arrow of H+ through the stator.",
+    "Columns D and H: the C-ring from the side. In H, the stator touches the green ring."
+   ],
+   "lesson": "Two rows and four cameras that are the same in each row. The intervention has one colour, yellow, and it is absent in the top row. A background tint names the condition of each row. The zoom goes from the whole, to the cut, to the contact.",
+   "borrow": "Put a mutant or an ablation in the top row and the full system in the bottom row. Keep the cameras the same. Give the added part one colour.",
+   "check": "Is the added part the only difference between the rows?",
+   "limit": "The maps are densities from electron tomography of cells. The proton path is an interpretation.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://elifesciences.org/articles/48979#info",
+    "note": "The article page and the Crossref record state CC BY 4.0. Figure captions were not checked for third-party exceptions."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/flagellar-stator.jpg",
+     "kind": "full figure",
+     "sha256": "c96d8291f4ce6542fef570a3fd897f3b8336b8381669b3c4e1b735c420d6225d",
+     "bytes": 587070,
+     "note": "JPEG conversion of the eLife TIFF of Figure 5."
+    }
+   ]
+  },
+  {
+   "id": "azores-dike",
+   "label": "São Jorge dike intrusion",
+   "title": "Magma rises from the mantle along an old fault and stalls below the island.",
+   "paper": "Fault-mediated magma propagation and triggered seismicity revealed by the 2022 São Jorge Azores unrest",
+   "authors": "Hicks et al.",
+   "venue": "Nature Communications",
+   "year": 2026,
+   "figure": "Figure 7",
+   "source": "https://www.nature.com/articles/s41467-026-71668-6",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-026-71668-6/MediaObjects/41467_2026_71668_Fig7_HTML.png",
+   "dim": "3d",
+   "moves": [
+    "block"
+   ],
+   "mechanism": "Melt collects in the mantle. A dike opens and rises fast through a fault zone that was there before. It stalls at the base of the island, and fluids that escape from it cause earthquakes along the fault.",
+   "trace": [
+    "Read the block: the island surface is on top, and the depth scale is on the right edge.",
+    "Follow the green numbers 1 to 7 from the bottom to the top. The dashed arrows show the rise of the dike.",
+    "The question marks show what the data does not fix."
+   ],
+   "lesson": "One block joins the map view and the section. Numbers give the sequence of events inside the space. The orange body is the one saturated shape. Question marks keep the uncertain parts honest.",
+   "borrow": "Cut a block. Put the process on its faces. Number the events in time sequence. Mark what is not certain.",
+   "check": "Can the reader tell the sequence with no caption, and tell the certain from the uncertain?",
+   "limit": "An interpretation. The depth axis is not linear. The labels are many and long.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://www.nature.com/articles/s41467-026-71668-6#rightslink",
+    "note": "The article page and the Crossref record state CC BY 4.0. Figure captions were not checked for third-party exceptions."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/azores-dike.png",
+     "kind": "full figure",
+     "sha256": "767c575481fdd5e880e9c40906acfea74e1b7942596a125a65e312f0a63f7eb1",
+     "bytes": 1351375,
+     "note": "Publisher file of Figure 7, not changed."
+    }
+   ]
+  },
+  {
+   "id": "loterie-vam",
+   "label": "Tomographic volumetric printing",
+   "title": "Light patterns from many angles add up to a solid part inside a rotating vial.",
+   "paper": "High-resolution tomographic volumetric additive manufacturing",
+   "authors": "Loterie, Delrot and Moser",
+   "venue": "Nature Communications",
+   "year": 2020,
+   "figure": "Figure 1",
+   "source": "https://www.nature.com/articles/s41467-020-14630-4",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-020-14630-4/MediaObjects/41467_2020_14630_Fig1_HTML.png",
+   "dim": "3d",
+   "moves": [
+    "rays",
+    "ghost"
+   ],
+   "mechanism": "A modulator sends a different light pattern into a rotating vial of resin for each angle. The dose adds up in the volume and the part becomes solid. A second beam at 90 degrees observes the part.",
+   "trace": [
+    "Start at the DLP modulator at the left. Follow the blue beam through the two lenses to the vial.",
+    "Look at the strip of projections below the modulator: one pattern for each angle of the vial.",
+    "Find the part inside the yellow resin. Then follow the red beam to the camera, which observes the part from the side."
+   ],
+   "lesson": "One optical axis runs across the page, and each element sits on it in its real sequence. The beams are translucent volumes, so the eye sees where the light is. Two colours separate two jobs: blue writes and red observes. The container is a ghost, so the part inside it stays visible.",
+   "borrow": "Put the full apparatus on one axis in one camera. Draw the thing that travels (light, fluid, signal) as a translucent volume with its own colour. Use a second colour for a second path that has a different job.",
+   "check": "Can a reader point to where the energy enters, where it acts and where it is measured?",
+   "limit": "The figure shows the apparatus. The accumulation of dose, which is the core of the method, is implied by the projection strip and is not drawn.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://www.nature.com/articles/s41467-020-14630-4#rightslink",
+    "note": "The article page and the Crossref record state CC BY 4.0. Figure captions were not checked for third-party exceptions."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/loterie-vam.png",
+     "kind": "full figure",
+     "sha256": "58d11808b2ba282c8fe190c589804674c5b8cf8f59d68427f1103b2ed9cf7036",
+     "bytes": 371116,
+     "note": "Publisher file of Figure 1, not changed."
+    }
+   ]
+  },
+  {
+   "id": "weiler-gauge",
+   "label": "Coordinate-independent convolution",
+   "title": "Move a kernel along two paths: on a plane it agrees, on a sphere it rotates, on a Möbius strip it flips.",
+   "paper": "Coordinate Independent Convolutional Networks: Isometry and Gauge Equivariant Convolutions on Riemannian Manifolds",
+   "authors": "Weiler, Forré, Verlinde and Welling",
+   "venue": "arXiv",
+   "year": 2021,
+   "figure": "Figures 3, 27 and 23",
+   "source": "https://arxiv.org/abs/2106.06020",
+   "image_source": "https://arxiv.org/e-print/2106.06020",
+   "dim": "3d",
+   "moves": [
+    "counterfactual",
+    "unroll",
+    "field"
+   ],
+   "mechanism": "On a curved or non-orientable surface, the alignment of a convolution kernel depends on the path along which it moves. Thus the network must give the same result for each choice of local frame.",
+   "trace": [
+    "Figure 3: on each surface, follow the red path and the green path from the same start kernel to the same end point.",
+    "Compare the two kernels that arrive, in the row at the bottom: identity, rotation, flip.",
+    "Figure 27: the Möbius strip is cut into two charts and unrolled. Find where the charts agree (id) and where they differ (flip)."
+   ],
+   "lesson": "A matched counterfactual on three surfaces: only the surface changes. The kernel is a small image with a frame, so its orientation is readable at once. Soft grey surfaces with contact shadows keep all attention on the coloured paths. The lizard and the butterfly in figures 23 and 27 are asymmetric motifs, so a flip or a rotation is obvious.",
+   "borrow": "To show that a space changes an operation, do the same operation on three spaces with the same camera. Use an asymmetric motif when orientation matters. Unroll the surface when the reader must see its charts.",
+   "check": "Would the reader see the difference if the motif were symmetric? If not, change the motif.",
+   "limit": "The notation in figures 23 and 27 is dense for a reader outside the field. The figures are formal illustrations and are not data.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://arxiv.org/abs/2106.06020",
+    "note": "The arXiv abstract page states CC BY 4.0. The images are rasters of vector figures in the arXiv source."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/weiler-gauge-paths.png",
+     "kind": "Figure 3",
+     "sha256": "60c3c67d123c25eedd7464073978e4caabbda395ffa06c4836a78246545b83ab",
+     "bytes": 1384634,
+     "note": "Raster at 2800 pixels wide of the vector file figures/intro_transport_ambiguity.pdf in the arXiv source. Not redrawn."
+    },
+    {
+     "path": "assets/calibration/weiler-gauge-mobius.png",
+     "kind": "Figure 27",
+     "sha256": "6b2052e9493505793df7f3e27653246287bc05c1aa0ea0ebbcd090c09a7288e4",
+     "bytes": 446088,
+     "note": "Raster of figures/mobius_conv_gauges.pdf in the arXiv source. Not redrawn."
+    },
+    {
+     "path": "assets/calibration/weiler-gauge-pullback.png",
+     "kind": "Figure 23",
+     "sha256": "18d8a39f1299cc45dae0abcae21018fbaec4daf164008f0bb2fd95cb3358adef",
+     "bytes": 299153,
+     "note": "Raster of figures/pullback_field_exp_TpM.pdf in the arXiv source. Not redrawn."
+    }
+   ]
+  },
+  {
+   "id": "scutoids",
+   "label": "Scutoids in Curved Tissue",
+   "title": "Let a change of neighbors become a three-dimensional shape.",
+   "paper": "Scutoids are a geometrical solution to three-dimensional packing of epithelia",
+   "authors": "Gómez-Gálvez, Vicente-Munuera, Tagua et al.",
+   "venue": "Nature Communications",
+   "year": 2018,
+   "figure": "Figure 1",
+   "source": "https://www.nature.com/articles/s41467-018-05376-1",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-018-05376-1/MediaObjects/41467_2018_5376_Fig1_HTML.png",
+   "dim": "3d",
+   "moves": [
+    "cutaway",
+    "zoom"
+   ],
+   "mechanism": "Packing between differently curved apical and basal surfaces can involve neighbor exchanges along cell depth; a scutoid has a vertex arrangement that permits such a transition.",
+   "trace": [
+    "Compare the prism and frustum assumptions in a–b with the nested apical/basal surfaces in c.",
+    "Follow the same colored cells between the two surfaces; identify which neighboring relationships change.",
+    "Inspect d and g: the extra vertex and triangular face give that neighbor transition a physical geometry."
+   ],
+   "lesson": "Persistent cell colors connect the inner/outer tilings to isolated three-dimensional pieces; translucent surfaces reveal depth without hiding the interface that changes.",
+   "borrow": "Show adjacency-changing structure through linked sections and one extracted local interface, not only a flattened graph.",
+   "check": "Can the reader point to the vertex/face where a neighboring relationship changes through depth?",
+   "avoid": "Do not import a scutoid shape into an unrelated graph merely because topology is involved; the geometric packing relation must be real.",
+   "limit": "This figure develops a geometric model and examples of packing; it does not imply every curved epithelium has one universal cell geometry. The beetle panel is a naming analogy, not mechanistic evidence.",
+   "approval": "curator selection of 2026-10-08",
+   "rights": {
+    "status": "reference-excerpt",
+    "license": null,
+    "license_url": null,
+    "basis_url": "https://www.nature.com/articles/s41467-018-05376-1",
+    "note": "Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse. Original Figure 1e beetle photograph is credited by the paper to Dr Nicolas Gompel, with permission; that credit is not a license for further reuse."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/scutoids-figure.png",
+     "kind": "focused",
+     "sha256": "728746e6727da5874328658e23d9cdafcb427a65480c5c7119f1744735bc3535",
+     "bytes": 863535,
+     "note": "Unmodified publisher-hosted Figure 1. Panel e beetle photograph credited in the source to Dr Nicolas Gompel; do not assume the article license overrides image-specific credit."
+    }
+   ]
+  },
+  {
+   "id": "graphcast",
+   "label": "GraphCast",
+   "title": "The world stays visible while the representation changes.",
+   "paper": "Learning skillful medium-range global weather forecasting",
+   "authors": "Lam et al.",
+   "venue": "Science",
+   "year": 2023,
+   "figure": "Figure 1",
+   "source": "https://www.science.org/doi/10.1126/science.adi2336",
+   "image_source": "https://docs.nvidia.com/physicsnemo/25.11/_images/graphcast_architecture.png",
+   "dim": "3d",
+   "moves": [
+    "block",
+    "field",
+    "sequence",
+    "layers"
+   ],
+   "mechanism": "A graph network maps weather fields onto a spherical multimesh, exchanges information, and decodes the next weather state.",
+   "trace": [
+    "Find the same globe at input and forecast output.",
+    "In d and f, trace grid points into mesh nodes and back again.",
+    "In g, compare short and long mesh edges: different spatial reaches belong to one processor."
+   ],
+   "lesson": "Earth remains visible through grid, mesh and output. Enlargements expose the transfers; the lower mesh row makes scale differences directly comparable.",
+   "borrow": "Keep the physical substrate visible when it explains the graph and its interactions.",
+   "check": "Can the reader locate where information enters, travels and returns? Verify the actual graph adjacency and coordinate transforms.",
+   "avoid": "Do not replace an arbitrary latent graph with a globe unless its geometry is genuinely spatial.",
+   "limit": "The graph depicts learned communication, not literal atmospheric transport. Forecast validity requires separate evaluation.",
+   "approval": "retained by the user on 2026-10-08",
+   "rights": {
+    "status": "reference-excerpt",
+    "license": null,
+    "license_url": null,
+    "basis_url": "https://www.science.org/doi/10.1126/science.adi2336",
+    "note": "Approved published figure included for source-specific critical visual study. Original author/publisher rights remain; the repository MIT license does not license this image or grant further republication rights. A broadly reusable image license has not been established."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/7b9f9e1b-graphcast.png",
+     "kind": "focused",
+     "sha256": "f3ad9f38ed289af2215b198693b839e62b6054f09ffe08606088fcb4feb32784",
+     "bytes": 1510319,
+     "note": "The supplied guide's published architecture figure, reproduced in NVIDIA documentation. The original paper and author manuscript are linked separately; NVIDIA is the image host, not the paper's publisher."
+    }
+   ]
+  },
+  {
+   "id": "kent-hopfion",
+   "label": "Hopfion in a multilayer",
+   "title": "A quarter cut shows how the spins turn inside two magnetic textures.",
+   "paper": "Creation and observation of Hopfions in magnetic multilayer systems",
+   "authors": "Kent et al.",
+   "venue": "Nature Communications",
+   "year": 2021,
+   "figure": "Figure 1",
+   "source": "https://www.nature.com/articles/s41467-021-21846-5",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-021-21846-5/MediaObjects/41467_2021_21846_Fig1_HTML.png",
+   "dim": "3d",
+   "moves": [
+    "cutaway",
+    "field",
+    "counterfactual",
+    "layers"
+   ],
+   "mechanism": "A target skyrmion has the same spin pattern at each height. A hopfion has a ring of twisted spins in the middle layers only. A surface-sensitive X-ray method and a bulk method thus give different images for the hopfion.",
+   "trace": [
+    "Top cylinder, target skyrmion: on the two cut faces, the arrow pattern is the same at each height.",
+    "Bottom cylinder, hopfion: on the cut faces, the arrows turn round a ring in the middle and stay vertical at the top and the bottom.",
+    "At the right, compare the two predicted X-ray images for each texture. The two methods differ for the hopfion only."
+   ],
+   "lesson": "The same quarter cut and the same camera for the two states make the texture the only thing that changes. The cut faces carry the field, so the inside becomes readable. The layer stack at the left ties each texture to the structure that hosts it.",
+   "borrow": "To compare two internal states, cut the two bodies with the same planes and view them with the same camera. Put the field on the cut faces.",
+   "check": "Does the difference between the states show on the cut faces with no caption?",
+   "limit": "The typography and the panel letters are rough. The arrow colours have no legend. The textures come from a model.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://www.nature.com/articles/s41467-021-21846-5#rightslink",
+    "note": "The article page and the Crossref record state CC BY 4.0. Figure captions were not checked for third-party exceptions."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/kent-hopfion.png",
+     "kind": "full figure",
+     "sha256": "9cbea936779a7e55cfd30045167c9d29eb1aabe02491d3475d902dfbe36e6fd3",
+     "bytes": 1522838,
+     "note": "Publisher file of Figure 1, not changed."
+    }
+   ]
+  },
+  {
+   "id": "t3ss-needle",
+   "label": "Type III secretion needle",
+   "title": "Cut the needle complex in half to see the substrate in the channel.",
+   "paper": "Substrate-engaged type III secretion system structures reveal gating mechanism for unfolded protein translocation",
+   "authors": "Miletic et al.",
+   "venue": "Nature Communications",
+   "year": 2021,
+   "figure": "Figure 1",
+   "source": "https://www.nature.com/articles/s41467-021-21143-1",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-021-21143-1/MediaObjects/41467_2021_21143_Fig1_HTML.png",
+   "dim": "3d",
+   "moves": [
+    "cutaway",
+    "zoom"
+   ],
+   "mechanism": "The injectisome moves an unfolded protein from the base, through the export apparatus and up the channel of the needle, into the host cell.",
+   "trace": [
+    "Panel a, left: the complete needle complex. Right: the same view, cut in half.",
+    "In the cut view, follow the magenta substrate from the base up the channel.",
+    "Panels b and c: the views from the two ends, and the inner parts alone with their names."
+   ],
+   "lesson": "The whole body and the cut body stand adjacent in the same camera and scale. One saturated colour, magenta, marks the thing that moves through. A small schematic at the top left places the machine in the cell.",
+   "borrow": "Show the whole and the half cut side by side. Give the transported thing the one saturated colour.",
+   "check": "Does the eye find the transported thing in one second?",
+   "limit": "A static density map of a trapped state. The direction of transport shows in the small schematic only.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://www.nature.com/articles/s41467-021-21143-1#rightslink",
+    "note": "The article page and the Crossref record state CC BY 4.0. Figure captions were not checked for third-party exceptions."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/t3ss-needle.png",
+     "kind": "full figure",
+     "sha256": "a792b54a6723778b80d9837140979c942fda033948394f367c90bb57cd070664",
+     "bytes": 1893340,
+     "note": "Publisher file of Figure 1, not changed."
+    }
+   ]
+  },
+  {
+   "id": "wolf-tomography",
+   "label": "Vector-field electron tomography",
+   "title": "Two tilt series and one constraint give the full 3D magnetic field.",
+   "paper": "Unveiling the three-dimensional magnetic texture of skyrmion tubes",
+   "authors": "Wolf et al.",
+   "venue": "Nature Nanotechnology",
+   "year": 2022,
+   "figure": "Figure 1",
+   "source": "https://www.nature.com/articles/s41565-021-01031-x",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41565-021-01031-x/MediaObjects/41565_2021_1031_Fig1_HTML.png",
+   "dim": "3d",
+   "moves": [
+    "rays",
+    "field"
+   ],
+   "mechanism": "The sample tilts about two axes. Each tilt series gives phase images, and each set of images gives one component of the magnetic induction as a volume. The condition of zero divergence gives the third component.",
+   "trace": [
+    "In the centre, find the needle sample in the hole of the holder, and the phase image that it projects below.",
+    "At the left and the right, the holder tilts about x and about y. Each series gives one component, Bx or By, as a volume.",
+    "Follow the grey triangles to the equation. Zero divergence gives Bz, and panel b shows the full field."
+   ],
+   "lesson": "The geometry of the measurement is the figure. Each data product sits below the physical setup that makes it, thus the layout is the pipeline. Colour identity holds: red is the x series and blue is the y series, in the axes, the labels and the equation.",
+   "borrow": "When a result comes from several measurements, draw each measurement as a physical scene and put its data directly below it. Join the data products at the equation that combines them.",
+   "check": "Can the reader say which measurement gives which component of the result?",
+   "limit": "The small arrows in the central disc are dense. The steps between a phase image and a volume are not shown.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://www.nature.com/articles/s41565-021-01031-x#rightslink",
+    "note": "The article page and the Crossref record state CC BY 4.0. Figure captions were not checked for third-party exceptions."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/wolf-tomography.png",
+     "kind": "full figure",
+     "sha256": "21cc7ae6b33318e1b76b596672711ce5a5c993f90a870d2d8c866962aa7c3cb2",
+     "bytes": 1263652,
+     "note": "Publisher file of Figure 1, not changed."
+    }
+   ]
+  },
+  {
+   "id": "bioprint4d",
+   "label": "Biomimetic 4D Printing",
+   "title": "Translate a target shape into the local directions that create it.",
+   "paper": "Biomimetic 4D printing",
+   "authors": "Gladman, Matsumoto, Nuzzo, Mahadevan & Lewis",
+   "venue": "Nature Materials",
+   "year": 2016,
+   "figure": "Figure 4",
+   "source": "https://www.nature.com/articles/nmat4544",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnmat4544/MediaObjects/41563_2016_Article_BFnmat4544_Fig4_HTML.jpg",
+   "dim": "3d",
+   "moves": [
+    "inverse",
+    "field",
+    "sequence"
+   ],
+   "mechanism": "A spatially programmed print path controls anisotropic swelling; local orientation patterns are chosen so hydration bends a flat printed structure toward a desired shape.",
+   "trace": [
+    "Move from the natural form in a to its mathematical surface and extracted curvatures in b–c.",
+    "Compare the two print-path directions in d with the predicted structure in e.",
+    "Read the fabricated before/after states in f as the consequence of that local programming."
+   ],
+   "lesson": "A consistent silhouette connects nature, mathematical geometry, directional paths and a glowing physical lattice; shared contours do more work than generic arrows or prose.",
+   "borrow": "Let one recognizable global form pass through its geometric decomposition, local program and actual physical response.",
+   "check": "Can the reader connect a local direction in the program to a region of the final curvature?",
+   "avoid": "Do not use a flower as a general symbol for growth; retain it only when its geometry is the design input.",
+   "limit": "The illustrated specimen and model demonstrate the stated material/printing system, not universal shape programmability for any material or arbitrary loading condition.",
+   "approval": "curator selection of 2026-10-08",
+   "rights": {
+    "status": "reference-excerpt",
+    "license": null,
+    "license_url": null,
+    "basis_url": "https://www.nature.com/articles/nmat4544",
+    "note": "Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/bioprint4d-figure.jpg",
+     "kind": "focused",
+     "sha256": "7cf4ff5c115165f3528e9e1f3ffecdd71571da67f4e7ce2592fb7125066a81c8",
+     "bytes": 344102,
+     "note": "Unmodified publisher-hosted Figure 4."
+    }
+   ]
+  },
+  {
+   "id": "christoffersen-lake",
+   "label": "Cascading lake drainage",
+   "title": "A lake that drains opens crevasses and speeds up the ice in a chain.",
+   "paper": "Cascading lake drainage on the Greenland Ice Sheet triggered by tensile shock and fracture",
+   "authors": "Christoffersen et al.",
+   "venue": "Nature Communications",
+   "year": 2018,
+   "figure": "Figure 5",
+   "source": "https://www.nature.com/articles/s41467-018-03420-8",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-018-03420-8/MediaObjects/41467_2018_3420_Fig5_HTML.jpg",
+   "dim": "3d",
+   "moves": [
+    "block",
+    "sequence"
+   ],
+   "mechanism": "Water from the surface reaches the bed and the ice above speeds up. The stress at a lake changes from compression to tension. A crevasse opens, the lake drains, and the new water at the bed starts the same process at the next lake.",
+   "trace": [
+    "Panel a: a block of the ice sheet with a lake, a moulin and water at the bed. Red shows acceleration.",
+    "Panels b to d: the same block at later times. Follow the blue water as it reaches the bed at new places.",
+    "The small box below each block gives the sign of the stress at the lake."
+   ],
+   "lesson": "The same block in four states with one camera. Two colours with fixed meanings: blue is water and red is faster flow. A small stress glyph below each state gives the cause, in the same position each time.",
+   "borrow": "Repeat one block for each stage. Keep two colours for two quantities. Put a small glyph for the cause in the same place in each stage.",
+   "check": "Does each stage differ from the stage before it by one event?",
+   "limit": "Schematic with vertical exaggeration. The labels are dense in panel d.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://www.nature.com/articles/s41467-018-03420-8#rightslink",
+    "note": "The article page and the Crossref record state CC BY 4.0. Figure captions were not checked for third-party exceptions."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/christoffersen-lake.jpg",
+     "kind": "full figure",
+     "sha256": "1e89a1e5b7fb78e1ddd7e2d0f65d266d6ee9195a0ca0cbfd41fec031d7024879",
+     "bytes": 362425,
+     "note": "Publisher file of Figure 5, not changed."
+    }
+   ]
+  },
+  {
+   "id": "tokamak",
+   "label": "Tokamak control",
+   "title": "Cut the vessel open: coils outside, plasma inside, and the section that the controller shapes.",
+   "paper": "Magnetic control of tokamak plasmas through deep reinforcement learning",
+   "authors": "Degrave et al.",
+   "venue": "Nature",
+   "year": 2022,
+   "figure": "Figure 1, panels g and h",
+   "source": "https://www.nature.com/articles/s41586-021-04301-9",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-021-04301-9/MediaObjects/41586_2021_4301_Fig1_HTML.png",
+   "dim": "3d",
+   "moves": [
+    "cutaway",
+    "zoom"
+   ],
+   "mechanism": "Rings of coils surround a vacuum vessel. Their currents shape the plasma in the vessel. The controller sets the coil voltages to hold the plasma boundary, the X-point and the legs at their targets.",
+   "trace": [
+    "Panel g: the nested rings are the coils. A wedge is cut away, and the plasma shows in the two cut faces.",
+    "Follow the dashed lines from the right cut face to panel h.",
+    "Panel h: the flat cross-section with the plasma boundary, the X-point and the legs. These are the control targets."
+   ],
+   "lesson": "The cutaway shows where things are. The flat section shows what to measure. Dashed lines join one cut face to the flat panel, so the reader knows that the two are the same plane.",
+   "borrow": "Cut the body to show the inside. Then draw one cut face flat and large, and put the exact labels there. Join the two views with lines.",
+   "check": "Does the flat panel match a cut face that the reader can find in the 3D view?",
+   "limit": "The first image is a crop. In the full figure, the control loops are boxes and arrows.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://www.nature.com/articles/s41586-021-04301-9#rightslink",
+    "note": "The article page and the Crossref record state CC BY 4.0. Figure captions were not checked for third-party exceptions."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/tokamak-cutaway.png",
+     "kind": "crop of panels g and h",
+     "sha256": "bd92d4f29b838a472955c32315c5f2500a5cbef276415e9bb8529b880cf6828c",
+     "bytes": 264061,
+     "note": "Crop of panels g and h from the publisher file of Figure 1. No other change."
+    },
+    {
+     "path": "assets/calibration/tokamak-full.png",
+     "kind": "full figure",
+     "sha256": "767c2cfef596a85497861a7a7938948a0f632898638063f5c42b118195b90a02",
+     "bytes": 464402,
+     "note": "Publisher file of Figure 1, not changed."
+    }
+   ]
+  },
+  {
+   "id": "caustics",
+   "label": "Computational Caustics",
+   "title": "Make the desired image become a physical ray map.",
+   "paper": "High-contrast Computational Caustic Design",
+   "authors": "Schwartzburg, Testuz, Tagliasacchi & Pauly",
+   "venue": "SIGGRAPH / ACM TOG",
+   "year": 2014,
+   "figure": "Figures 1 and 2",
+   "source": "https://www.epfl.ch/labs/gcm/research-projects/computational-caustics/",
+   "image_source": "https://theialab.ca/pubs/schwartzburg2014caustics.pdf",
+   "dim": "3d",
+   "moves": [
+    "inverse",
+    "rays"
+   ],
+   "mechanism": "A transport map from source to target irradiance specifies surface normals; surface optimization produces a refractor whose light distribution approximates the target.",
+   "trace": [
+    "Locate the light source, transparent surface and receiving screen; keep their roles distinct.",
+    "Follow the target irradiance backwards into the transport assignment and the corresponding surface-normal field.",
+    "Use related Figure 1 to connect the optimized physical acrylic surface with the projected caustic as it rotates."
+   ],
+   "lesson": "The same receiver plane makes source and target distributions comparable; ray direction, normal direction and physical surface remain attached, not split into abstract module names.",
+   "borrow": "Expose the inverse map from a desired field to local controls, then return to a measured physical consequence.",
+   "check": "Can the reader explain how changing one local surface region changes a particular part of the received pattern?",
+   "avoid": "Do not borrow ray geometry for a process with no defensible transport mapping, or imply exact image recovery from an illustrative example.",
+   "limit": "The surface is an optimized approximation under an optical model. Target imagery and physical photographs have their own rights and are not new evidence for another project.",
+   "approval": "curator selection of 2026-10-08",
+   "rights": {
+    "status": "reference-excerpt",
+    "license": null,
+    "license_url": null,
+    "basis_url": "https://www.epfl.ch/labs/gcm/research-projects/computational-caustics/",
+    "note": "Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/caustics-context.png",
+     "kind": "related",
+     "sha256": "563e05b724676af6bb845a3458e8893d82328c1004a2bb0a6e8df6ea267cdf4f",
+     "bytes": 2694464,
+     "note": "Actual published related figure, rasterized from the author/proceedings PDF with MuPDF 1.26.0. Extraction: {\"source\": \"caustics.pdf\", \"page_zero_based\": 0, \"crop_fraction_top_left\": [0.086, 0.148, 0.925, 0.304], \"output\": \"caustics-fig1.png\", \"width\": 2601, \"height\": 627, \"sha256\": \"563e05b724676af6bb845a3458e8893d82328c1004a2bb0a6e8df6ea267cdf4f\", \"bytes\": 2694464, \"renderer\": \"MuPDF 1.26.0; actual published figure rasterization, no redraw\"}"
+    },
+    {
+     "path": "assets/calibration/caustics-figure.png",
+     "kind": "focused",
+     "sha256": "1025c741106269f1003c831d178c8c2e31d3fc2faa2a4e55e3f671120c0a46f5",
+     "bytes": 335071,
+     "note": "Actual published primary figure, rasterized from the author/proceedings PDF with MuPDF 1.26.0. Extraction: {\"source\": \"caustics.pdf\", \"page_zero_based\": 1, \"crop_fraction_top_left\": [0.08, 0.05, 0.93, 0.264], \"output\": \"caustics-fig2.png\", \"width\": 2601, \"height\": 849, \"sha256\": \"1025c741106269f1003c831d178c8c2e31d3fc2faa2a4e55e3f671120c0a46f5\", \"bytes\": 335071, \"renderer\": \"MuPDF 1.26.0; actual published figure rasterization, no redraw\"} Figure 2 photographic target: Philippe Halsman © Philippe Halsman Archive; source credit retained here."
+    }
+   ]
+  },
+  {
+   "id": "nerf",
+   "label": "NeRF",
+   "title": "Follow one ray all the way to one pixel.",
+   "paper": "NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis",
+   "authors": "Mildenhall et al.",
+   "venue": "ECCV",
+   "year": 2020,
+   "figure": "Figure 2",
+   "source": "https://www.matthewtancik.com/nerf",
+   "image_source": "https://arxiv.org/pdf/2003.08934",
+   "dim": "3d",
+   "moves": [
+    "rays",
+    "loop"
+   ],
+   "mechanism": "A learned field supplies density and view-dependent color; volume rendering accumulates these along camera rays.",
+   "trace": [
+    "Choose one camera ray in a.",
+    "Follow its sampled locations into color and density in b, then the depth profile in c.",
+    "Find the corresponding pixel comparison in d: the chain ends in an observable residual."
+   ],
+   "lesson": "The same rays connect a physical scene to sampled density/color, depth profiles and a pixel residual. Small labels describe the quantity at each transformation.",
+   "borrow": "Choose one traceable object and preserve its identity across every change of representation.",
+   "check": "Can every stage's output be matched to the next stage's input? Verify the actual reduction, units and weighting.",
+   "avoid": "A pipeline of named boxes does not show what is being transformed.",
+   "limit": "This explains image formation and optimization. It does not imply that reconstructed scene geometry is unique.",
+   "approval": "retained by the user on 2026-10-08",
+   "rights": {
+    "status": "reference-excerpt",
+    "license": null,
+    "license_url": null,
+    "basis_url": "https://www.matthewtancik.com/nerf",
+    "note": "Approved published figure included for source-specific critical visual study. Original author/publisher rights remain; the repository MIT license does not license this image or grant further republication rights. A broadly reusable image license has not been established."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/14900912-nerf.png",
+     "kind": "focused",
+     "sha256": "e5e5b4b304623b24eb3da07837a767a639c67291b650b045216ebee7c03215b9",
+     "bytes": 534287,
+     "note": "Actual Figure 2 rasterized from the authors' arXiv manuscript."
+    }
+   ]
+  },
+  {
+   "id": "kplanes",
+   "label": "K-Planes",
+   "title": "A point in space and time is read from six planes.",
+   "paper": "K-Planes: Explicit Radiance Fields in Space, Time, and Appearance",
+   "authors": "Fridovich-Keil, Meanti et al.",
+   "venue": "CVPR",
+   "year": 2023,
+   "figure": "Method overview figure",
+   "source": "https://arxiv.org/abs/2301.10241",
+   "image_source": "https://arxiv.org/e-print/2301.10241",
+   "dim": "3d",
+   "moves": [
+    "rays",
+    "layers",
+    "index"
+   ],
+   "mechanism": "A 4D field factorises into six planes: three for space and three that pair one space axis with time. A sample is projected onto each plane, read by bilinear interpolation at several scales, and the six readings are multiplied.",
+   "trace": [
+    "Find the sample q on the ray from the camera.",
+    "Follow q to its projections on the three space planes xy, xz, yz and on the three space-time planes.",
+    "Panel b: on each plane, the four grid values round the projection are blended at two scales. Panel c multiplies the six results."
+   ],
+   "lesson": "The planes stand in 3D in their real orientation, thus the factorisation is a visible fact and not only an equation. The same point q appears on each plane with the same mark.",
+   "borrow": "When a method factorises a volume, draw the factors as planes or lines in their real orientation and project one sample onto each.",
+   "check": "Does one sample appear on each factor with the same mark?",
+   "limit": "The two triads of planes overlap and are dense. Read the image at full size.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://arxiv.org/abs/2301.10241",
+    "note": "The arXiv abstract page states CC BY 4.0. The image is a raster of the vector figure in the arXiv source."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/kplanes.png",
+     "kind": "full figure",
+     "sha256": "21d05dada6860d10a1c8cb85221444813079d9ffd882db349ea69827749a5218",
+     "bytes": 415442,
+     "note": "Raster at 2800 pixels wide of the vector file figures/triplane6_small.pdf in the arXiv source. Not redrawn."
+    }
+   ]
+  },
+  {
+   "id": "rfdiffusion",
+   "label": "RFdiffusion",
+   "title": "Keep the constraint visible while structure emerges.",
+   "paper": "De novo design of protein structure and function with RFdiffusion",
+   "authors": "Watson et al.",
+   "venue": "Nature",
+   "year": 2023,
+   "figure": "Figure 1",
+   "source": "https://www.nature.com/articles/s41586-023-06415-8",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-023-06415-8/MediaObjects/41586_2023_6415_Fig1_HTML.png",
+   "dim": "3d",
+   "moves": [
+    "sequence",
+    "ghost"
+   ],
+   "mechanism": "Iterative denoising constructs protein backbones; conditioning supplies symmetry, a binding target or a fixed motif that constrains what the trajectory can become.",
+   "trace": [
+    "Read the noising/reverse-generative sequence in a, then identify the fixed conditioning object in each row of b.",
+    "Follow each row’s persistent motif or symmetry through the intermediate structures into the final backbone.",
+    "Compare the noisy input row with the clean-structure prediction row at matched denoising steps in c."
+   ],
+   "lesson": "Rows are organized by a visible conditioning object; restrained, persistent colors distinguish fixed motifs from evolving structure. Matched temporal columns turn a complicated model into an inspectable transformation.",
+   "borrow": "Use aligned state sequences in which the protected or conditioning object remains recognizable throughout the update.",
+   "check": "Can a reader identify the unchanged constraint and distinguish the current state from its clean-state prediction?",
+   "avoid": "Do not copy protein imagery for a non-structural problem or imply that a smooth denoising sequence alone validates a designed function.",
+   "limit": "The figure describes model construction and examples. Structural plausibility and predicted designability are not equivalent to experimental confirmation of binding or activity.",
+   "approval": "curator selection of 2026-10-08",
+   "rights": {
+    "status": "reference-excerpt",
+    "license": null,
+    "license_url": null,
+    "basis_url": "https://www.nature.com/articles/s41586-023-06415-8",
+    "note": "Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/rfdiffusion-figure.png",
+     "kind": "focused",
+     "sha256": "4fb2ab597652f9378eff4c283e1c929104fc114067c7cc2d45c6e683bad92411",
+     "bytes": 1287655,
+     "note": "Unmodified publisher-hosted Figure 1."
+    }
+   ]
+  },
+  {
+   "id": "myosin-stroke",
+   "label": "Myosin lever swing",
+   "title": "The lever arm swings 34 nanometres on one motor domain.",
+   "paper": "Swinging lever mechanism of myosin directly shown by time-resolved cryo-EM",
+   "authors": "Klebl et al.",
+   "venue": "Nature",
+   "year": 2025,
+   "figure": "Figure 5",
+   "source": "https://www.nature.com/articles/s41586-025-08876-5",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-025-08876-5/MediaObjects/41586_2025_8876_Fig5_HTML.png",
+   "dim": "3d",
+   "moves": [
+    "sequence",
+    "ghost"
+   ],
+   "mechanism": "The motor domain stays bound to actin while its lever arm swings from the primed position to the post-stroke position. The end of the lever moves about 34 nanometres.",
+   "trace": [
+    "Panel a: one motor on the grey actin filament with two lever positions, primed (dark blue) and post-stroke (light blue). The bar gives the distance.",
+    "Panels b and c: the same pair from the end and from above.",
+    "Panel d: two heads of one molecule, one in each state. The ends of their levers meet within 5 nanometres."
+   ],
+   "lesson": "Two states are laid on one fixed body, so the movement is the angle between them. A scale bar makes the picture a measurement. The track is grey. Three orthogonal views with rotation marks remove the ambiguity of depth.",
+   "borrow": "Lay the start state and the end state on the part that does not move. Add the distance as a bar. Give orthogonal views when depth matters.",
+   "check": "Is the fixed part exactly the same in the two states?",
+   "limit": "Static structures. The path between the two states is not shown. The publisher file is 1052 pixels wide.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://www.nature.com/articles/s41586-025-08876-5#rightslink",
+    "note": "The article page and the Crossref record state CC BY 4.0. Figure captions were not checked for third-party exceptions."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/myosin-stroke.png",
+     "kind": "full figure",
+     "sha256": "e8a069f1d221c56b2d30700caad50c388c85ab918509b57e46164f3a765a26fe",
+     "bytes": 857717,
+     "note": "Publisher file of Figure 5, not changed."
+    }
+   ]
+  },
+  {
+   "id": "cohesin-ratchet",
+   "label": "Cohesin loop extrusion",
+   "title": "One gripping cycle moves the DNA a step and makes the loop larger.",
+   "paper": "A Brownian ratchet model for DNA loop extrusion by the cohesin complex",
+   "authors": "Higashi et al.",
+   "venue": "eLife",
+   "year": 2021,
+   "figure": "Figure 3",
+   "source": "https://elifesciences.org/articles/67530",
+   "image_source": "https://cdn.elifesciences.org/articles/67530/elife-67530-fig3-v1.tif",
+   "dim": "3d",
+   "moves": [
+    "sequence",
+    "loop"
+   ],
+   "mechanism": "Cohesin grips DNA, lets it slip, and uses random thermal motion in one direction only. After each cycle of grip and release, more DNA is in the loop.",
+   "trace": [
+    "Row B: follow the blue DNA through states a to f. The protein ring keeps its colours.",
+    "State c: the small double arrows mark the random motion that the ratchet uses.",
+    "State f: the loop is larger. The cyan mark on the DNA shows the movement of one cycle."
+   ],
+   "lesson": "A cycle of six states with one camera. The DNA is a thick simple line and the protein is a detailed surface, so the two never merge. A mark on the DNA makes the net movement visible. Row A shows a different result from the same start.",
+   "borrow": "Draw a cycle as a ring of states. Put a mark on the thing that moves, so that the reader sees the net step. Draw the track simple and the machine detailed.",
+   "check": "Can the reader see the net change after one cycle?",
+   "limit": "A model from simulation. The authors put a question mark in the heading. The dotted parts are flexible regions with no resolved structure.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://elifesciences.org/articles/67530#info",
+    "note": "The article page and the Crossref record state CC BY 4.0. Figure captions were not checked for third-party exceptions."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/cohesin-ratchet.jpg",
+     "kind": "full figure",
+     "sha256": "149ec5a4c27353a5189a3016f0da1399783bccecb468507b443044d04f724bc6",
+     "bytes": 1128690,
+     "note": "JPEG conversion of the eLife TIFF of Figure 3."
+    }
+   ]
+  },
+  {
+   "id": "frenzel-chiral",
+   "label": "Acoustical activity in a chiral lattice",
+   "title": "A chiral lattice turns the polarisation of a wave as the wave travels.",
+   "paper": "Ultrasound experiments on acoustical activity in chiral mechanical metamaterials",
+   "authors": "Frenzel et al.",
+   "venue": "Nature Communications",
+   "year": 2019,
+   "figure": "Figure 1",
+   "source": "https://www.nature.com/articles/s41467-019-11366-8",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-019-11366-8/MediaObjects/41467_2019_11366_Fig1_HTML.png",
+   "dim": "3d",
+   "moves": [
+    "zoom",
+    "ghost",
+    "field"
+   ],
+   "mechanism": "A transverse wave moves through a lattice of chiral unit cells. The direction of the displacement rotates round the direction of travel.",
+   "trace": [
+    "Panel a: one column of the lattice has colour. The colour is the phase of the motion, and it changes along the column.",
+    "Panel b: the same column as an abstraction. The red displacement arrows rotate round the axis k.",
+    "Panel c: the unit cell that causes the rotation, with its dimensions."
+   ],
+   "lesson": "Three views of one thing: the real structure, the abstraction and the cause. The context lattice is pale and one column carries colour. The abstraction in panel b keeps the orientation of panel a, so the eye maps one to the other.",
+   "borrow": "Show the real system with one element in colour. Then draw that element alone as a clean abstraction in the same orientation. Then show the unit that causes the behaviour.",
+   "check": "Does the abstract panel have the same orientation and the same colours as the element in the real view?",
+   "limit": "The lattice behind the column is busy. The phase wheel is cyclic and is hard for some colour-blind readers.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://www.nature.com/articles/s41467-019-11366-8#rightslink",
+    "note": "The article page and the Crossref record state CC BY 4.0. Figure captions were not checked for third-party exceptions."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/frenzel-chiral.png",
+     "kind": "full figure",
+     "sha256": "c32a4cfc197ea1758ad0ec63eca594e550e0939e827f73a223ad078755c6a562",
+     "bytes": 947718,
+     "note": "Publisher file of Figure 1, not changed."
+    }
+   ]
+  },
+  {
+   "id": "zheng-hopfion",
+   "label": "Hopfion rings",
+   "title": "Rings of twisted magnetisation link round skyrmion strings.",
+   "paper": "Hopfion rings in a cubic chiral magnet",
+   "authors": "Zheng et al.",
+   "venue": "Nature",
+   "year": 2023,
+   "figure": "Figure 4",
+   "source": "https://www.nature.com/articles/s41586-023-06658-5",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-023-06658-5/MediaObjects/41586_2023_6658_Fig4_HTML.png",
+   "dim": "3d",
+   "moves": [
+    "field"
+   ],
+   "mechanism": "In a chiral magnet, a closed ring of twisted magnetisation can wrap one or more skyrmion strings. Each configuration has its own topological numbers.",
+   "trace": [
+    "Left column: the flat image of each state, as a microscope sees it in projection.",
+    "Middle columns: the same state as a 3D isosurface. The ring is the hopfion, and the tubes through it are skyrmion strings.",
+    "Right block: the bulk case. Follow one string up the box and find where a ring wraps it."
+   ],
+   "lesson": "Each 3D state has its flat projection adjacent to it, thus the reader learns what the measurement looks like for each structure. All boxes share one camera and one colour code for the in-plane direction. A wire box gives each isosurface a frame.",
+   "borrow": "Pair each 3D structure with the flat image that an instrument records. Keep one camera and one bounding box for all states.",
+   "check": "Can the reader match each flat image to its 3D structure?",
+   "limit": "The figure is a set of static states with no time. The rainbow hue code is hard for colour-blind readers. The 3D shapes come from simulation.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://www.nature.com/articles/s41586-023-06658-5#rightslink",
+    "note": "The article page and the Crossref record state CC BY 4.0. Figure captions were not checked for third-party exceptions."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/zheng-hopfion.png",
+     "kind": "full figure",
+     "sha256": "a83b51434b87852fa444dc14719af804dccd6556ef4dbcfc30c8020c4c5e75eb",
+     "bytes": 2447638,
+     "note": "Publisher file of Figure 4, not changed."
+    }
+   ]
+  },
+  {
+   "id": "birch-skyrmion",
+   "label": "Skyrmion tubes",
+   "title": "Skyrmion tubes run through the sample and end at Bloch points.",
+   "paper": "Real-space imaging of confined magnetic skyrmion tubes",
+   "authors": "Birch et al.",
+   "venue": "Nature Communications",
+   "year": 2020,
+   "figure": "Figure 1",
+   "source": "https://www.nature.com/articles/s41467-020-15474-8",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-020-15474-8/MediaObjects/41467_2020_15474_Fig1_HTML.png",
+   "dim": "3d",
+   "moves": [
+    "field",
+    "ghost",
+    "zoom"
+   ],
+   "mechanism": "A skyrmion is a tube through the thickness of the sample. A tube can end inside the sample at a singular point, a Bloch point, and the point moves when the tube changes length.",
+   "trace": [
+    "Find the two layers of arrows. They are the top and the bottom surface of the sample.",
+    "Follow the three grey tubes between the layers. One tube does not reach the bottom.",
+    "The green dots are Bloch points. The inset shows one point as it moves when a tube gets shorter."
+   ],
+   "lesson": "Two slices of data bound a ghost volume, so the eye builds the 3D structure between them. The exception, the short tube, carries the message. One inset shows the one part that moves.",
+   "borrow": "Show a volume by two or three slices with real field data and a ghost isosurface between them. Mark the singular points.",
+   "check": "Can the reader see what connects the slices?",
+   "limit": "One state only. No colour legend. The publisher file is 982 pixels wide. The texture comes from simulation.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://www.nature.com/articles/s41467-020-15474-8#rightslink",
+    "note": "The article page and the Crossref record state CC BY 4.0. Figure captions were not checked for third-party exceptions."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/birch-skyrmion.png",
+     "kind": "full figure",
+     "sha256": "9b597ce3f4c76728363b0c86b20c11d6e6dcbfbdf5573ce6d86fc883359a0775",
+     "bytes": 920184,
+     "note": "Publisher file of Figure 1, not changed."
+    }
+   ]
+  },
+  {
+   "id": "kennaway-growth",
+   "label": "Growth and polarity",
+   "title": "The same sheet grows into different shapes when the polarity field is different.",
+   "paper": "Generation of diverse biological forms through combinatorial interactions between tissue polarity and growth",
+   "authors": "Kennaway, Coen, Green and Bangham",
+   "venue": "PLOS Computational Biology",
+   "year": 2011,
+   "figure": "Figure 3",
+   "source": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002071",
+   "image_source": "https://journals.plos.org/ploscompbiol/article/figure/image?size=large&id=10.1371/journal.pcbi.1002071.g003",
+   "dim": "3d",
+   "moves": [
+    "sequence",
+    "field",
+    "counterfactual"
+   ],
+   "mechanism": "A tissue is a sheet with a growth rate along and across a local polarity direction. Different patterns of rate and polarity make a cone, a dome or a spike from the same flat square.",
+   "trace": [
+    "Read one row from left to right: a flat sheet grows to 2.3 times and to 5 times its area.",
+    "The arrows on the sheet are the polarity. The colour is the growth rate.",
+    "Compare the rows. Cases J, K, L and M start as squares and end as different shapes."
+   ],
+   "lesson": "A grid of small multiples: time goes across and the condition goes down. One camera. The mesh lines show the deformation. The causes, polarity and rate, are painted on the surface that they shape.",
+   "borrow": "Put time on one axis of a grid and the condition on the other. Paint the cause on the object. Keep a mesh so that the deformation is visible.",
+   "check": "Can the reader read a row as time and a column as a comparison?",
+   "limit": "Simulation of abstract cases. No real organ is shown.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002071",
+    "note": "PLOS publishes under CC BY, and the Crossref record states CC BY 4.0."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/kennaway-growth.png",
+     "kind": "full figure",
+     "sha256": "1f780ab474d61d12532776e567fdccdb0f87a10a2de78ee1a15df37c071814f8",
+     "bytes": 1975781,
+     "note": "PLOS large image of Figure 3, not changed."
+    }
+   ]
+  },
+  {
+   "id": "kirigami",
+   "label": "Shape-morphing kirigami",
+   "title": "The boundary predicts how the sheet bends.",
+   "paper": "Boundary curvature guided programmable shape-morphing kirigami sheets",
+   "authors": "Hong et al.",
+   "venue": "Nature Communications",
+   "year": 2022,
+   "figure": "Figure 1a–f",
+   "source": "https://www.nature.com/articles/s41467-022-28187-x/figures/1",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-022-28187-x/MediaObjects/41467_2022_28187_Fig1_HTML.png",
+   "dim": "3d",
+   "moves": [
+    "sequence",
+    "inverse"
+   ],
+   "mechanism": "The cut boundary constrains deformation, guiding a stretched sheet toward different out-of-plane morphologies.",
+   "trace": [
+    "Read each flat cut boundary on the left.",
+    "Follow its row to the stretched three-dimensional object.",
+    "Compare outward, straight and inward boundaries with the different curvature types."
+   ],
+   "lesson": "Each flat precursor is aligned with its resulting 3D shape. The boundary geometries themselves—not just numeric parameter labels—organize the alternatives.",
+   "borrow": "If geometry is the intervention, align the input geometry with its resulting deformation rather than hiding it in parameter labels.",
+   "check": "Can the reader predict the response type from the geometry? Separate changed geometry from changed loading in validation.",
+   "avoid": "Do not call unmatched loading conditions a controlled counterfactual.",
+   "limit": "The shown strains differ: 0.30, 0.65 and 1.47. These are not same-strain counterfactuals, nor a universal rule for every cut pattern.",
+   "approval": "retained by the user on 2026-10-08",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://www.nature.com/articles/s41467-022-28187-x",
+    "note": "Article Rights and permissions states CC BY 4.0; reviewed figure credit lines contain no separate restriction. Original and focused assets are separately labeled."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/fc3c6acf-kirigami.jpg",
+     "kind": "focused",
+     "sha256": "96741301d6c48c2a7960ca4eec72757c3f6d2e05a3880d4054f2e6dcc951eae1",
+     "bytes": 457460,
+     "note": "Publisher Figure 1; panels a–f cropped together. Force–displacement panel excluded from the focused view."
+    },
+    {
+     "path": "assets/calibration/f4bfe551-kirigami.png",
+     "kind": "full",
+     "sha256": "530129726a7ecb50e65ab33771218081b2c7f0ba891282bf876c826167919cc7",
+     "bytes": 1134615,
+     "note": "Full published figure"
+    }
+   ]
+  },
+  {
+   "id": "diffusive-machines",
+   "label": "Diffusive Mechanical Machines",
+   "title": "Show time as a wave of changing geometry.",
+   "paper": "Diffusive kinks turn kirigami sheets into machines",
+   "authors": "Janbaz & Coulais",
+   "venue": "Nature Communications",
+   "year": 2024,
+   "figure": "Figure 5",
+   "source": "https://www.nature.com/articles/s41467-024-45602-7",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-024-45602-7/MediaObjects/41467_2024_45602_Fig5_HTML.png",
+   "dim": "3d",
+   "moves": [
+    "sequence",
+    "zoom"
+   ],
+   "mechanism": "A relaxation-driven transition propagates through a structured sheet; coupling its local shape changes to linkages produces spatially sequenced transport and actuation.",
+   "trace": [
+    "Track the white ball and the evolving row of mechanisms down the time-stamped photographs in a.",
+    "Compare the sequential releases in b with the four-bar linkage in c.",
+    "Trace the stretch–relaxation–unloading cycle in e and relate it to the trajectory in d."
+   ],
+   "lesson": "Repeated photographs keep the same physical stage while the event progresses; the local linkage and color-coded cycle explain the sequence instead of replacing it with a timeline alone.",
+   "borrow": "Put measured time on the unchanged physical scene, then attach a local geometric cycle to the event it generates.",
+   "check": "Can the reader locate the advancing transition and relate it to the transported or released object at each time?",
+   "avoid": "Do not draw a traveling wave merely to imply causation, or describe stored/relaxing energy as energy-free motion.",
+   "limit": "The paper’s material relaxation and loading history are essential. Photos and simulations have distinct evidential roles; the figure does not establish unrestricted autonomous actuation.",
+   "approval": "curator selection of 2026-10-08",
+   "rights": {
+    "status": "reference-excerpt",
+    "license": null,
+    "license_url": null,
+    "basis_url": "https://www.nature.com/articles/s41467-024-45602-7",
+    "note": "Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/diffusive-machines-figure.png",
+     "kind": "focused",
+     "sha256": "8cd85865a4d9c85dffee00f649fa794143301eb0995ac3f70c20b96ac312222b",
+     "bytes": 1741126,
+     "note": "Unmodified publisher-hosted Figure 5."
+    }
+   ]
+  },
+  {
+   "id": "mechanical",
+   "label": "Mechanical Characters",
+   "title": "Let the mechanism grow inside the same object.",
+   "paper": "Computational Design of Mechanical Characters",
+   "authors": "Coros, Thomaszewski, Noris et al.",
+   "venue": "SIGGRAPH / ACM TOG",
+   "year": 2013,
+   "figure": "Figures 2 and 3",
+   "source": "https://cdl.ethz.ch/publications/computational-design-of-mechanical-characters/",
+   "image_source": "https://s3-us-west-1.amazonaws.com/disneyresearch/wp-content/uploads/20140804211255/CDMC1.pdf",
+   "dim": "3d",
+   "moves": [
+    "inverse",
+    "ghost"
+   ],
+   "mechanism": "A desired cyclic motion is converted into constrained linkages, then connected through a gear train so one actuator drives the character.",
+   "trace": [
+    "Follow the same character from a to f; its foot path is the persistent target.",
+    "In b–d, trace the red motion curve into a linkage, then follow the gears connecting the drives.",
+    "Compare e with the fabricated object in f; inspect related Figure 3 to see which paths different mechanisms can trace."
+   ],
+   "lesson": "The character silhouette and red actuation curve persist while yellow and green gears accumulate. The visual sequence introduces physical complexity without changing the reader’s coordinate frame.",
+   "borrow": "Grow the implementing structure around one persistent scientific object; use color to distinguish target behavior from the parts that realize it.",
+   "check": "Can a reader point from one segment of the desired motion to the component that constrains it?",
+   "avoid": "Do not put decorative gears behind a non-mechanical process or infer accuracy merely because a mechanism can be drawn.",
+   "limit": "The paper targets cyclic motions and a constrained library of assemblies. The overview is not a universal synthesis guarantee; fabrication and fit require separate validation.",
+   "approval": "curator selection of 2026-10-08",
+   "rights": {
+    "status": "reference-excerpt",
+    "license": null,
+    "license_url": null,
+    "basis_url": "https://cdl.ethz.ch/publications/computational-design-of-mechanical-characters/",
+    "note": "Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/mechanical-figure.png",
+     "kind": "focused",
+     "sha256": "5c374fdc1a4a9daa5e56b8b722308c92559fb5dd18d036ac39db1c4384781e36",
+     "bytes": 1087374,
+     "note": "Actual published primary figure, rasterized from the author/proceedings PDF with MuPDF 1.26.0. Extraction: {\"source\": \"mechanical.pdf\", \"page_zero_based\": 1, \"crop_fraction_top_left\": [0.083, 0.067, 0.918, 0.185], \"output\": \"mechanical-fig2.png\", \"width\": 2601, \"height\": 477, \"sha256\": \"5c374fdc1a4a9daa5e56b8b722308c92559fb5dd18d036ac39db1c4384781e36\", \"bytes\": 1087374, \"renderer\": \"MuPDF 1.26.0; actual published figure rasterization, no redraw\"}"
+    },
+    {
+     "path": "assets/calibration/mechanical-context.png",
+     "kind": "related",
+     "sha256": "3cf04e6076b4ccfa246e4a3dc5b041c72e9eb16ce60a03450427d6ce9603d1ec",
+     "bytes": 931168,
+     "note": "Actual published related figure, rasterized from the author/proceedings PDF with MuPDF 1.26.0. Extraction: {\"source\": \"mechanical.pdf\", \"page_zero_based\": 2, \"crop_fraction_top_left\": [0.083, 0.063, 0.918, 0.2], \"output\": \"mechanical-fig3.png\", \"width\": 2601, \"height\": 553, \"sha256\": \"3cf04e6076b4ccfa246e4a3dc5b041c72e9eb16ce60a03450427d6ce9603d1ec\", \"bytes\": 931168, \"renderer\": \"MuPDF 1.26.0; actual published figure rasterization, no redraw\"}"
+    }
+   ]
+  },
+  {
+   "id": "piezo-dome",
+   "label": "Piezo membrane footprint",
+   "title": "The protein curves the membrane into a dome, and the dome deforms the membrane far beyond it.",
+   "paper": "Piezo's membrane footprint and its contribution to mechanosensitivity",
+   "authors": "Haselwandter and MacKinnon",
+   "venue": "eLife",
+   "year": 2018,
+   "figure": "Figure 1",
+   "source": "https://elifesciences.org/articles/41968",
+   "image_source": "https://cdn.elifesciences.org/articles/41968/elife-41968-fig1-v2.tif",
+   "dim": "3d",
+   "moves": [
+    "zoom",
+    "ghost",
+    "cutaway"
+   ],
+   "mechanism": "The Piezo channel holds the membrane in a dome. The membrane round the dome must bend to join the flat membrane far away. This large footprint stores energy, and membrane tension can flatten it.",
+   "trace": [
+    "Panels A and B: the three blades of the protein lie on a spherical cap, from the side and from the top.",
+    "Panel C: the grey cap is that dome, at the centre of a much larger surface.",
+    "The blue surface is the membrane footprint. A wedge is cut away to show the profile."
+   ],
+   "lesson": "A pull-back in scale: first the molecule, then the molecule as a small cap in a large deformed sheet. A mesh on the surface makes the curvature readable. One wedge cut shows the profile.",
+   "borrow": "When a small object shapes a large field, show the object first. Then show it small inside the field. Put a mesh on a curved surface. Cut a wedge to show the profile.",
+   "check": "Can the reader find the small object in the large view?",
+   "limit": "The footprint is a result of a model. The renders of panels A and B are coarse.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://elifesciences.org/articles/41968#info",
+    "note": "The article page and the Crossref record state CC BY 4.0. Figure captions were not checked for third-party exceptions."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/piezo-dome.jpg",
+     "kind": "full figure",
+     "sha256": "84dc07fc7912e9c6d28e30b7f48dc7dd5ae7e45cd9ff2c9adb7466be2fd2cc63",
+     "bytes": 732712,
+     "note": "JPEG conversion of the eLife TIFF of Figure 1."
+    }
+   ]
+  },
+  {
+   "id": "torus",
+   "label": "Grid-cell topology",
+   "title": "Many fields become one place on a torus.",
+   "paper": "Toroidal topology of population activity in grid cells",
+   "authors": "Gardner et al.",
+   "venue": "Nature",
+   "year": 2022,
+   "figure": "Figure 2a–b",
+   "source": "https://www.nature.com/articles/s41586-021-04268-7",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-021-04268-7/MediaObjects/41586_2021_4268_Fig2_HTML.png",
+   "dim": "3d",
+   "moves": [
+    "unroll",
+    "state-space"
+   ],
+   "mechanism": "Grid-cell population activity has two periodic coordinates; physical positions can revisit the same population phase.",
+   "trace": [
+    "In panel a, follow how opposite edges of the unwrapped domain correspond on the torus.",
+    "In b, compare repeated firing fields in physical space with compact toroidal hotspots.",
+    "The same activity is organized differently because the coordinates identify periodic states."
+   ],
+   "lesson": "The torus and its unwrapped domain make periodic identifications visible, beside physical and toroidal activity maps.",
+   "borrow": "If repetitions obscure a rule, factor out the repetition—but show exactly which positions are identified.",
+   "check": "Does the coordinate change preserve the relation claimed? Support topology with analysis, not the appearance of a projection.",
+   "avoid": "A torus-shaped rendering does not establish toroidal topology.",
+   "limit": "This is a topology of population activity, not an anatomical doughnut. It does not by itself prove a specific biophysical circuit.",
+   "approval": "retained by the user on 2026-10-08",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://www.nature.com/articles/s41586-021-04268-7",
+    "note": "Article Rights and permissions states CC BY 4.0; reviewed figure credit lines contain no separate restriction. Original and focused assets are separately labeled."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/a4bc70a9-torus-a.png",
+     "kind": "focused",
+     "sha256": "9d3a6904f224744001271b61fa7175247a8f4aa120ccfc6f41f7630114175024",
+     "bytes": 176707,
+     "note": "Publisher panels a and b cropped separately, preserving their internal arrangements. Full figure available in the viewer."
+    },
+    {
+     "path": "assets/calibration/42be2c29-torus-b.png",
+     "kind": "focused",
+     "sha256": "978e809b7e1460eef0b4fe149e4288c98e600116018797ecb0e73dde328c992d",
+     "bytes": 842807,
+     "note": "Publisher panels a and b cropped separately, preserving their internal arrangements. Full figure available in the viewer."
+    },
+    {
+     "path": "assets/calibration/1663f848-torus2.png",
+     "kind": "full",
+     "sha256": "903d931ad3003e4b2c59a7227151fd6104fb6f81b28df959a89e8f2930b52ddc",
+     "bytes": 511463,
+     "note": "Full published figure"
+    }
+   ]
+  },
+  {
+   "id": "dreamfusion",
+   "label": "DreamFusion",
+   "title": "The feedback returns to the object that changes.",
+   "paper": "DreamFusion: Text-to-3D using 2D Diffusion",
+   "authors": "Poole, Jain, Barron & Mildenhall",
+   "venue": "ICLR",
+   "year": 2023,
+   "figure": "Figure 3",
+   "source": "https://openreview.net/forum?id=FjNys5c7VyY",
+   "image_source": "https://docs.nvidia.com/nemo-framework/user-guide/24.12/_images/dreamfusion_model_overview1.png",
+   "dim": "3d",
+   "moves": [
+    "loop",
+    "rays"
+   ],
+   "mechanism": "A pretrained 2D diffusion model supplies a score-distillation update for a rendered, trainable 3D representation.",
+   "trace": [
+    "Follow the peacock from density and albedo to a shaded camera rendering.",
+    "Follow the noisy image through the locked, frozen diffusion model.",
+    "Follow the bottom arrow back to the NeRF weights: this is the object being optimized."
+   ],
+   "lesson": "The peacock persists through density, appearance, rendering, noise and feedback. Large grouped regions and the returning arrow distinguish trainable state from a frozen evaluator.",
+   "borrow": "Expose both the forward observation and the exact return path of the update.",
+   "check": "Can the reader identify what changes and what remains frozen? Verify that the displayed feedback is the implemented update.",
+   "avoid": "A circular arrow alone does not explain an optimization mechanism.",
+   "limit": "The returned signal is not a ground-truth 3D measurement. The picture does not establish that the result is unique or geometrically correct.",
+   "approval": "retained by the user on 2026-10-08",
+   "rights": {
+    "status": "reference-excerpt",
+    "license": null,
+    "license_url": null,
+    "basis_url": "https://openreview.net/forum?id=FjNys5c7VyY",
+    "note": "Approved published figure included for source-specific critical visual study. Original author/publisher rights remain; the repository MIT license does not license this image or grant further republication rights. A broadly reusable image license has not been established."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/f022cea5-dreamfusion.png",
+     "kind": "focused",
+     "sha256": "4a0b4f5506ac8a206733a22b4a0ca7e53a52a37f1fe6ba9145d834fea22d022f",
+     "bytes": 1653618,
+     "note": "The supplied guide's Figure 3, reproduced in NVIDIA documentation. The author project and OpenReview publication are linked separately."
+    }
+   ]
+  },
+  {
+   "id": "alphatensor",
+   "label": "AlphaTensor",
+   "title": "Matrix multiplication is a 3D block of ones and zeros.",
+   "paper": "Discovering faster matrix multiplication algorithms with reinforcement learning",
+   "authors": "Fawzi et al.",
+   "venue": "Nature",
+   "year": 2022,
+   "figure": "Figure 1, panel a",
+   "source": "https://www.nature.com/articles/s41586-022-05172-4",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-022-05172-4/MediaObjects/41586_2022_5172_Fig1_HTML.png",
+   "dim": "3d",
+   "moves": [
+    "index",
+    "exploded"
+   ],
+   "mechanism": "The product of two 2 by 2 matrices is a 4 by 4 by 4 tensor of zeros and ones. An algorithm for the product is a decomposition of this tensor into rank-one terms, and fewer terms mean fewer multiplications.",
+   "trace": [
+    "Top: the product of two 2 by 2 matrices.",
+    "Below: a block of 4 by 4 by 4 cells, drawn as four separate slices. The axes are the entries of a, b and c.",
+    "A purple cube at (a, b, c) means that the product of that a and that b contributes to that c."
+   ],
+   "lesson": "An abstract tensor becomes a physical block. The slices are pulled apart, so each cell is visible. Only the non-zero cells are solid.",
+   "borrow": "Draw a tensor as a block of cells. Separate the slices. Fill only the cells that carry information.",
+   "check": "Can the reader read one cell and say what it means?",
+   "limit": "The block shows a structure and not a process. The crop is 572 pixels wide.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://www.nature.com/articles/s41586-022-05172-4#rightslink",
+    "note": "The article page and the Crossref record state CC BY 4.0. Figure captions were not checked for third-party exceptions."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/alphatensor-block.png",
+     "kind": "crop of panel a",
+     "sha256": "6149518ddbe24768389886e238b89ea067a58b511bf4f10c16a8af35e722ad02",
+     "bytes": 83558,
+     "note": "Crop of panel a from the publisher file of Figure 1. No other change."
+    },
+    {
+     "path": "assets/calibration/alphatensor-full.png",
+     "kind": "full figure",
+     "sha256": "bb10c91df5238913f2dd6afbba1db668714da234e2812b430bbadc6f1d610ef2",
+     "bytes": 142771,
+     "note": "Publisher file of Figure 1, not changed."
+    }
+   ]
+  },
+  {
+   "id": "safaie-dynamics",
+   "label": "Preserved neural dynamics",
+   "title": "Two brains hold the same trajectory in planes with different orientations.",
+   "paper": "Preserved neural dynamics across animals performing similar behaviour",
+   "authors": "Safaie et al.",
+   "venue": "Nature",
+   "year": 2023,
+   "figure": "Figure 1",
+   "source": "https://www.nature.com/articles/s41586-023-06714-0",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-023-06714-0/MediaObjects/41586_2023_6714_Fig1_HTML.png",
+   "dim": "3d",
+   "moves": [
+    "state-space",
+    "counterfactual"
+   ],
+   "mechanism": "Each animal records different neurons, so the low-dimensional dynamics lie in a different plane of its neural space. A linear alignment brings the two planes together, and the trajectories then match.",
+   "trace": [
+    "Panel b: the neural landscape, with one trajectory on a surface in neural space.",
+    "Panel c: monkey A and monkey B do the same behaviour. Each has its own plane, blue or green, with a similar curve on it.",
+    "Bottom: after alignment, the two planes and the two curves lie on each other."
+   ],
+   "lesson": "A plane in a 3D axis frame stands for a low-dimensional manifold. The same curve on two tilted planes says 'same dynamics, different coordinates' with no equation. The final overlay is the proof.",
+   "borrow": "Draw each system as a plane in its own axes with the trajectory on it. Show the alignment as an overlay.",
+   "check": "Does the final overlay let the reader judge the match?",
+   "limit": "Schematic. The planes and the curves are drawings and are not data. The publisher file is 1059 pixels wide.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://www.nature.com/articles/s41586-023-06714-0#rightslink",
+    "note": "The article page and the Crossref record state CC BY 4.0. Figure captions were not checked for third-party exceptions."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/safaie-dynamics.png",
+     "kind": "full figure",
+     "sha256": "dae425cb4092215329f30ff0bc886c3a98a47f1f30ae8fca805abfe68ea70019",
+     "bytes": 206766,
+     "note": "Publisher file of Figure 1, not changed."
+    }
+   ]
+  },
+  {
+   "id": "cohen-untangling",
+   "label": "Object manifolds",
+   "title": "Layer by layer, two tangled manifolds come apart.",
+   "paper": "Separability and geometry of object manifolds in deep neural networks",
+   "authors": "Cohen, Chung, Lee and Sompolinsky",
+   "venue": "Nature Communications",
+   "year": 2020,
+   "figure": "Figure 1",
+   "source": "https://www.nature.com/articles/s41467-020-14578-5",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-020-14578-5/MediaObjects/41467_2020_14578_Fig1_HTML.png",
+   "dim": "mixed",
+   "moves": [
+    "state-space",
+    "sequence"
+   ],
+   "mechanism": "All images of one object make a manifold in the space of neural responses. Early in the network, the manifolds of two objects are folded into each other. Later stages make them smaller and move them apart until a plane separates them.",
+   "trace": [
+    "Left: the blue sheet and the red sheet are folded into each other. Each dot is one image.",
+    "Middle: after one stage, the sheets are less folded.",
+    "Right: the sheets are small and far apart, and a plane between them separates the two classes."
+   ],
+   "lesson": "Three states in one camera with fixed colours. The object that changes is the shape of the sheets, and nothing else moves. Example images hang from points on the sheets, so the abstract sheet has a concrete meaning.",
+   "borrow": "Show a representation as a sheet in named axes. Repeat it after each stage with the same camera. Attach a small number of real examples to points.",
+   "check": "Is the change of shape the only change between the states?",
+   "limit": "Schematic. The sheets are drawings with implied depth. The top row is boxes and arrows.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://www.nature.com/articles/s41467-020-14578-5#rightslink",
+    "note": "The article page and the Crossref record state CC BY 4.0. Figure captions were not checked for third-party exceptions."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/cohen-untangling.png",
+     "kind": "full figure",
+     "sha256": "6aa7d98af28387e62167e73f0128e3313a7395f6c4675ddb45b731b698b9977a",
+     "bytes": 606125,
+     "note": "Publisher file of Figure 1, not changed."
+    }
+   ]
+  },
+  {
+   "id": "hulse-compass",
+   "label": "Fly compass circuit",
+   "title": "A ring of neurons maps to two shifted copies in the bridge.",
+   "paper": "A connectome of the Drosophila central complex reveals network motifs suitable for flexible navigation and context-dependent action selection",
+   "authors": "Hulse, Haberkern, Franconville et al.",
+   "venue": "eLife",
+   "year": 2021,
+   "figure": "Figure 16",
+   "source": "https://elifesciences.org/articles/66039",
+   "image_source": "https://cdn.elifesciences.org/articles/66039/elife-66039-fig16-v4.tif",
+   "dim": "mixed",
+   "moves": [
+    "unroll",
+    "index",
+    "ghost"
+   ],
+   "mechanism": "Each wedge of the ellipsoid body sends neurons to one glomerulus in each half of the protocerebral bridge. One bump of activity on the ring thus becomes two bumps in the bridge.",
+   "trace": [
+    "Panel Aii: the reconstructed neurons. The colour of each neuron is the ring wedge that it comes from.",
+    "Panel B: the same colours on the ring diagram and on the row of bridge glomeruli. Follow the two purple arrows from one wedge.",
+    "Bottom: one activity bump on the ring. It becomes one bump in each half of the bridge."
+   ],
+   "lesson": "One colour code joins the anatomy and the diagram. The reader learns the code on the real neurons and then reads the abstract map with no legend.",
+   "borrow": "Colour the real structure by the variable of the abstract map. Then draw the map with the same colours.",
+   "check": "Can the reader find the same element in the anatomy and in the diagram by colour alone?",
+   "limit": "The diagram half is flat. The single-neuron anatomy in panel Ai is small. Sixteen hues are near the limit of what the eye separates.",
+   "approval": "curator selection of 2026-11-13, not yet reviewed by the user",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://elifesciences.org/articles/66039#info",
+    "note": "The article page and the Crossref record state CC BY 4.0. Figure captions were not checked for third-party exceptions."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/hulse-compass.png",
+     "kind": "full figure",
+     "sha256": "1f31cd59b01264b49e91db37b25875894218891c21b188a2caf0cd5162d5a48b",
+     "bytes": 1037164,
+     "note": "PNG conversion of the eLife TIFF of Figure 16, at 1582 pixels wide."
+    }
+   ]
+  },
+  {
+   "id": "genomnimatte",
+   "label": "Generative Omnimatte",
+   "title": "Give an object’s nonlocal effects their own visible layer.",
+   "paper": "Generative Omnimatte: Learning to Decompose Video into Layers",
+   "authors": "Lee, Lu, Rumbley, Geyer, Huang, Dekel & Cole",
+   "venue": "CVPR",
+   "year": 2025,
+   "figure": "Figure 1; related Figure 4",
+   "source": "https://gen-omnimatte.github.io/",
+   "image_source": "https://openaccess.thecvf.com/content/CVPR2025/papers/Lee_Generative_Omnimatte_Learning_to_Decompose_Video_into_Layers_CVPR_2025_paper.pdf",
+   "dim": "mixed",
+   "moves": [
+    "layers",
+    "counterfactual"
+   ],
+   "mechanism": "Video is decomposed into object-associated RGBA layers that include effects such as shadows/reflections; removal-conditioned videos and a clean background support layer reconstruction.",
+   "trace": [
+    "For one row in Figure 1, keep the input scene fixed while following the separated transparent layers.",
+    "Compare the object-removal and edited results: look beyond the foreground silhouette to its associated effects.",
+    "In related Figure 4, trace preserve/remove/uncertain trimask regions into solo videos and the common clean background."
+   ],
+   "lesson": "Transparent, spatially aligned sheets turn a hidden decomposition into a stack the reader can inspect. Real scenes remain repeated at matched scale, and interventions make the decomposition testable by eye.",
+   "borrow": "Make a latent decomposition spatial, then reveal its consequences through a matched edit rather than an isolated feature-importance ranking.",
+   "check": "Does the comparison expose effects outside the object mask, and are inferred/filled pixels labeled honestly?",
+   "avoid": "Do not equate an attention map or generative completion with causal proof; do not silently label hallucinated occluded content as observed.",
+   "limit": "These are published model outputs. The authors report limits for physical interactions and difficult associations; RGBA color layers do not model every shape-changing effect.",
+   "approval": "curator selection of 2026-10-08",
+   "rights": {
+    "status": "reference-excerpt",
+    "license": null,
+    "license_url": null,
+    "basis_url": "https://gen-omnimatte.github.io/",
+    "note": "Actual published figure excerpt included with source-specific critical study. No general redistribution license is asserted by this repository. Original authors/publishers retain rights; inspect the source terms and any third-party image credits before further reuse."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/genomnimatte-figure.png",
+     "kind": "focused",
+     "sha256": "e90b87bb0211b3a0d5bfd6fc0b02727a39e0e76b3d36635194612e9f7c4051f6",
+     "bytes": 3688076,
+     "note": "Actual published primary figure, rasterized from the author/proceedings PDF with MuPDF 1.26.0. Extraction: {\"source\": \"genomnimatte.pdf\", \"page_zero_based\": 0, \"crop_fraction_top_left\": [0.084, 0.275, 0.91, 0.579], \"output\": \"genomnimatte-fig1.png\", \"width\": 2601, \"height\": 1239, \"sha256\": \"e90b87bb0211b3a0d5bfd6fc0b02727a39e0e76b3d36635194612e9f7c4051f6\", \"bytes\": 3688076, \"renderer\": \"MuPDF 1.26.0; actual published figure rasterization, no redraw\"}"
+    },
+    {
+     "path": "assets/calibration/genomnimatte-context.png",
+     "kind": "related",
+     "sha256": "bb4d46f0cf9608edfc471246e53799ef6814a2c03258b6da0cd21ac292ded100",
+     "bytes": 804255,
+     "note": "Actual published related figure, rasterized from the author/proceedings PDF with MuPDF 1.26.0. Extraction: {\"source\": \"genomnimatte.pdf\", \"page_zero_based\": 3, \"crop_fraction_top_left\": [0.084, 0.08, 0.91, 0.332], \"output\": \"genomnimatte-fig4.png\", \"width\": 2601, \"height\": 1028, \"sha256\": \"bb4d46f0cf9608edfc471246e53799ef6814a2c03258b6da0cd21ac292ded100\", \"bytes\": 804255, \"renderer\": \"MuPDF 1.26.0; actual published figure rasterization, no redraw\"}"
+    }
+   ]
+  },
+  {
+   "id": "fip",
+   "label": "Functionally invariant paths",
+   "title": "Many parameter locations, nearly the same function.",
+   "paper": "Engineering flexible machine learning systems by traversing functionally invariant paths",
+   "authors": "Raghavan et al.",
+   "venue": "Nature Machine Intelligence",
+   "year": 2024,
+   "figure": "Figure 1a",
+   "source": "https://www.nature.com/articles/s42256-024-00902-x",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs42256-024-00902-x/MediaObjects/42256_2024_902_Fig1_HTML.png",
+   "dim": "mixed",
+   "moves": [
+    "state-space"
+   ],
+   "mechanism": "Parameters may change substantially while task behavior is approximately preserved, allowing other properties to be adjusted.",
+   "trace": [
+    "Find the different parameter points on the weight-space surface.",
+    "Follow their relationship to the compact group in output space.",
+    "Notice the contrast: internal movement and task-output movement have different magnitudes."
+   ],
+   "lesson": "An extended set of weight-space states maps to a compact task-output set. The two spaces are kept distinct so internal change and output preservation can be compared.",
+   "borrow": "For an invariance claim, show both the space where change occurs and the space where change must remain small.",
+   "check": "Is preservation verified on the intended inputs, not just one illustrated example? Label approximate versus exact invariance.",
+   "avoid": "Equal task accuracy is not identical function behavior on every input.",
+   "limit": "The surface is schematic, not a measured 3D manifold or proof of exact global functional invariance.",
+   "approval": "retained by the user on 2026-10-08",
+   "rights": {
+    "status": "reference-excerpt",
+    "license": "CC-BY-NC-ND-4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "basis_url": "https://www.nature.com/articles/s42256-024-00902-x",
+    "note": "Approved published figure included for source-specific critical visual study. Original author/publisher rights remain; the repository MIT license does not license this image or grant further republication rights. Publisher permits noncommercial unadapted redistribution; the original license remains applicable; check source-specific permissions for further use."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/c1bbd0b1-fip.png",
+     "kind": "focused",
+     "sha256": "8cf5139aa2fb353d9d12aa0493aa5f2eacb6b6a5a997e5e1d145a18dfd41d313",
+     "bytes": 382375,
+     "note": "Publisher Figure 1, panel a cropped. Full figure available in the viewer."
+    },
+    {
+     "path": "assets/calibration/58b095f5-fip.png",
+     "kind": "full",
+     "sha256": "e6279162f5dc5eb6e1b8f5545f60b6921e8a941ef8abda554a3860d21d74ea79",
+     "bytes": 284382,
+     "note": "Full published figure"
+    }
+   ]
+  },
+  {
+   "id": "cellrank",
+   "label": "CellRank",
+   "title": "A local direction becomes a possible future.",
+   "paper": "CellRank for directed single-cell fate mapping",
+   "authors": "Lange et al.",
+   "venue": "Nature Methods",
+   "year": 2022,
+   "figure": "Figure 1",
+   "source": "https://www.nature.com/articles/s41592-021-01346-6/figures/1",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41592-021-01346-6/MediaObjects/41592_2021_1346_Fig1_HTML.png",
+   "dim": "mixed",
+   "moves": [
+    "zoom",
+    "state-space"
+   ],
+   "mechanism": "A cell's inferred expression velocity biases transitions toward compatible neighboring expression states.",
+   "trace": [
+    "Find the highlighted cell and its velocity in a–b.",
+    "Watch alignment with neighboring states become weighted transitions.",
+    "In the full figure, follow the transition matrix into macrostates and fate probabilities on the same population."
+   ],
+   "lesson": "A highlighted cell connects the population view to a magnified neighborhood, transition structure and fate map. The same scientific state persists across scales.",
+   "borrow": "Connect a population view to one enlarged neighborhood where the update can be followed without abstraction.",
+   "check": "Can the reader trace a global claim back to its local update? Check probability normalization and model assumptions.",
+   "avoid": "Do not treat distances in a 2D embedding as the high-dimensional transition rule.",
+   "limit": "Transitions use high-dimensional expression information, not distances in the displayed embedding. Inferred fates are not directly observed lineages.",
+   "approval": "retained by the user on 2026-10-08",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://www.nature.com/articles/s41592-021-01346-6",
+    "note": "Article Rights and permissions states CC BY 4.0; reviewed figure credit lines contain no separate restriction. Original and focused assets are separately labeled."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/e3277e8e-cellrank.png",
+     "kind": "full",
+     "sha256": "9b0011799630e4e71d5a9088c0c58ce14b4cfead6a0a9c47ab10c3f8756a4e81",
+     "bytes": 774512,
+     "note": "Full published figure"
+    },
+    {
+     "path": "assets/calibration/ff87748f-cellrank.png",
+     "kind": "focused",
+     "sha256": "7eeca7a6a75679185c4f307cc1c2e362ee7a52cb52c062bcd4ed06b945ab02d7",
+     "bytes": 555071,
+     "note": "Publisher figure; panels a–b cropped together. Full figure continues through coarse-graining and fate probabilities."
+    }
+   ]
+  },
+  {
+   "id": "alphafold",
+   "label": "AlphaFold / triangle updates",
+   "title": "A tensor update becomes a route around a triangle.",
+   "paper": "Highly accurate protein structure prediction with AlphaFold",
+   "authors": "Jumper et al.",
+   "venue": "Nature",
+   "year": 2021,
+   "figure": "Figure 3",
+   "source": "https://www.nature.com/articles/s41586-021-03819-2/figures/3",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-021-03819-2/MediaObjects/41586_2021_3819_Fig3_HTML.png",
+   "dim": "flat",
+   "moves": [
+    "index"
+   ],
+   "mechanism": "Updating a residue-pair representation incorporates information involving a third residue.",
+   "trace": [
+    "In panel b, match selected matrix entries to edges between residues i, j and k.",
+    "In panel c, follow the blue edges through the third residue.",
+    "In the full figure, relate these local updates to the structure module and its explicit residue frames."
+   ],
+   "lesson": "The same indices label matrix cells, graph edges and triangle operations. The surrounding architecture stays quieter than the selected local update.",
+   "borrow": "When indices hide relational structure, draw the objects they refer to and preserve the direction of each dependency.",
+   "check": "Can every highlighted edge be matched to a term in the update? Do not imply physical transport or causation when it is only computation.",
+   "avoid": "Do not draw triangles merely because the method contains three modules.",
+   "limit": "These arrows describe computation, not experimental causal evidence or a guarantee that every geometric constraint is satisfied.",
+   "approval": "retained by the user on 2026-10-08",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://www.nature.com/articles/s41586-021-03819-2",
+    "note": "Article Rights and permissions states CC BY 4.0; reviewed figure credit lines contain no separate restriction. Original and focused assets are separately labeled."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/82942714-alphafold.png",
+     "kind": "full",
+     "sha256": "cc3898ec047291dcfeadaea447fdba928d74174f972b6a75074ffcf8c56bd4fc",
+     "bytes": 401491,
+     "note": "Full published figure"
+    },
+    {
+     "path": "assets/calibration/94866d7c-alphafold.png",
+     "kind": "focused",
+     "sha256": "96abc1ce03ee69229283a7ba38769ec011912bd2e644d1ba39624f02c77b1e91",
+     "bytes": 190436,
+     "note": "Publisher Figure 3; panels b–c cropped together. Full figure available in the viewer."
+    }
+   ]
+  },
+  {
+   "id": "scvelo",
+   "label": "RNA velocity / scVelo",
+   "title": "The lag draws the direction.",
+   "paper": "Generalizing RNA velocity to transient cell states through dynamical modeling",
+   "authors": "Bergen et al.",
+   "venue": "Nature Biotechnology",
+   "year": 2020,
+   "figure": "Figure 1",
+   "source": "https://www.nature.com/articles/s41587-020-0591-3",
+   "image_source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41587-020-0591-3/MediaObjects/41587_2020_591_Fig1_HTML.png",
+   "dim": "flat",
+   "moves": [
+    "state-space"
+   ],
+   "mechanism": "Unspliced and spliced RNA respond with a lag as a gene switches on and off.",
+   "trace": [
+    "Read the transcription–splicing–degradation chain.",
+    "Trace the induction and repression arms in unspliced–spliced coordinates.",
+    "Notice that equal spliced abundance need not imply the same direction of change."
+   ],
+   "lesson": "A molecular processing chain sits above the joint phase portrait. Oriented trajectory arms and time/state color separate induction from repression.",
+   "borrow": "When two quantities lag each other, pair them as coordinates; check whether direction or hysteresis becomes visible.",
+   "check": "Does the second coordinate really disambiguate direction? Check the fitted equations and label inferred ordering.",
+   "avoid": "Do not infer a closed cycle merely because a projected cloud looks curved.",
+   "limit": "This is model-based reconstruction from snapshots, not a movie of the same cells. Kinetic assumptions matter.",
+   "approval": "retained by the user on 2026-10-08",
+   "rights": {
+    "status": "reference-excerpt",
+    "license": null,
+    "license_url": null,
+    "basis_url": "https://www.nature.com/articles/s41587-020-0591-3",
+    "note": "Approved published figure included for source-specific critical visual study. Original author/publisher rights remain; the repository MIT license does not license this image or grant further republication rights. A broadly reusable image license has not been established."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/17c20634-scvelo.png",
+     "kind": "focused",
+     "sha256": "1dd26713ab1d2ca06c30b89d10170fb0504fcfd32d3042d1a34b1cd9a69139c0",
+     "bytes": 875161,
+     "note": "Full publisher figure, raster-resized without changing its content."
+    }
+   ]
+  },
+  {
+   "id": "flow",
+   "label": "Multisample Flow Matching",
+   "title": "Show when structure forms—and what a coarse solver misses.",
+   "paper": "Multisample Flow Matching: Straightening Flows with Minibatch Couplings",
+   "authors": "Pooladian et al.",
+   "venue": "ICML",
+   "year": 2023,
+   "figure": "Figure 2",
+   "source": "https://proceedings.mlr.press/v202/pooladian23a.html",
+   "image_source": "https://proceedings.mlr.press/v202/pooladian23a/pooladian23a.pdf",
+   "dim": "flat",
+   "moves": [
+    "counterfactual",
+    "sequence"
+   ],
+   "mechanism": "The coupling changes the intermediate probability path and how well a coarse numerical solver reaches the target.",
+   "trace": [
+    "Read density evolution from left to right using the common time columns.",
+    "Compare when the checkerboard structure begins forming in different rows.",
+    "Move to the right-hand solver outputs: inspect what survives at a small number of function evaluations."
+   ],
+   "lesson": "All methods share the same time columns and spatial domain; budget-limited outputs are attached to the corresponding row.",
+   "borrow": "If timing explains an outcome, align intermediate states and place the budget-limited consequence immediately beside them.",
+   "check": "Is the claimed mechanism visible before the endpoint? Match compute and inspect whether the intermediate difference predicts the result.",
+   "avoid": "Do not choose different favorable timesteps for different methods.",
+   "limit": "These are density snapshots, not individual trajectories. The 2D example does not establish universal low-step performance.",
+   "approval": "retained by the user on 2026-10-08",
+   "rights": {
+    "status": "reference-excerpt",
+    "license": null,
+    "license_url": null,
+    "basis_url": "https://proceedings.mlr.press/v202/pooladian23a.html",
+    "note": "Approved published figure included for source-specific critical visual study. Original author/publisher rights remain; the repository MIT license does not license this image or grant further republication rights. A broadly reusable image license has not been established."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/e65934cc-flow.jpg",
+     "kind": "focused",
+     "sha256": "2c8c92f836499cfd098c981a3ec0ba7a7f011081cc4ad4a515d6722f6e29cd7e",
+     "bytes": 1213424,
+     "note": "Actual Figure 2 rasterized from the PMLR proceedings PDF."
+    }
+   ]
+  },
+  {
+   "id": "congealing",
+   "label": "Neural Congealing",
+   "title": "Use an edit as a probe of correspondence.",
+   "paper": "Neural Congealing: Aligning Images to a Joint Semantic Atlas",
+   "authors": "Ofri-Amar et al.",
+   "venue": "CVPR",
+   "year": 2023,
+   "figure": "Figure 1",
+   "source": "https://openaccess.thecvf.com/content/CVPR2023/html/Ofri-Amar_Neural_Congealing_Aligning_Images_to_a_Joint_Semantic_Atlas_CVPR_2023_paper.html",
+   "image_source": "https://arxiv.org/pdf/2302.03956",
+   "dim": "flat",
+   "moves": [
+    "counterfactual"
+   ],
+   "mechanism": "A shared atlas maps corresponding semantic parts into common coordinates despite pose and appearance changes.",
+   "trace": [
+    "Read one column from original butterfly to aligned butterfly.",
+    "Read across the aligned row: corresponding parts occupy common coordinates.",
+    "Inspect the transferred edit below: it follows the corresponding part back into each original pose."
+   ],
+   "lesson": "Original, aligned and edited images form consistent rows with each specimen in the same column. A localized edit visibly follows the corresponding semantic part.",
+   "borrow": "To show invariance, carry a concrete, localized probe through the transformation and back.",
+   "check": "Does the probe remain attached to the intended feature? Include failures and cases outside the fitted regime.",
+   "avoid": "Consistent coloring alone is not proof of a correct correspondence.",
+   "limit": "Selected successes demonstrate correspondence qualitatively; they do not establish reliability over all inputs.",
+   "approval": "retained by the user on 2026-10-08",
+   "rights": {
+    "status": "bundled",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "basis_url": "https://arxiv.org/abs/2302.03956v2",
+    "note": "Author manuscript license link is CC BY 4.0. Actual paper figure crop, not a reconstruction; figure-specific treatment is recorded below."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/afe52f89-congealing.jpg",
+     "kind": "focused",
+     "sha256": "7f1a954b19683a9e783005bd1f39bcc4b3a5e76c0e33a50983e35f4e75ea537a",
+     "bytes": 745679,
+     "note": "Actual Figure 1 from the authors' March 2023 arXiv manuscript; butterfly examples retained in their original order."
+    }
+   ]
+  },
+  {
+   "id": "aardvark",
+   "label": "Aardvark",
+   "title": "Evidence stays attached to the event it explains.",
+   "paper": "Aardvark: Composite Visualizations of Trees, Time-Series, and Images",
+   "authors": "D. Lange, Judson-Torres, Zangle & Lex",
+   "venue": "IEEE VIS / TVCG",
+   "year": 2024,
+   "figure": "Figure 1",
+   "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12143745/",
+   "image_source": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/df01/12143745/4e9f75adbdb2/nihms-2083519-f0001.jpg",
+   "dim": "flat",
+   "moves": [
+    "counterfactual"
+   ],
+   "mechanism": "Lineage, measured change and microscopy evidence describe the same cells and events but answer different questions.",
+   "trace": [
+    "In b, the tree provides the structure; the orange trace lives inside each branch's lifetime.",
+    "The purple cell images are attached to specific points on that trace.",
+    "Compare c and d: changing the question changes which modality supplies the main layout."
+   ],
+   "lesson": "Tree, measurement and image motifs remain identifiable when one becomes the host layout. Repeated colors communicate modality roles; nesting communicates event ownership.",
+   "borrow": "Join modalities by entity and event before choosing how to compose their visual representations.",
+   "check": "Can a reader inspect the raw evidence for a suspicious event without searching another panel? Validate every time/entity match.",
+   "avoid": "Co-location is not enough: a screenshot near a curve must correspond to the same event.",
+   "limit": "Figure 1 presents a design grammar, not experimental proof. Different host layouts do not imply that all modalities use one metric coordinate system.",
+   "approval": "retained by the user on 2026-10-08",
+   "rights": {
+    "status": "reference-excerpt",
+    "license": null,
+    "license_url": null,
+    "basis_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12143745/",
+    "note": "Approved published figure included for source-specific critical visual study. Original author/publisher rights remain; the repository MIT license does not license this image or grant further republication rights. A broadly reusable image license has not been established."
+   },
+   "assets": [
+    {
+     "path": "assets/calibration/af521a16-aardvark.jpg",
+     "kind": "focused",
+     "sha256": "68aa01b4f6400d42629784cf8ef55c4af63f6e4330e233df3d5c9dc430e23b8b",
+     "bytes": 183247,
+     "note": "Full Figure 1 from the authors' manuscript deposited in PMC. Presented at VIS 2024; TVCG volume 31(1), January 2025. The conference/journal date distinction is retained."
+    }
+   ]
+  }
+ ]
+}

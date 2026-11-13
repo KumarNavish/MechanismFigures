@@ -1,78 +1,154 @@
 ---
 name: mechanism-figures
-description: Use for scientific figure design, research mechanism diagrams, explanatory paper figures, and revising a figure to reveal how a system works. Inspect real published references, map the mechanism into geometry or structure, implement, critique, and refine. Not routine chart styling or decorative infographics.
-license: MIT; third-party calibration images retain their stated licenses in THIRD_PARTY.md
-compatibility: Requires an agent able to inspect images and edit files. Optional deterministic helpers use Python 3.9+ standard library. No model service, GPU, network, or plotting dependency is required by the skill itself.
+description: Use when a figure must show HOW something works. Applies to scientific and technical mechanism figures, paper figure 1, method and architecture figures, 3D schematics, cutaways, exploded views, anatomy of a device, molecule, model or algorithm, and to the repair of a figure that looks like boxes and arrows. Strong bias for rendered 3D. Gives a reference atlas of real published figures, a 3D stage with a renderer, and a look-critique-repair loop. Not for routine chart styling.
+license: MIT for code and text. Third-party reference figures keep the licences recorded in THIRD_PARTY.md.
+compatibility: The agent must be able to view images. The 3D stage needs Node 22 or later and an installed Chrome or Chromium. Reference lookup needs Python 3.9 or later. No network, model service or GPU is necessary.
 metadata:
   author: Navish Kumar
-  opencode/slash: "true"
-  version: "0.5.0"
+  version: "1.0.0"
 ---
 
 # MechanismFigures
 
-**Learn from the curated real published figures. Make the mechanism visible at that standard, then test whether the picture tells the truth.**
+**A mechanism figure passes one test: a reader who sees only the picture can predict what the system does next.**
 
-The [curated gallery](assets/gallery.html) is the visual calibration authority: all 20 current published references and 29 actual figure assets are included. Never replace them with self-generated examples or generic diagrams. This is a reasoning-and-review workflow, not a plot theme. An agent supplies scientific judgment and implementation. The scripts never generate research claims, call a model, or certify aesthetic quality.
+A list of parts fails this test. A pipeline of boxes fails this test. A plot of the result fails this test. The picture must show an object, the operation on that object, and the consequence.
 
-For a fast route through the material, use [references/INDEX.md](references/INDEX.md); do not preload every case. Global installation and account boundaries are outside this scientific workflow.
+This skill gives you three tools:
 
-An optional [60-second visual walkthrough](assets/motion.html) shows how this workflow uses the actual approved figures. It is an authored explanation, not a live run, generated scientific result, or substitute for the required image inspections.
+1. **An atlas** of real published figures that pass the test. You look at them before you draw.
+2. **Fifteen visual moves** that make an operation visible. Most of them are three-dimensional.
+3. **A 3D stage** that renders your figure, and a loop in which you look at the render and repair it.
 
-## Enter with four inputs
+## Think in 3D first
 
-This repository is the installable skill. Begin here, not in installation or maintainer documentation. Read [craft.md](references/craft.md) when selecting and constructing the visual world; use [kit.md](references/kit.md) only when the small provided primitives fit the project.
+Most mechanisms occur in space. Parts enclose other parts. Layers lie on layers. Rays cross volumes. Surfaces fold. A flat diagram deletes these relations and puts arrows in their place. Thus your first proposal must be a 3D construction. Go to a flat construction only when a test below tells you to.
 
-Read the supplied **project context**, **result/mechanism**, **data/evidence**, and **output constraints**. Use the project's existing sources and tools before seeking more. Do not change the scientific objective to fit a reference.
+| Use 3D when | Stay flat when |
+|---|---|
+| The operation occurs inside something. Use a cutaway. | The claim is an exact quantity that the reader must read from an axis. |
+| Parts touch, stack, nest or interlock. Use an exploded view or a layer stack. | The structure is a sequence or a graph with no spatial meaning. |
+| Something moves, folds, rotates or flows through space. | Depth has no variable and no spatial relation to carry. |
+| A quantity lives on a surface or in a volume. | A fair comparison needs equal lengths, and foreshortening can change them. |
+| The data has three state variables, or a manifold has a shape. | |
+| An abstract object becomes clear as a physical object: a tensor as a block, a landscape as a surface. | |
 
-Initialize one isolated figure folder with `python scripts/mf.py init /path/to/figure-work`. Paths below are relative to this installed skill; invoke scripts using their resolved absolute path when working elsewhere. The generated `figure.json` is the persistent contract. Fill it from the four inputs; do not ask the user to fill all its fields.
+3D must carry meaning. Each axis has a name or a spatial sense. Do not make 3D bars, 3D pies or bevelled boxes. If the reader must read a number, put a flat panel adjacent to the 3D view and link the two with a shared object.
 
-Before drawing anything, read [references/style-calibration.md](references/style-calibration.md), open at least **two actual approved reference images**, and record their composition, encoding, visual style and planned application. Read [references/choose.md](references/choose.md) and [references/critique.md](references/critique.md). Load [references/fidelity.md](references/fidelity.md) when evidence, causation, geometry, or uncertainty needs clarification; load [references/construct.md](references/construct.md) before implementation. Select **two** relevant cases through [references/calibration-index.md](references/calibration-index.md). Do not load the entire atlas into context.
+## The loop
 
-## The execution loop
+Do the six steps in sequence. Do not start with step 5.
 
-| Stage | Required decision / artifact | Advance only when |
+### 1. Write the mechanism sentence
+
+> The reader must see that **[consequence]** occurs because **[operation]** acts on **[object]**.
+
+Then write the prediction test: "If I remove or change **X**, the reader can tell from the picture that **Y** changes." If you cannot write these two sentences from the project material, find the mechanism first. Read the code, the equations and the data. Do not draw a topic.
+
+### 2. Name the cast
+
+Write three lists.
+
+- **The persistent object.** One thing that the eye follows through the full figure: a ray, a residue pair, a cell, a sheet, a weight vector. It keeps its colour and its identity in each panel.
+- **The operation.** The one event that carries the explanation. It gets the strongest colour and the most space.
+- **The context.** All other items. They are grey, thin and quiet.
+
+For each item, record its status: **measured**, **simulated**, **derived from an equation**, or **schematic**. You will show this status in the figure. See [truth.md](references/truth.md).
+
+### 3. Look at real figures
+
+Run `python3 scripts/refs.py <words>` with words from your mechanism, for example `refs.py cutaway rotation` or `refs.py layers field`. The command prints the best matches and the absolute paths of their images. A move name such as `cutaway` or `rays` matches best. With no words it prints the full atlas. [atlas.md](references/atlas.md) has the same data in a table.
+
+**Open two or more of the image files and look at them.** A filename or a caption is not a look. For each image, write down four facts:
+
+- the move: how the operation becomes visible,
+- the camera: its angle, and what faces the viewer,
+- the depth cues: what makes near and far clear,
+- the labels: where they are, how many, and what they name.
+
+Each reference has a case file in `references/cases/` that tells you where to look and what to take. Take the move. Do not copy the domain objects.
+
+### 4. Choose the move
+
+Select from the table. Then describe two different constructions in one sentence each. Select the one that tells the truth with the least decoding. A different palette is not a different construction.
+
+| The reader must see | Move | Study |
 |---|---|---|
-| 1. Understand | Fill `inputs` and `analysis` in `figure.json`: state variables, units, update/relationship, assumptions, claim boundary, comparator, falsifier. | The proposed relationship has support, or is explicitly a hypothesis/schematic. |
-| 2. Isolate | Write one sentence: **“The reader should see that ___ because ___.”** State one predicted change under one intervention. | It names a relationship, not a topic, score, or list of modules. |
-| 3. Choose | Propose two genuinely different constructions. Record gain, distortion, and required evidence for each; choose by fidelity first. | The selected construction exposes something a scalar plot or box inventory would hide. |
-| 4. Calibrate | Visually inspect at least two approved published figures; record image paths/hashes and concrete composition, encoding, annotation/style, and project-transfer observations. | Both actual images have been viewed. Text descriptions, invented images, or a self-generated example cannot substitute. |
-| 5. Map | Fill an encoding table: scientific entity/quantity → visible object/channel → units/status → evidence IDs. Plan a captionless prediction probe. | Every meaningful position, width, arrow, join, and transformation has an explicit meaning. |
-| 6. Compose | Draw a rough, unstyled construction using the actual relationship and smallest sufficient worked instance. | The mechanism survives without decoration. The same entities and controls stay traceable. |
-| 7. Implement | Produce editable vector, actual-size preview, caption, source, and reproducible inputs. Use existing project tooling. | The source regenerates the outputs; no synthetic illustration is mislabeled as an experimental result. |
-| 8. Critique | Inspect the rendered preview, compare with the two references, record evidence-linked scores and hard gates in a fresh `review.json`. | Review is tied to the exact contract and output hashes. |
-| 9. Repair | Fix the highest-impact defect; render again; record change and effect in `revisions.jsonl`; create a new review. | Every hard gate passes, every dimension is ≥4/5, fidelity is 5/5, and weighted score is ≥90/100. |
+| An operation inside a body | **Cutaway** with a capped section | `kent-hopfion`, `t3ss-needle`, `tokamak` |
+| How parts join or stack | **Exploded view** with tethers; **layer stack** | `photonic-braids`, `alphatensor`, `kplanes` |
+| One part in action in a large assembly | **Ghost and focus** | `loterie-vam`, `frenzel-chiral`, `birch-skyrmion` |
+| A change of state or shape | **Fixed-camera sequence** | `kennaway-growth`, `christoffersen-lake`, `myosin-stroke` |
+| The logic of a curved surface | **Unroll pair**: the surface and its flat map | `weiler-gauge`, `torus` |
+| Sampling, projection or transport through a volume | **Ray trace** | `plenoxels`, `nerf`, `wolf-tomography` |
+| A quantity on a surface or in a volume | **Field on geometry** | `zheng-hopfion`, `kent-hopfion`, `graphcast` |
+| A local rule that gives a global result | **Linked zoom**: unit cell to lattice | `plenoxels`, `frenzel-chiral`, `flagellar-stator` |
+| Dynamics, optimisation or invariance | **State-space geometry** | `safaie-dynamics`, `cohen-untangling`, `torus` |
+| What an index or tensor refers to | **Index to geometry** | `alphatensor`, `hulse-compass`, `alphafold` |
+| An inverse design | **Target, program, structure, consequence** | `caustics`, `bioprint4d`, `mechanical` |
+| The effect of one intervention | **Matched counterfactual** | `flagellar-stator`, `weiler-gauge`, `kent-hopfion` |
+| A feedback or training cycle | **Loop through one object** | `cohesin-ratchet`, `dreamfusion` |
+| A process in a landscape or a medium | **Block diagram** with a cut front face | `azores-dike`, `christoffersen-lake` |
 
-Before geometry, write the necessary scientific parts and interfaces: each item has an identity, meaning, evidence and attachment. There is no minimum part count or compulsory isometric machine. Derive state, geometry, labels and interactive readouts from the same scientific model.
+[moves.md](references/moves.md) gives the construction, the stage calls and the failure modes for each move. The atlas lists more references for each move. Read the entry for your move before you build.
 
-**Meaning precedes polish.** Repair order: scientific error → hidden mechanism → false or missing comparison → unreadable encoding → composition → typography/color/detail. Never improve the score by merely changing its justification.
+### 5. Build in three passes
 
-## Non-negotiable rules
+Use the stage unless the project has a better renderer for its own data. Read [stage.md](references/stage.md) once.
 
-- Keep the scientific object visible. Generic boxes may locate peripheral stages; they must not replace the decisive operation.
-- Use literal geometry or a defined transformation before using metaphor. A metaphor is admissible only if its mapping and limits are stated.
-- Preserve entity identity, coordinates, scales, time alignment, and experimental controls across comparisons. Declare any difference.
-- Distinguish **measured**, **inferred**, **simulated**, **formal**, and **schematic** content. Arrows encode specified dependencies or transitions; they are not automatic causal proof.
-- Attach evidence to the event or object it actually concerns. Check identity/time joins, normalization, uncertainty, and representative-example selection.
-- Show the smallest complete mechanism, not the whole project. Keep background, benchmarks, and literature that do not change the figure's reading outside the figure.
-- Originality means a precise adaptation to this problem, not novelty for its own sake. Reuse a fitting visual operation; do not copy the reference's domain objects or visual signature without reason.
-- Do not infer topology from projection, history from snapshots, global behavior from one example, or algorithm speed from a count of drawn steps.
-- If the evidence supports only an association, draw the association or a labeled competing-mechanisms figure. Do not manufacture a causal story to satisfy this skill.
+```js
+// figure.mjs
+export const view = {width: 180, height: 100, azim: -50, elev: 28};   // millimetres and degrees
+export default function build(S, THREE) {
+  const P = S.palette;
+  const shell = S.solid(new THREE.SphereGeometry(1, 64, 40), {color: P.context, id: 'shell'});
+  S.sphere([0, 0, 0], 0.45, {color: P.act, id: 'core'});
+  S.cut(shell, [0, 0, 0], [0.2, -1, 0.15]);            // remove the near side and cap the section
+  S.label([0, 0, 0.45], 'core', {dx: 5, dy: -14});
+}
+```
 
-## Review procedure and stopping rule
+```bash
+node scripts/render.mjs figure.mjs --out out
+```
 
-Use `python scripts/mf.py preflight /path/to/figure-work/figure.json` for deterministic file/SVG checks. Then `python scripts/mf.py review-init /path/to/figure-work/figure.json --out /path/to/figure-work/review-r1.json` binds a blank review to current artifacts. **It does not score them.** Inspect the files and complete the review. Run `python scripts/mf.py gate /path/to/figure-work/figure.json /path/to/figure-work/review-r1.json`.
+The renderer writes `figure.png`, `figure.svg` with editable labels, four detail tiles, a grayscale copy and a report.
 
-Test the captionless image against the frozen question and intervention prediction. Record actual reader responses; a creator's imagined response is a **self-review**, never a timed user test. Inspect at output dimensions, grayscale, and **4× details of every decisive interface and correspondence**. Use [rendered verification](references/verify.md) and `node scripts/capture.mjs figure.svg --out-dir review-r1 --selector svg` with an existing authorized browser. Read every produced PNG; a report is not inspection. Compare the mechanism region to the same actual calibration images at matched readable scale, not whole-page thumbnails. Record `composition_match`, `encoding_match`, `style_match`, and `remaining_gap` for each reference. A generic box diagram or decorated plot does not pass merely because its files are valid.
+- **Pass A, blockout.** Grey primitives only. No colour, no labels. Set the camera. Render and look. The operation must be visible in grey. If it is not, change the construction or the camera. Do not continue.
+- **Pass B, meaning.** Give the persistent object and the operation their colours. Add ghosts, cuts, tethers, arrows and fields. Render and look.
+- **Pass C, words.** Add labels, panel letters and the minimum text. Render and look.
 
-The rubric's thresholds are a demanding policy, not empirically validated probabilities of publication success. A gate may report `self_review_pass`; it may report `independent_review_pass` only with an additional, named independent review of the same hashes using `--require-independent`. Neither authenticates a reviewer's honesty or guarantees universal quality.
+[craft.md](references/craft.md) has the rules for the camera, depth cues, light, colour, labels and composition. Read it before pass A.
 
-Revise while meaningful progress is possible. After two iterations without a mechanistic/fidelity improvement, change the construction rather than polishing it; keep the rejected variant. After two failed construction families or the user's budget limit, return `needs_revision`, `needs_evidence`, or `needs_independent_review` with the best inspected artifact and one precise unresolved decision. **Never lower the threshold, fabricate evidence, loop indefinitely, or call a subthreshold figure finished.** Resume from the same contract and revision history.
+### 6. Look, find the defect, repair
 
-For interactive output, read [motion.md](references/motion.md). The optional `kit/motion.mjs` controls presentation time only; it does not invent dynamics. Do not copy Anatomy’s machine vocabulary, prescribed part count or sandbox-relaxation advice into unrelated scientific work. See the [adaptation record](docs/ANATOMY_STANDARD.md).
+After each render, **open the PNG.** After pass C and after your last repair, open each detail tile and the grayscale copy also. The report finds hidden label anchors, small text and text collisions only. It cannot see.
+
+Ask these questions in sequence. Repair the first one that fails, then render again.
+
+1. **Truth.** Does the picture show something that is false or that has no evidence?
+2. **Mechanism.** Cover the labels. Is the operation visible? Can you answer the prediction test?
+3. **Entry.** Squint. Does the eye go first to the operation? If it goes to a frame, a title or a shadow, repair the hierarchy.
+4. **Depth.** Is each near-far relation clear? Does a part float? Does a hidden part matter?
+5. **Identity.** Does the persistent object keep its colour, shape and position rule in each state?
+6. **Words.** Does each label name a visible thing at the place of that thing? Is each text 6.5 pt or larger at print size?
+7. **Finish.** Alignment, spacing, line weights, collisions.
+
+[critique.md](references/critique.md) gives the full checklist and a table of defects with their repairs.
+
+Stop when all seven questions pass and the figure is as clear as the references that you opened. Compare them side by side. If two repairs in sequence do not improve question 2, the construction is wrong. Go back to step 4 and select a different move. Keep the rejected version.
+
+## Rules that do not bend
+
+- **Orthographic camera by default.** Parallel lines stay parallel and equal lengths stay equal in one direction. Use perspective only for a scene that a camera or an eye sees, and say so.
+- **One colour, one meaning, in all panels.** Grey is context. Do not add a colour that has no entry in your cast list.
+- **Same camera for all states that the reader compares.** Change one thing only.
+- **Geometry from the source.** Use the real equation, coordinates or data when they exist. If you draw a schematic shape, label it as a schematic.
+- **Arrows have types.** A solid 3D arrow is a physical vector: a force, a flow, a ray. A flat overlay arrow is narrative: "then" or "becomes". Do not mix the two types in one style.
+- **Show the evidence status.** Measured, simulated, derived and schematic content must look different or have a label.
+- **No invented data.** Do not draw a result that the project does not have. Do not smooth, recolour or exaggerate data to help the story. If you exaggerate a scale for visibility, write the factor on the figure.
+- **The smallest full mechanism.** One worked instance is better than the full system. Remove each part that does not change the prediction.
+- **Labels are vector text.** Do not put text in the 3D raster.
 
 ## Handoff
 
-Return the vector, rendered preview, caption, generating source/data, contract, all review records, and revision log. Lead with the mechanism the figure makes visible, the actual gate status, and remaining limits. Report actual costs where available, unknown costs as unknown. Do not claim superiority to the calibration set without a matched, independently rated comparison.
-
-An agent with no image-viewing capability may prepare the contract and source, but must return `needs_visual_review`, not a visual pass. Host permissions, data policy, protected evidence, and user-specified tools override any procedural default here.
+Give the user `figure.svg`, `figure.png`, the `figure.mjs` source and a caption. The caption states the mechanism sentence, the status of the content and each exaggeration. Tell the user which reference figures you studied and what is not verified. If you cannot view images, say that the figure has no visual review.

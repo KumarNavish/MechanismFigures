@@ -11,8 +11,8 @@ import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT
-PAYLOAD_DIRS = {'assets','references','scripts','kit','agents','docs','tools','benchmarks','evals'}
-PAYLOAD_FILES = {'SKILL.md','README.md','LICENSE','THIRD_PARTY.md','VERSION','AGENTS.md','START_HERE.md','llms.txt','CONTRIBUTING.md','SECURITY.md','CHANGELOG.md','install.py','plugin.json'}
+PAYLOAD_DIRS = {'assets','references','scripts','kit'}
+PAYLOAD_FILES = {'SKILL.md','LICENSE','THIRD_PARTY.md','VERSION'}
 NAME = 'mechanism-figures'
 MARKER = '.mechanismfigures-install.json'
 
@@ -70,7 +70,7 @@ def install(destination, check_only=False, source=SOURCE):
         staged = temp / NAME
         copy_payload(source, staged, expected)
         if inventory(staged) != expected: raise ValueError('Copy verification failed; no installation was committed')
-        (staged / MARKER).write_text(json.dumps({'schema_version': 1, 'version': '0.5.0', 'files': expected}, indent=2) + '\n')
+        (staged / MARKER).write_text(json.dumps({'schema_version': 1, 'version': (source / 'VERSION').read_text().strip(), 'files': expected}, indent=2) + '\n')
         if target.exists(): raise ValueError('Destination appeared during installation; no overwrite attempted')
         staged.rename(target)
     finally:

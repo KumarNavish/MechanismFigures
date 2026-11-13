@@ -1,57 +1,48 @@
-# Aardvark — Make the figure perform the join
+# Aardvark
 
-D. Lange, Judson-Torres, Zangle & Lex · IEEE VIS / TVCG 2024 · Figure 1
+**Evidence stays attached to the event it explains.**
 
-[Publication](https://pmc.ncbi.nlm.nih.gov/articles/PMC12143745/) · [Original image source](https://cdn.ncbi.nlm.nih.gov/pmc/blobs/df01/12143745/4e9f75adbdb2/nihms-2083519-f0001.jpg)
+D. Lange, Judson-Torres, Zangle & Lex. *Aardvark: Composite Visualizations of Trees, Time-Series, and Images*. IEEE VIS / TVCG 2024, Figure 1. [Publication](https://pmc.ncbi.nlm.nih.gov/articles/PMC12143745/)
 
-## Inspect the actual images before designing
+**View:** Flat · **Moves:** Matched counterfactual
 
-- [focused figure](../../assets/calibration/af521a16-aardvark.jpg) — SHA-256 `68aa01b4f6400d42629784cf8ef55c4af63f6e4330e233df3d5c9dc430e23b8b`. Full Figure 1 from the authors' manuscript deposited in PMC. Presented at VIS 2024; TVCG volume 31(1), January 2025. The conference/journal date distinction is retained.
+## Open the image
 
-Reading a caption or this guide is not image inspection. Open at least two approved reference images at readable size and record their hashes.
+- [`assets/calibration/af521a16-aardvark.jpg`](../../assets/calibration/af521a16-aardvark.jpg): focused. Full Figure 1 from the authors' manuscript deposited in PMC. Presented at VIS 2024; TVCG volume 31(1), January 2025. The conference/journal date distinction is retained.
 
-**Use when:** A tree, measurement trace and image all describe the same objects and events.
+Look at the image file. This text does not replace the look.
 
-## See the mechanism
+## Mechanism
+
+Lineage, measured change and microscopy evidence describe the same cells and events but answer different questions.
+
+## Where to look
 
 1. In b, the tree provides the structure; the orange trace lives inside each branch's lifetime.
 2. The purple cell images are attached to specific points on that trace.
 3. Compare c and d: changing the question changes which modality supplies the main layout.
 
-**Mechanism:** Lineage, measured change and microscopy evidence describe the same cells and events but answer different questions.
+## Why it works
 
-**Visual construction:** Choose tree, time series or image as the host; nest or overlay matching evidence where the corresponding event occurs.
+Tree, measurement and image motifs remain identifiable when one becomes the host layout. Repeated colors communicate modality roles; nesting communicates event ownership.
 
-**What the eye understands:** The reader can connect a change to its ancestry and image evidence without mentally joining separated panels.
+## Take this
 
-**Why an ordinary plot is weaker:** A line alone cannot reveal whether a drop is a biological event or a tracking error. Attached images make that distinction inspectable.
+Join modalities by entity and event before choosing how to compose their visual representations.
 
-## Learn this visual style, then adapt it
+## Test your figure
 
-**Observe:** Tree, measurement and image motifs remain identifiable when one becomes the host layout. Repeated colors communicate modality roles; nesting communicates event ownership.
+Can a reader inspect the raw evidence for a suspicious event without searching another panel? Validate every time/entity match.
 
-**Apply:** Let the primary scientific question determine the host geometry. Attach evidence at the exact matching event and preserve modality identities; do not scatter related evidence into decorative cards.
+## Do not copy
 
-Record `composition_observation`, `encoding_observation`, `style_observation`, and `planned_application` for this image. Specify visible layout, persistent geometry, selective emphasis, annotation placement, color roles and whitespace—not just “clean” or “beautiful”.
+Co-location is not enough: a screenshot near a curve must correspond to the same event.
 
-## Transfer into the project
+## Limit
 
-**Replace the objects:** Cell identity → event/entity ID; lineage → provenance; attribute trace → measurement; image snippet → primary evidence.
+Figure 1 presents a design grammar, not experimental proof. Different host layouts do not imply that all modalities use one metric coordinate system.
 
-**Keep the relationship:** Use exact identity and time keys to join modalities. A host layout is not proof that all values share the same units.
+## Rights
 
-1. Choose the main question: ancestry, change over time, or movement in space.
-2. Let that variable set the layout, then attach the other evidence at the matching event.
-3. Show critical transitions by default; reveal secondary detail without moving the host structure.
-
-**Acceptance test:** Can a reader inspect the raw evidence for a suspicious event without searching another panel? Validate every time/entity match.
-
-**Do not copy literally:** Co-location is not enough: a screenshot near a curve must correspond to the same event.
-
-**Scientific boundary:** Figure 1 presents a design grammar, not experimental proof. Different host layouts do not imply that all modalities use one metric coordinate system.
-
-## Attribution and rights
-
-MechanismFigures design interpretation; not a quotation or endorsement by the paper authors.
-
-Original authors/publishers retain image rights. The repository MIT license covers code/commentary, not the figures. Approved published figure included for source-specific critical visual study. Original author/publisher rights remain; the repository MIT license does not license this image or grant further republication rights. A broadly reusable image license has not been established.
+Approved published figure included for source-specific critical visual study. Original author/publisher rights remain; the repository MIT license does not license this image or grant further republication rights. A broadly reusable image license has not been established. Status: `reference-excerpt`.
+Selection: retained by the user on 2026-10-08.

@@ -1,50 +1,67 @@
-# Quality-control loop
+# Critique and repair
 
-The canonical weights and hard gates are in `assets/rubric.json`. These are **design-policy thresholds**, not calibrated probabilities of quality. Scripts check records and integrity; the reviewer must actually inspect the figure and its evidence.
+You must look at the rendered files. Open `figure.png` after each render. Open each detail tile and the grayscale copy after pass C and after the last repair. A critique of the source code is not a critique of the figure.
 
-## Anchor scale
+## The seven questions
 
-0 = missing or false; 1 = substantially misleading/unusable; 2 = partly present but the reader must reconstruct the argument; 3 = competent ordinary figure; 4 = reference-level explanatory performance for the stated audience; 5 = unusually direct and precise, supported by a concrete observation/test. Use integers and the lower anchor when uncertain. Never score from intent, code, or the author's caption alone.
+Ask them in this sequence. Stop at the first failure, repair it, render and start again from question 1.
 
-| Dimension (weight) | 3: ordinary competent | 4: demanding threshold | 5: exceptional evidence |
-|---|---|---|---|
-| Mechanistic insight (18) | Names stages; relation needs prose | The operative relation can be traced visually | A correct counterfactual is predictable from the construction |
-| Scientific fidelity (20) | Mostly accurate, some assumptions/encodings implicit | Claim, units and encodings trace to evidence; limits explicit | Critical geometry, controls and invariants are checked; no unsupported implied claim |
-| Visual intuition (12) | Requires repeated legend/caption decoding | Objects and transformation read directly | A worked instance can be mentally executed with minimal decoding |
-| Information hierarchy (8) | Main region exists but competes with detail | Entry point, operation and consequence read in order | Removing any remaining major element would lose a necessary reasoning step |
-| Encoding originality (6) | Familiar diagram fitted to labels | Representation is specifically adapted to the actual relation | The adaptation reveals an otherwise hidden distinction; novelty is not decoration |
-| Compositional clarity (8) | Alignment/spacing acceptable | Comparison, correspondence and grouping are unambiguous | Position and negative space perform part of the explanation without false metric implications |
-| Annotation quality (6) | Mostly readable; labels define terms | Labels define exact objects/changes beside the relevant marks | No nontrivial lookup is needed on the critical path; qualification stays concise |
-| Aesthetic refinement (8) | Clean but generic or slightly inconsistent | Coherent typography, strokes and restrained semantic color | No visible spacing, clipping or style defect distracts at the intended size |
-| Publication readiness (8) | Preview works; production/provenance incomplete | Required formats, readable labels, credits and source are complete | Exact outputs regenerate; target-format and final-size checks are recorded |
-| Immediate comprehensibility (6) | Topic is recognizable, relation uncertain | The frozen captionless question receives the correct answer | Correct mechanism and intervention prediction are reported, without prompting from the caption |
+| # | Question | Test |
+|---|---|---|
+| 1 | **Truth** | Each mark has a status and evidence. See [truth.md](truth.md). |
+| 2 | **Mechanism** | Hide the labels in your mind. Can you see the operation? Answer the prediction test from the picture alone. |
+| 3 | **Entry** | Squint, or look at the grayscale copy for one second. The first thing that you see is the operation. |
+| 4 | **Depth** | For each pair of adjacent parts, you know which is in front. No part floats without a reason. Nothing important is hidden. |
+| 5 | **Identity** | The persistent object has one colour and one shape rule in all states. Each state uses the same camera. |
+| 6 | **Words** | Each label is adjacent to its thing. No label collides. No text is below 6.5 pt. The title is the claim. |
+| 7 | **Finish** | Edges align. Gaps are equal. Line weights are consistent. Shadows are soft and light. Nothing touches the frame. |
 
-Weighted score = sum(weight × score / 5), maximum 100. **Accept only ≥90; all ten scores ≥4; fidelity =5; all hard gates pass.** No average may compensate for a false claim. Every score needs a figure-local evidence statement and a tested or inspected observation. Scores below 5 need a concrete residual limitation, not inflated praise.
+Questions 1 and 2 are about the science. Do not spend time on question 7 while question 2 fails.
 
-## Hard gates
+## Compare with the references
 
-`truthful_claims`, `defined_encoding`, `matched_comparison`, `evidence_status`, `reference_inspected`, `captionless_probe`, `final_size`, `no_clipping`, `reproducible`, `output_constraints`.
+Put your render adjacent to the two reference images that you studied. Ask:
 
-Each is pass/fail/unknown plus evidence and a pointer to an inspected file. Unknown blocks acceptance. A comparison that is scientifically inapplicable may pass only with a precise reason and the relevant alternative validity check, not “N/A”. Gates are review attestations; the CLI does not determine whether their prose is true.
+- Is the operation as easy to see as in the reference?
+- Does my figure have more labels, more colours or more parts than the reference for the same quantity of explanation?
+- Which thing does the reference do that my figure does not?
 
-## Conduct four passes
+Write one sentence for each answer. Then repair the largest difference.
 
-**1. Cold read.** Show only the image at the intended size. Ask the contract's frozen question and intervention prediction before showing its answer or caption. Preserve the actual response. For self-review, explicitly label the response self-assessed; it is not a blind reader study. Record elapsed time only when measured. The “five-second test” is a useful test condition, not an excuse to invent timing or to penalize every complex scientific figure.
+## Defects and repairs
 
-**2. Adversarial science.** Try to falsify the visual implication. Follow an arrow backwards. Check a boundary case, equal input with different support, an unmatched loading condition, or a projection artifact. Compare against raw evidence and stated equations. Ask whether an informed reader could infer a stronger claim than supported.
+| You see | Cause | Repair |
+|---|---|---|
+| The figure is a row of labelled boxes | No construction | Go back to step 4. Draw the object that the first box operates on. |
+| Everything has a strong colour | No cast list | Make all context grey. Give colour to two things only. |
+| The eye goes to a shadow | Shadow too dark or too large | Lower `shadow` in the view, or set `shadow: false` on that part. |
+| Cells or data surfaces have uneven tones | A shadow falls on them | Set `receive: false` on those parts. |
+| Parts merge into one shape | Same tone, no outline, aligned edges | Change the azimuth by 5 to 10 degrees. Change the tone of one part. Keep the outlines. |
+| The operation is hidden inside | No access | Cut the body, or make it a ghost. |
+| The cut looks like a missing piece, not a section | Cap has the tone of the skin | Give the cap a darker tone. Align the plane with an axis. |
+| An exploded part looks lost | No tether, too far | Reduce the offset. Keep the tether. |
+| The fog of many ghosts | More than two transparent layers | Make one layer solid and cut it. |
+| States look different for no reason | Camera or frame changed | Build the states in one scene with `S.right`. For beats, set `view.frame`. |
+| Label leaders cross | Labels on the wrong side | Put each label on the side of its anchor. Sort labels by height. |
+| A label points to nothing | Anchor hidden or in space | Move the anchor to a visible surface point. Read the report. |
+| The 3D view gives no numbers | 3D used for a quantity | Add a flat panel for the quantity. Link it with colour. |
+| The figure is correct but dull | The operation is small | Give the operation half of the area. Remove context. |
+| The figure is busy | Too many parts | Remove each part that does not change the prediction. Show one instance. |
+| Small text | The figure holds too much | Remove words. Do not go below 6.5 pt. |
+| The surface looks like plastic | Gloss | Set `roughness: 0.8`. Do not add metal. |
 
-**3. Reference calibration.** Inspect two actual reference images at comparable readable scale. For each, name a specific operation ours matches, improves, or fails to match. Do not compare domain complexity or treat a large journal label as a score. Both selected references must be visually observed with their registered paths/hashes and explicit readings. Record composition_match, encoding_match, style_match and remaining_gap for each. A self-generated example cannot serve as a calibration reference.
+## When to change the construction
 
-**4. Production inspection.** View at physical output size, grayscale, and enlargement. Inspect labels, leader crossings, clipping, aspect ratio, layout correspondence and source/preview agreement. Verify the requested export formats. Captionless intuition and production polish cannot substitute for scientific checks.
+If two repairs in sequence do not improve question 2, the move is wrong. Typical changes:
 
-## Repair, do not rationalize
+- From a pipeline to **one object that goes through the pipeline**.
+- From a full system to **one unit and a linked zoom**.
+- From an outside view to **a cutaway**.
+- From a single state to **a fixed-camera sequence with a counterfactual**.
+- From a 3D view that the reader must measure to **a 3D view with a flat partner**.
 
-Record one defect as: **location → mistaken reading → cause → edit → expected improvement**. Prioritize scientific fidelity, mechanism and intuition before polish. After editing, rerender and create a new review bound to the new hashes; preserve the old review. Raise a score only when a new visible observation supports it. Keep the strongest adverse observation in the final record.
+Keep the rejected version in a folder. Tell the user that you changed the construction and why.
 
-Two consecutive non-improving iterations trigger a different construction. Two failed construction families or an explicit budget boundary trigger an honest non-final handoff; do not lower the acceptance threshold. A reviewer who authored the figure is a self-reviewer even when instructed to adopt a different persona.
+## Stop rule
 
-## Independent review and claims
-
-A completed self-review meeting policy earns `self_review_pass`, not certification. Publication-level independent status requires another named reviewer who did not create that revision, the same artifact snapshot, a captionless response record, and a passing rubric. Use `gate ... --require-independent` to enforce the recorded distinction. Reviewer identity and truthfulness remain externally auditable attestations, not cryptographic proof.
-
-Report what was actually tested. Repository unit tests validate the tooling, not figure quality. Empirical claims about reduced agent-to-agent variance require matched cross-agent trials; see the repository's `benchmarks/PROTOCOL.md` before making such claims.
+Stop when the seven questions pass and the side-by-side comparison finds no large difference. Then give the handoff. If you cannot reach this state, give the best version, name the question that fails and say what you need: evidence, real geometry, or a decision from the user. Do not say that a figure is finished when question 1 or 2 fails.

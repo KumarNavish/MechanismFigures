@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.0.0 — 2026-11-13
+
+A rewrite with a strong bias for 3D.
+
+- **Skill.** `SKILL.md` is a six-step loop: mechanism sentence, cast, look, move, build, repair. It tells the agent to propose a 3D construction first.
+- **Atlas.** 42 references and 55 images, up from 20 and 29. 37 references use 3D. The 20 earlier references keep their image bytes. 22 CC BY 4.0 references are new curator selections that the user has not reviewed.
+- **Moves.** Fifteen named visual moves, each with its construction, stage calls, failures and references.
+- **Stage.** A three.js r170 studio (`kit/stage.mjs`) and a renderer (`scripts/render.mjs`): orthographic camera, contact shadows, outlines, capped cuts and quarter cuts, exploded parts, field surfaces, vector labels, a label audit, detail tiles and a grayscale copy.
+- **Beats.** A figure module can export beats. The renderer makes one frame for each beat with a fixed camera, and a scroll page.
+- **Guides.** New: clarity and cinematic flow, truth, critique with a defect table, craft for 3D.
+- **Gallery.** A new page with claim titles, a filter by move and a full-size viewer.
+- **Removed.** The JSON contract, the hash-bound review gate and the rubric; the benchmark and evaluation folders; the motion walkthrough; the 2D Python kit; the plugin package; the publication-verification workflow. The git history keeps them.
+- **Install.** The payload is the working skill only: `SKILL.md`, `references`, `assets`, `kit`, `scripts`, the licence files and `VERSION`.
+
 ## 0.5.0 — 2026-10-12
 
 Adopt the supplied Anatomy repository standard: one root skill, standard skills-CLI/Git/ZIP routes, image-led README, original geometry/SVG and model-driven motion helpers, 1×/4× rendered capture, craft/verification guides and evaluation cases. Preserve all current reference image bytes and scientific thresholds. Legacy gallery/motion URLs redirect without introducing duplicate skill discovery. The conservative Python installer uses an explicit payload and remains available for existing managed installations.

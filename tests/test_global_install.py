@@ -103,8 +103,6 @@ class GlobalInstallTests(unittest.TestCase):
         self.assertEqual(len(canonical['inventory_sha256']),64)
     def test_root_help_does_not_import_a_model_runner(self):
         s=(ROOT/'tools/global_install.py').read_text();self.assertNotIn('subprocess',s);self.assertNotIn('os.system',s)
-    def test_portable_plugin_and_local_catalog_are_not_auto_enabled(self):
-        p=json.loads((ROOT/'plugin.json').read_text());self.assertEqual(p['name'],'mechanism-figures');self.assertEqual(p['version'],'0.5.0')
         self.assertFalse((ROOT/'.agents/plugins/marketplace.json').exists());self.assertTrue((ROOT/'SKILL.md').is_file())
 
 

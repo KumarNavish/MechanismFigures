@@ -1,45 +1,42 @@
-# Maintain one product, not a maze
+# Maintain
 
 ## Sources of truth
 
-| Concern | Edit here | Generated/read-only outputs |
+| Concern | Edit | Generated from it |
 |---|---|---|
-| Entry workflow | `SKILL.md` | Loaded only when selected. |
-| Scientific case, original asset, provenance and style | `assets/calibration.json` | `references/cases/*.md`, gallery, credit documents. |
-| Current selection and retired references | `assets/approved-canon.json` within the skill | Curation audit tests. `docs/curation-2026-10-08.json` preserves the change rationale. |
-| Review policy | `assets/rubric.json` and `references/critique.md` | Hash-bound reviews; do not change thresholds after seeing evaluation results. |
-| Host discovery routes | `tools/agent_hosts.json` | Global installer/doctor, documented scope. |
-| Motion | `tools/motion.*`, `tools/build_motion.py` | `assets/motion.html`, `assets/motion-story.json`, embedded gallery section. |
-| Distribution | `plugin.json` (generated-plugin metadata), `tools/package.py` | Skill ZIP, plugin ZIP and checksums. |
+| The workflow | `SKILL.md` | none |
+| Moves, craft, truth, critique, story, stage | `references/*.md` | none |
+| The atlas: references, images, rights | `assets/references.json` and `assets/calibration/` | `references/atlas.md`, `references/cases/*.md`, `assets/gallery.html`, `THIRD_PARTY.md` |
+| The 3D stage | `kit/stage.mjs`, `scripts/render.mjs` | none |
+| Install routes | `tools/agent_hosts.json`, `tools/install.py`, `tools/global_install.py` | none |
 
-## Local validation
+Do not edit a generated file. Run `python3 tools/build.py`.
+
+## Checks
 
 ```bash
-python3 -m unittest discover -s tests -v
-python3 tools/check_repo.py
-python3 tools/build_gallery.py
-git diff --check
-python3 install.py --global --agents all --dry-run
+python3 tools/build.py
 ```
 
-Use `--home` pointing to an isolated temporary directory for installer smoke tests. Never run a model-backed agent to check installation. Verify files, then separately verify host discovery with user-controlled UI if the host offers it.
+```bash
+python3 -m unittest discover -s tests
+```
 
-## Agent context budget
+The tests include one real render of `kit/template.mjs`. That test needs Node 22 or later and Chrome. It is skipped when they are absent.
 
-Installation docs stay outside the active scientific workflow. The skill loads only the input/decision guide, review policy and two relevant cases; it does not preload twenty figure explanations. New requirements belong at the decision where they matter, not in a giant always-on prompt. [Agent navigation index](../references/INDEX.md).
+## Add a reference
 
-## Image and scientific safety
+1. Find a published figure that shows an operation and its consequence, not only a structure. Prefer 3D.
+2. Verify the licence on the article page. Use `bundled` only for a Creative Commons Attribution licence.
+3. Put the image in `assets/calibration/`. Do not redraw it. A crop is permitted, and the treatment note must say so.
+4. Open the image and write the entry in `assets/references.json`: the claim title, the mechanism, three places to look, why it works, what to take, a test, the limit, the moves and the view.
+5. Record the SHA-256 and the selection in `approval`.
+6. Run the build and the tests. Look at the new card in `assets/gallery.html`.
 
-Never generate a replacement calibration figure, relabel a different figure as an original, or confuse an author's generative-model result with a measured observation. Retain exact published source, panel number, crop/rasterization notes and file hashes. Verify each image visually, not just by signature. No uniform code license covers all source figures.
+## Release
 
-When changing the selection, record the request, explicit old/new IDs, retained image hashes and perceptual rationale. Preserve failures in the curation record without promoting a rejected image back into the current gallery. A style-score average is not evidence of scientific fidelity.
+Change `VERSION` and the version in the `SKILL.md` front matter. Add an entry to `CHANGELOG.md`. Run the checks. Commit, tag and push. GitHub Pages serves `assets/gallery.html` from the `main` branch.
 
-## Releases
+## The stage
 
-Set the package version consistently. Build both archives, inspect their manifests and hashes, test fresh installation, run unit and rendered browser checks, then publish the exact tested commit. Confirm the remote commit, GitHub Actions result, live gallery bytes and release checksums. Do not overwrite an uncertain release mutation without reconciling its original receipt.
-
-## Root skill standard
-
-One source tree is installable by standard skills CLI, direct Git clone or ZIP: root `SKILL.md`, `kit/`, `references/`, `assets/`, `scripts/`, `agents/`, `evals/`. Keep only legacy website redirects under `skills/mechanism-figures`; do not add a second nested `SKILL.md`. `tools/install.py` inventories an explicit payload so private `.git`, `.work`, caches and jobs are never copied.
-
-The gallery/motion reader retains its independent curation edition while packaging versions advance. Canon image hashes and scientific review thresholds remain unchanged by this layout migration.
+three.js r170 and its line addons are in `kit/vendor` with their MIT licence. To change the version, replace the files and run the render test. Look at the output images: a test that passes does not prove that the render is good.

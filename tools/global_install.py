@@ -13,7 +13,7 @@ import uuid
 from install import SOURCE, NAME, MARKER, inventory, copy_payload
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = '0.5.0'
+VERSION = (ROOT/'VERSION').read_text().strip()
 PROFILES = json.loads((Path(__file__).parent/'agent_hosts.json').read_text())
 
 
