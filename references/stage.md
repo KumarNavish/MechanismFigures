@@ -111,6 +111,10 @@ To load real data, put a JSON file adjacent to the figure module and read it wit
 - The silhouette outline is correct for an orthographic camera.
 - The report does not judge the figure. You must look.
 
+## A host with no Node or Chrome
+
+On claude.ai and on other hosts where `render.mjs` cannot run, the loop, the atlas, the moves and the rules still apply. Build the figure as one HTML artifact that loads three.js r170 from `cdnjs.cloudflare.com`, with an orthographic camera, the palette colours of this file and labels in an SVG layer on top. If you cannot view the rendered artifact, tell the user that the figure has no visual check, and ask the user for a screenshot before you repair it.
+
 ## Other renderers
 
 Use the renderer of the project when the geometry comes from it: PyMOL or ChimeraX for molecules, ParaView for fields, Blender for complex scenes, the simulation's own viewer. Export a PNG with a transparent or white background and an orthographic camera. Then add labels in SVG, and run `node scripts/render.mjs figure.svg` to get the detail tiles and the grayscale copy. All rules in this skill apply.

@@ -93,7 +93,7 @@ Select from the table. Then describe two different constructions in one sentence
 
 ### 5. Build in three passes
 
-Use the stage unless the project has a better renderer for its own data. Read [stage.md](references/stage.md) once.
+Use the stage unless the project has a better renderer for its own data. Read [stage.md](references/stage.md) once. If the host has no Node or Chrome, stage.md gives the artifact route.
 
 ```js
 // figure.mjs
