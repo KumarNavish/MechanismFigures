@@ -5,7 +5,7 @@ license: MIT for code and text. Third-party reference figures keep the licences 
 compatibility: The agent must be able to view images. The 3D stage needs Node 22 or later and an installed Chrome or Chromium. Reference lookup needs Python 3.9 or later. No network, model service or GPU is necessary.
 metadata:
   author: Navish Kumar
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 # MechanismFigures
@@ -51,7 +51,7 @@ Write three lists.
 
 - **The persistent object.** One thing that the eye follows through the full figure: a ray, a residue pair, a cell, a sheet, a weight vector. It keeps its colour and its identity in each panel.
 - **The operation.** The one event that carries the explanation. It gets the strongest colour and the most space.
-- **The context.** All other items. They are grey, thin and quiet.
+- **The context.** All other items. They are pale, thin and quiet. Use the pale cool context colour of the palette. Do not use grey.
 
 For each item, record its status: **measured**, **simulated**, **derived from an equation**, or **schematic**. You will show this status in the figure. See [truth.md](references/truth.md).
 
@@ -113,7 +113,7 @@ node scripts/render.mjs figure.mjs --out out
 
 The renderer writes `figure.png`, `figure.svg` with editable labels, four detail tiles, a grayscale copy and a report.
 
-- **Pass A, blockout.** Grey primitives only. No colour, no labels. Set the camera. Render and look. The operation must be visible in grey. If it is not, change the construction or the camera. Do not continue.
+- **Pass A, blockout.** Primitives in the one pale context colour only. No strong colour, no labels. Set the camera. Render and look. The operation must be visible from shape alone. If it is not, change the construction or the camera. Do not continue.
 - **Pass B, meaning.** Give the persistent object and the operation their colours. Add ghosts, cuts, tethers, arrows and fields. Render and look.
 - **Pass C, words.** Add labels, panel letters and the minimum text. Render and look.
 
@@ -140,7 +140,7 @@ Stop when all seven questions pass and the figure is as clear as the references 
 ## Rules that do not bend
 
 - **Orthographic camera by default.** Parallel lines stay parallel and equal lengths stay equal in one direction. Use perspective only for a scene that a camera or an eye sees, and say so.
-- **One colour, one meaning, in all panels.** Grey is context. Do not add a colour that has no entry in your cast list.
+- **One colour, one meaning, in all panels.** Context is pale and cool, not grey. A colour that carries a value is `unlit`. Do not add a colour that has no entry in your cast list.
 - **Same camera for all states that the reader compares.** Change one thing only.
 - **Geometry from the source.** Use the real equation, coordinates or data when they exist. If you draw a schematic shape, label it as a schematic.
 - **Arrows have types.** A solid 3D arrow is a physical vector: a force, a flow, a ray. A flat overlay arrow is narrative: "then" or "becomes". Do not mix the two types in one style.

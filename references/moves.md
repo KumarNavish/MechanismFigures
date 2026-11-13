@@ -6,7 +6,7 @@ A move is a construction that makes an operation visible. Select the move from t
 
 **Shows** an operation inside a closed body.
 
-**Build.** Model the full body. Remove the part between the viewer and the operation with one plane, or with two planes for a quarter cut. Cap the section so that solid material looks solid. Keep the hidden operation in a strong colour and the body in grey.
+**Build.** Model the full body. Remove the part between the viewer and the operation with one plane, or with two planes for a quarter cut. Cap the section so that solid material looks solid. Keep the hidden operation in a strong colour and the body in the pale context colour.
 
 ```js
 const body = S.solid(geometry, {color: P.context});
@@ -104,10 +104,10 @@ S.sphere(samplePoint, 0.03, {color: P.act, outline: false});
 **Build.** Paint a scalar on the real surface with one colour ramp. For a vector field, draw arrows on a regular lattice or draw stream tubes. In a volume, show the field on two or three slice planes and on one isosurface. Give the ramp a legend with units. Use the diverging ramp only when zero has a meaning.
 
 ```js
-S.surface((u, v) => point(u, v), {value: (u, v, p) => field(p), range: [lo, hi], ramp: ramps.viridis});
+S.surface((u, v) => point(u, v), {value: (u, v, p) => field(p), range: [lo, hi], ramp: ramps.viridis, unlit: true});
 ```
 
-**Failures.** A rainbow ramp. Too many arrows. Light and shadow change the apparent value: for exact reading, add a flat panel of the same field.
+**Failures.** A rainbow ramp. Too many arrows. Light and shadow change the apparent value: set `unlit: true`, and for exact reading add a flat panel of the same field.
 
 **Study.** `zheng-hopfion`, `birch-skyrmion`, `graphcast`, `kennaway-growth`, `bioprint4d`.
 
@@ -137,7 +137,7 @@ S.surface((u, v) => point(u, v), {value: (u, v, p) => field(p), range: [lo, hi],
 
 **Build.** Draw the algebraic object as a block or a grid. Draw the things that the indices name. Use one colour for one entry in the two views. Highlight only the active terms.
 
-**Cells and slabs.** Draw a tensor as slabs of unit cells with a gap between slabs. Make each cell a thin box with crease lines. Give colour only to the cells that take part. Set `receive: false` on all cells, because a shadow on a cell looks like a different value.
+**Cells and slabs.** Draw a tensor as slabs of unit cells with a gap between slabs. Make each cell a thin box with crease lines. Give colour only to the cells that take part. Set `receive: false` on all cells, because a shadow on a cell looks like a different value. If the cell colour is a value, set `unlit: true`.
 
 ```js
 for (let c = 0; c < 3; c++) for (let i = 0; i < 6; i++) for (let j = 0; j < 6; j++)

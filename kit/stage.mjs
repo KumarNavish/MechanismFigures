@@ -15,15 +15,15 @@ THREE.Object3D.DEFAULT_UP.set(0, 0, 1);
 const PX = 96 / 25.4; // CSS pixels per millimetre
 const NS = 'http://www.w3.org/2000/svg';
 
-// One colour, one meaning. Context is quiet; `focus` is the operation; `act` is the intervention.
+// One colour, one meaning. Context is a pale cool tone, never grey; `focus` is the operation; `act` is the intervention.
 export const palette = {
-  ink: '#1b2430', line: '#2a3340', context: '#cdd3db', quiet: '#e8ebef', paper: '#ffffff',
+  ink: '#16263f', line: '#24385a', context: '#cfe1f5', quiet: '#e8f1fb', paper: '#ffffff', shade: '#2f4f86',
   focus: '#2b6fdb', act: '#ee7b1f', good: '#259b6c', warn: '#c9362c', violet: '#7657c9', gold: '#d9a514',
 };
 export const ramps = {
   viridis: ['#440154', '#414487', '#2a788e', '#22a884', '#7ad151', '#fde725'],
   magma: ['#0b0724', '#3b0f70', '#8c2981', '#de4968', '#fe9f6d', '#fcfdbf'],
-  diverging: ['#2b6fdb', '#a9c4ee', '#e4e1d9', '#f3b98b', '#d9541e'], // zero is the middle stop
+  diverging: ['#2b6fdb', '#a9c4ee', '#e6eefb', '#f6c9a3', '#d9541e'], // zero is the middle stop
 };
 /** ramp(stops) returns t in [0,1] -> THREE.Color. Use one ramp for one quantity in all panels. */
 export function ramp(stops = ramps.viridis) {
@@ -38,7 +38,7 @@ const V = p => (p && p.isVector3) ? p.clone() : new THREE.Vector3(p[0], p[1], p[
 
 export function createStage(opts = {}) {
   const o = {width: 180, height: 110, azim: -50, elev: 28, margin: 8, zoom: 1, shift: [0, 0], fov: 0,
-    background: '#ffffff', ground: true, shadow: 0.13, edgeWidth: 0.28, font: 'Helvetica Neue, Helvetica, Arial, sans-serif',
+    background: '#ffffff', ground: true, shadow: 0.16, edgeWidth: 0.28, font: 'Helvetica Neue, Helvetica, Arial, sans-serif',
     minFont: 6.5, mount: document.body, ...opts};
   const W = Math.round(o.width * PX), H = Math.round(o.height * PX);
   const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true, stencil: true, preserveDrawingBuffer: true});
@@ -83,17 +83,20 @@ export function createStage(opts = {}) {
    *  opts: color, opacity (below 1 makes a ghost), edges (crease lines), outline (silhouette),
    *  flat, roughness, metalness, side, vertexColors, id (name used in the audit),
    *  shadow:false (no shadow from or on this part), receive:false (casts on the ground, takes no shadow:
-   *  use it for cells and surfaces whose tone is data). */
+   *  use it for cells and surfaces whose tone is data), unlit:true (exact colour, no shading: use it
+   *  when the reader must read a value from the colour). */
   S.solid = (geometry, p = {}) => {
     const q = {color: palette.context, opacity: 1, edges: true, outline: true, flat: false, roughness: 0.72,
       metalness: 0, edgeColor: palette.line, edgeWidth: o.edgeWidth, ...p};
     const ghost = q.opacity < 1;
-    const mat = new THREE.MeshStandardMaterial({color: q.color, roughness: q.roughness, metalness: q.metalness,
-      flatShading: q.flat, transparent: ghost, opacity: q.opacity, depthWrite: !ghost, vertexColors: !!q.vertexColors,
-      side: q.side ?? (ghost ? THREE.DoubleSide : THREE.FrontSide)});
+    const common = {color: q.color, transparent: ghost, opacity: q.opacity, depthWrite: !ghost, vertexColors: !!q.vertexColors,
+      side: q.side ?? (ghost ? THREE.DoubleSide : THREE.FrontSide)};
+    // unlit: the drawn colour is exactly the given colour. Light and shadow do not change it.
+    const mat = q.unlit ? new THREE.MeshBasicMaterial(common)
+      : new THREE.MeshStandardMaterial({...common, roughness: q.roughness, metalness: q.metalness, flatShading: q.flat});
     const mesh = new THREE.Mesh(geometry, mat);
     // With the soft shadow map, a mesh that receives shadow also casts. Thus shadow:false stops both.
-    mesh.castShadow = q.shadow ?? !ghost; mesh.receiveShadow = q.receive ?? (q.shadow !== false && !ghost && !q.vertexColors);
+    mesh.castShadow = q.shadow ?? !ghost; mesh.receiveShadow = q.receive ?? (q.shadow !== false && !ghost && !q.vertexColors && !q.unlit);
     if (ghost) mesh.renderOrder = 5;
     mesh.name = q.id || '';
     if (q.edges) {
@@ -197,7 +200,7 @@ export function createStage(opts = {}) {
           stencilFail: op, stencilZFail: op, stencilZPass: op}));
         sm.renderOrder = order; sm.userData.stencil = sm.userData.helper = true; m.add(sm);
       }
-      const capColor = p.cap || new THREE.Color(m.material.color).multiplyScalar(0.62);
+      const capColor = p.cap || new THREE.Color(m.material.color).offsetHSL(0, 0.15, -0.2); // darker and more saturated, not greyer
       const cap = new THREE.Mesh(new THREE.PlaneGeometry(1e3, 1e3), new THREE.MeshStandardMaterial({color: capColor, roughness: 0.9,
         stencilWrite: true, stencilRef: 0, stencilFunc: THREE.NotEqualStencilFunc,
         stencilFail: THREE.ReplaceStencilOp, stencilZFail: THREE.ReplaceStencilOp, stencilZPass: THREE.ReplaceStencilOp, side: THREE.DoubleSide}));
@@ -259,7 +262,7 @@ export function createStage(opts = {}) {
     for (const d of dashed) { d.material.dashSize *= upm * 1.2; d.material.gapSize *= upm * 1.2; }
 
     // Light: one key from the upper left of the VIEW, a broad fill, and a ground that only catches shadow.
-    scene.add(new THREE.HemisphereLight(0xffffff, 0xc4c9d2, 1.9));
+    scene.add(new THREE.HemisphereLight(0xffffff, 0xcfe1f5, 1.9));
     const key = new THREE.DirectionalLight(0xffffff, 1.9);
     key.position.copy(c).addScaledVector(camRight, -0.75 * R * 3).addScaledVector(camUp, 1.1 * R * 3).addScaledVector(eyeDir, 0.9 * R * 3);
     if (key.position.z < c.z + R) key.position.z = c.z + R * 2;
@@ -270,7 +273,7 @@ export function createStage(opts = {}) {
     const fill = new THREE.DirectionalLight(0xffffff, 0.55);
     fill.position.copy(c).addScaledVector(camRight, R * 3).addScaledVector(eyeDir, R * 2); scene.add(fill);
     if (o.ground !== false && o.shadow > 0) {
-      const g = new THREE.Mesh(new THREE.PlaneGeometry(R * 40, R * 40), new THREE.ShadowMaterial({opacity: o.shadow}));
+      const g = new THREE.Mesh(new THREE.PlaneGeometry(R * 40, R * 40), new THREE.ShadowMaterial({opacity: o.shadow, color: new THREE.Color(o.shadowColor || palette.shade)}));
       g.position.set(c.x, c.y, (typeof o.ground === 'number' ? o.ground : floor) - R * 1e-3);
       g.receiveShadow = true; g.userData.helper = g.userData.nofit = true; scene.add(g);
     }

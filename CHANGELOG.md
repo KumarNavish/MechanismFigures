@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1 — 2026-11-13
+
+- **No grey.** The palette context colours are pale cool blues. The contact shadow has a blue tint (`shadowColor`). The default cap of a cut is darker and more saturated, not greyer. The guides tell the agent not to use grey.
+- **`unlit` option.** `unlit: true` draws a part in its exact colour with no shading and no shadow on it. Use it when the reader must read a value from a colour.
+- Source of the change: the first use of version 1.0.0 on a paper, where shaded low values and grey context looked grey.
+
 ## 1.0.0 — 2026-11-13
 
 A rewrite with a strong bias for 3D.

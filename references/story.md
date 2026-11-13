@@ -42,7 +42,7 @@ What the second page does, and the rule that follows.
 
 Use this sequence for an explainer, a talk, a scroll page, or the panels of a figure.
 
-1. **Establish.** The object, alone, grey, in its resting state. One label.
+1. **Establish.** The object, alone, in the pale context colour, in its resting state. One label.
 2. **Introduce the cast.** Name the persistent object. It gets its colour now.
 3. **Operate.** The operation occurs. One thing moves, cuts, folds or flows. This is the longest beat.
 4. **Consequence.** The result of the operation, in the same frame.

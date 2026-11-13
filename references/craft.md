@@ -27,7 +27,8 @@ Do not use fog, depth of field, reflections, gloss, textures or gradients on the
 ## Material and colour
 
 - Materials are matte. Roughness 0.7, no metal. A shiny highlight looks like a data value.
-- **Grey is context.** `palette.context` and `palette.quiet`.
+- **Context is pale and cool, not grey.** Use `palette.context` and `palette.quiet`. Grey makes a figure look dead, and a shaded grey looks like a low data value. The contact shadow has a blue tint for the same reason.
+- **Data colour is exact.** Set `unlit: true` on a part when the reader must read a value from its colour. An unlit part has no shading, thus give it crease lines or a mesh so that its shape stays readable.
 - **One colour is the persistent object. One colour is the operation or intervention.** `palette.focus` (blue) and `palette.act` (orange) are a pair that stays distinct in grayscale and for colour-blind readers. Add a third colour only for a third entry in your cast list.
 - A colour keeps its meaning in all panels and in the caption.
 - A scalar field gets one ramp: `viridis` for magnitude, `diverging` when zero has a meaning. Show the ramp with units.

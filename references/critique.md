@@ -33,9 +33,11 @@ Write one sentence for each answer. Then repair the largest difference.
 | You see | Cause | Repair |
 |---|---|---|
 | The figure is a row of labelled boxes | No construction | Go back to step 4. Draw the object that the first box operates on. |
-| Everything has a strong colour | No cast list | Make all context grey. Give colour to two things only. |
+| Everything has a strong colour | No cast list | Give all context the pale context colour. Give strong colour to two things only. |
 | The eye goes to a shadow | Shadow too dark or too large | Lower `shadow` in the view, or set `shadow: false` on that part. |
 | Cells or data surfaces have uneven tones | A shadow falls on them | Set `receive: false` on those parts. |
+| Low values of a field look grey or dirty | Shading darkens the data colour | Set `unlit: true` on the surface. |
+| The figure looks grey | Grey context colours or a custom grey | Use `palette.context` and `palette.quiet`. Do not set a grey. |
 | Parts merge into one shape | Same tone, no outline, aligned edges | Change the azimuth by 5 to 10 degrees. Change the tone of one part. Keep the outlines. |
 | The operation is hidden inside | No access | Cut the body, or make it a ghost. |
 | The cut looks like a missing piece, not a section | Cap has the tone of the skin | Give the cap a darker tone. Align the plane with an axis. |

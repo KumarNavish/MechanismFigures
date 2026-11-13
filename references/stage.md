@@ -40,7 +40,8 @@ export default function build(S, THREE, beat) { /* add objects */ }
 | `frame` | none | `{center, size}` in world units. Fixes the camera. Necessary for beats. |
 | `fov` | 0 | A value above 0 gives a perspective camera. Use it only for a scene that a camera sees. |
 | `ground` | true | `false` removes the shadow ground. A number sets its height. |
-| `shadow` | 0.13 | Opacity of the contact shadow |
+| `shadow` | 0.16 | Opacity of the contact shadow |
+| `shadowColor` | `palette.shade` | Colour of the contact shadow. The default is a deep blue, not black. |
 | `edgeWidth` | 0.28 | Outline width in millimetres |
 | `minFont` | 6.5 | The report warns below this size, in points |
 
@@ -62,9 +63,13 @@ All calls return a three.js object. You can set `position`, `rotation` and `scal
 | `S.arrow(a, b, opts)` | A solid 3D arrow. `radius`, `head`. |
 | `S.curve(points, opts)` | A line of constant width on the page. `width` in millimetres. `dash` in world units. |
 
-Options for solids: `color`, `opacity` (below 1 gives a ghost), `edges` (crease lines), `outline` (silhouette), `flat`, `roughness`, `side`, `id` (the name in the report), `parent`, `shadow` and `receive`.
+Options for solids: `color`, `opacity` (below 1 gives a ghost), `edges` (crease lines), `outline` (silhouette), `flat`, `roughness`, `side`, `id` (the name in the report), `parent`, `shadow`, `receive` and `unlit`.
 
 **Shadows and data.** A shadow on a cell or a field changes its tone, and the reader takes the tone for a value. `shadow: false` gives a part no shadow and lets no shadow fall on it. `receive: false` lets the part cast a shadow on the ground but keeps its own faces clean. Use `receive: false` for grids of cells, stacked slabs and all surfaces whose colour is data. `S.surface` with `value` does this automatically.
+
+**Exact colour.** Shading makes a colour darker, and a dark low value can look grey. `unlit: true` draws a part in its exact colour with no shading and no shadow on it. Use it on each surface or cell whose colour is a value. Keep `edges` on, or add a mesh of `S.curve` lines, so that the shape stays readable.
+
+**No grey.** The palette has no grey. `context` and `quiet` are pale cool blues, and the contact shadow has a blue tint (`shadowColor` in the view changes it). Do not set a grey colour for context.
 
 ## Operations
 
@@ -86,7 +91,7 @@ Labels are vector text on top of the render. Sizes are in points. Offsets are in
 
 ## Colour
 
-`S.palette` has `ink`, `line`, `context`, `quiet`, `focus`, `act`, `good`, `warn`, `violet` and `gold`. Import `ramps` and `ramp` from `'mf'` for fields: `ramps.viridis`, `ramps.magma`, `ramps.diverging`.
+`S.palette` has `ink`, `line`, `context`, `quiet`, `shade`, `focus`, `act`, `good`, `warn`, `violet` and `gold`. It has no grey. Import `ramps` and `ramp` from `'mf'` for fields: `ramps.viridis`, `ramps.magma`, `ramps.diverging`.
 
 ## Beats
 
